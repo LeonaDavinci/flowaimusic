@@ -138,9 +138,8 @@ export function Icon({ name, size = 22, className, style }: IconProps) {
 export function BrandMark() {
   return (
     <span className="brand-mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round">
-        <path d="M4 14c2.2 0 2.2-6 4.4-6s2.2 10 4.4 10 2.2-9 4.4-9 1.6 5 2.8 5" />
-      </svg>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/logo.png" width={36} height={36} alt="" decoding="async" />
     </span>
   );
 }

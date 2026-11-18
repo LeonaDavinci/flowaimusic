@@ -172,7 +172,7 @@
 
 - **顶栏**（sticky，滚动后加细底边）：Logo（音符波形）+ 主导航 `Explore / Features / Pricing / Guides` + `Log in`（幽灵按钮）+ `Start creating`（实色主按钮）。移动端折叠为菜单按钮。
 - **页脚**：4 列（Product / Create / Library / Legal）+ 品牌行 + 版权；含 `Terms` `Privacy` `Sitemap` 与 `AI music creator` 内链。
-- **图标资产**：`public/favicon.ico`（16/32/48/64/128/256 多尺寸）、`public/logo.png`（128×128 RGBA）、`public/icon.svg`（矢量）三者图形一致；`layout.tsx` 的 `icons` 声明 `icon` / `apple` / `shortcut`，`Organization` 结构化数据的 `logo` 指向 PNG。
+- **图标资产**：品牌标记统一使用 `public/logo.png`（128×128 RGBA PNG），导航栏与页脚以 `<img>` 渲染，`public/favicon.ico`（16/32/48/64/128/256 多尺寸）用于浏览器标签；**不保留 SVG 版 logo**。`layout.tsx` 的 `icons` 声明 `icon` / `apple` / `shortcut`，`Organization` 结构化数据的 `logo` 指向 PNG。
 - **底部 CTA 条**：所有内容页复用，「Ready to make something?」+ 主按钮 + 「Free to start · No credit card required」。
 - 激活态控件**必须实色背景 + 高对比文字**（不使用半透明底叠字）。
 
@@ -241,7 +241,7 @@ H1 + 目录锚点 + 3 段正文（What / How / Use cases）+ 3 条 FAQ + `Breadc
 | FR-10 | 可访问性 | 语义化标签、可见 focus ring、按钮 aria-label、色彩对比 ≥ 4.5:1、`prefers-reduced-motion` | P1 |
 | FR-11 | 埋点占位 | `data-track` 属性标注 CTA / 生成 / 试听 / 定价点击，预留 `window.dataLayer` | P2 |
 | FR-12 | 品牌与词规范 | 全站品牌写 `Flow AI Music`；`flowaimusic` 仅保留于域名 / 仓库 / 示例 URL；`ai music creator`、`flow music ai` 在首页、落地页、指南页与结构化数据中自然出现 | P0 |
-| FR-13 | 图标资产 | `favicon.ico`（多尺寸）+ `logo.png`（128×128）+ `icon.svg` 三者图形一致并在 `layout.tsx` 声明 | P0 |
+| FR-13 | 图标资产 | 页面 logo 使用 `logo.png`（128×128 PNG，非 SVG）；`favicon.ico` 多尺寸用于标签页；两者在 `layout.tsx` 声明，站点内无 SVG logo 引用 | P0 |
 
 ---
 
@@ -294,7 +294,7 @@ MVP 仅写 `data-track` 属性与 `dataLayer.push` 占位，不加载分析脚�
 ## 11. 验收标准
 
 1. `npm run build` 与 `npx tsc --noEmit` 均无错误。
-2. `curl -s http://localhost:3100/ | grep "Flow AI Music"` 能在服务端 HTML 中命中首屏 H1（证明 SSR 且品牌词位于 H1 开头）；`/favicon.ico` 与 `/logo.png` 均返回 200，PNG 尺寸为 128×128。
+2. `curl -s http://localhost:3100/ | grep "Flow AI Music"` 能在服务端 HTML 中命中首屏 H1（证明 SSR 且品牌词位于 H1 开头）；`/favicon.ico` 与 `/logo.png` 均返回 200，PNG 尺寸为 128×128，HTML 中品牌标记为 `<img src="/logo.png">`，无 `icon.svg` 引用。
 3. 主要路由构建产物标记为动态渲染；`/explore?genre=Electronic` 返回过滤后的 HTML。
 4. 每页 `<title>` / `<meta name="description">` / `<link rel="canonical">` 唯一且正确；`/sitemap.xml`、`/robots.txt` 返回 200。
 5. 桌面与 375px 宽度下无横向溢出；键盘 Tab 可遍历所有交互控件且焦点可见。
@@ -336,7 +336,7 @@ MVP 仅写 `data-track` 属性与 `dataLayer.push` 占位，不加载分析脚�
 | `npm run typecheck` | 通过，0 错误 |
 | `npm run build`（Next.js 16.4.6 / Turbopack） | 通过；13 个内容路由（另含 `/_not-found`）标记为 `ƒ`（Dynamic SSR），`sitemap.xml` / `robots.txt` / `opengraph-image` 静态生成 |
 | 首屏 SSR 校验 | 服务端 HTML 的 H1 文本为 `Flow AI Music Turn the song in your head into a real one.`，品牌词位于 H1 开头；canonical 为 `https://www.flowaimusic.com` |
-| 图标资产 | `public/favicon.ico`（16/32/48/64/128/256）、`public/logo.png`（128×128 RGBA）、`public/icon.svg` 均已生成并由 `layout.tsx` 声明；三者 HTTP 200，`image/x-icon` / `image/png` / `image/svg+xml` |
+| 图标资产 | `public/favicon.ico`（16/32/48/64/128/256）与 `public/logo.png`（128×128 RGBA）已生成并由 `layout.tsx` 声明；两者 HTTP 200（`image/x-icon` / `image/png`）；header/footer 的 `BrandMark` 由内联 SVG 改为 PNG `<img>`，`public/icon.svg` 已移除，`/icon.svg` 返回 404 |
 | 路由状态 | `/`、`/ai-music-creator`、`/explore`、`/studio`、`/features`、`/pricing`、`/guides/ai-music-generator`、`/library/*`、`/terms`、`/privacy`、`/sitemap.xml`、`/robots.txt` 全部 200；未知路径返回自定义 404 |
 | SSR 筛选 | `/explore` 12 张卡片，`?genre=Electronic` 2 张，`?genre=R&B` 2 张；`/studio?brief=...` 的 brief 出现在服务端 HTML |
 | 品牌与词规范 | 源码与文档内 `FlowAI`（连写）出现 0 次；`flowaimusic` 仅保留在域名、package/仓库名、Spaces 示例 URL 与 `/ai-music-creator` 长尾页；`ai music creator` / `flow music ai` 在首页、落地页、指南页与 JSON-LD 中命中 |

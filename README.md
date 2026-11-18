@@ -71,14 +71,14 @@ src/
 │   └── seo.ts           # metadata + schema helpers
 public/
 ├── favicon.ico          # 16/32/48/64/128/256 multi-size ICO
-├── logo.png             # 128×128 RGBA brand logo
-└── icon.svg             # vector source for the same mark
+└── logo.png             # 128×128 RGBA PNG - the only brand mark asset
 docs/PRD.md              # product requirements document
 ```
 
-All three icon assets share the same violet rounded-square waveform mark.
-`layout.tsx` declares `icon` / `apple` / `shortcut`, and the `Organization`
-schema points to `logo.png`.
+The violet rounded-square waveform mark is delivered as PNG (plus an ICO for
+browser tabs) — there is no SVG logo asset. `layout.tsx` declares `icon` /
+`apple` / `shortcut`, the header and footer render `/logo.png`, and the
+`Organization` schema points to `logo.png`.
 
 Client-side JavaScript is limited to the interactive islands (header, hero
 composer, mini keyboard, play buttons, studio workspace, pricing toggle).
