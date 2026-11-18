@@ -71,14 +71,16 @@ src/
 │   └── seo.ts           # metadata + schema helpers
 public/
 ├── favicon.ico          # 16/32/48/64/128/256 multi-size ICO
-└── logo.png             # 128×128 RGBA PNG - the only brand mark asset
+├── logo.png             # 128×128 RGBA PNG - the only brand mark asset
+└── album-cover.png      # 1080×800 song-cover artwork for track cards
 docs/PRD.md              # product requirements document
 ```
 
 The violet rounded-square waveform mark is delivered as PNG (plus an ICO for
 browser tabs) — there is no SVG logo asset. `layout.tsx` declares `icon` /
 `apple` / `shortcut`, the header and footer render `/logo.png`, and the
-`Organization` schema points to `logo.png`.
+`Organization` schema points to `logo.png`. Both the logo and the track cover
+images carry `alt="flow ai music"` for accessibility and keyword context.
 
 Client-side JavaScript is limited to the interactive islands (header, hero
 composer, mini keyboard, play buttons, studio workspace, pricing toggle).

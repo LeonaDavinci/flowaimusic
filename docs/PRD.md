@@ -172,7 +172,8 @@
 
 - **顶栏**（sticky，滚动后加细底边）：Logo（音符波形）+ 主导航 `Explore / Features / Pricing / Guides` + `Log in`（幽灵按钮）+ `Start creating`（实色主按钮）。移动端折叠为菜单按钮。
 - **页脚**：4 列（Product / Create / Library / Legal）+ 品牌行 + 版权；含 `Terms` `Privacy` `Sitemap` 与 `AI music creator` 内链。
-- **图标资产**：品牌标记统一使用 `public/logo.png`（128×128 RGBA PNG），导航栏与页脚以 `<img>` 渲染，`public/favicon.ico`（16/32/48/64/128/256 多尺寸）用于浏览器标签；**不保留 SVG 版 logo**。`layout.tsx` 的 `icons` 声明 `icon` / `apple` / `shortcut`，`Organization` 结构化数据的 `logo` 指向 PNG。
+- **图标资产**：品牌标记统一使用 `public/logo.png`（128×128 RGBA PNG），导航栏与页脚以 `<img>` 渲染，`public/favicon.ico`（16/32/48/64/128/256 多尺寸）用于浏览器标签；**不保留 SVG 版 logo**。`layout.tsx` 的 `icons` 声明 `icon` / `apple` / `shortcut`，`Organization` 结构化数据的 `logo` 指向 PNG。logo 的 `alt` 为 `flow ai music`。
+- **作品封面**：`public/album-cover.png`（1080×800，紫粉橙渐变 + 双波形 + 同心圆，本地生成无外部依赖）用于 `/explore` 的作品卡片，`<img alt="flow ai music" loading="lazy">` 铺满封面区，播放按钮与时长标签保持在上层。
 - **底部 CTA 条**：所有内容页复用，「Ready to make something?」+ 主按钮 + 「Free to start · No credit card required」。
 - 激活态控件**必须实色背景 + 高对比文字**（不使用半透明底叠字）。
 
@@ -241,7 +242,7 @@ H1 + 目录锚点 + 3 段正文（What / How / Use cases）+ 3 条 FAQ + `Breadc
 | FR-10 | 可访问性 | 语义化标签、可见 focus ring、按钮 aria-label、色彩对比 ≥ 4.5:1、`prefers-reduced-motion` | P1 |
 | FR-11 | 埋点占位 | `data-track` 属性标注 CTA / 生成 / 试听 / 定价点击，预留 `window.dataLayer` | P2 |
 | FR-12 | 品牌与词规范 | 全站品牌写 `Flow AI Music`；`flowaimusic` 仅保留于域名 / 仓库 / 示例 URL；`ai music creator`、`flow music ai` 在首页、落地页、指南页与结构化数据中自然出现 | P0 |
-| FR-13 | 图标资产 | 页面 logo 使用 `logo.png`（128×128 PNG，非 SVG）；`favicon.ico` 多尺寸用于标签页；两者在 `layout.tsx` 声明，站点内无 SVG logo 引用 | P0 |
+| FR-13 | 图标资产 | 页面 logo 使用 `logo.png`（128×128 PNG，非 SVG）；`favicon.ico` 多尺寸用于标签页；两者在 `layout.tsx` 声明，站点内无 SVG logo 引用；logo 与作品封面图 `alt` 均为 `flow ai music` | P0 |
 
 ---
 

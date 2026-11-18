@@ -137,9 +137,9 @@ export function Icon({ name, size = 22, className, style }: IconProps) {
 
 export function BrandMark() {
   return (
-    <span className="brand-mark" aria-hidden="true">
+    <span className="brand-mark">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo.png" width={36} height={36} alt="" decoding="async" />
+      <img src="/logo.png" width={36} height={36} alt="flow ai music" decoding="async" />
     </span>
   );
 }

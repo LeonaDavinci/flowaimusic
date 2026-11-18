@@ -11,6 +11,14 @@ export function TrackCard({ track }: { track: Track }) {
           background: `linear-gradient(135deg, ${track.gradient[0]}, ${track.gradient[1]})`,
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/album-cover.png"
+          alt="flow ai music"
+          className="track-cover-image"
+          loading="lazy"
+          decoding="async"
+        />
         <PlayButton trackId={track.id} title={track.title} />
         <span className="track-duration">{track.duration}</span>
       </div>
