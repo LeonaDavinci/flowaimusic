@@ -8,7 +8,7 @@ import { CtaBanner } from "@/components/CtaBanner";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "How to Make a Song with AI (A Practical Guide) | FlowAI Music",
+  title: "How to Make a Song with AI (A Practical Guide) | Flow AI Music",
   description:
     "A practical guide to making a full song with AI: how to write a prompt, steer genre and tempo, revise only the section you dislike, split stems and publish your track.",
   path: "/guides/ai-music-generator",
@@ -28,8 +28,8 @@ export default function GuidePage() {
     headline: "How to Make a Song with AI (A Practical Guide)",
     description:
       "A practical guide to writing prompts, steering arrangements, revising sections and publishing AI generated songs.",
-    author: { "@type": "Organization", name: "FlowAI Music" },
-    publisher: { "@type": "Organization", name: "FlowAI Music" },
+    author: { "@type": "Organization", name: "Flow AI Music" },
+    publisher: { "@type": "Organization", name: "Flow AI Music" },
     mainEntityOfPage: `${SITE_URL}/guides/ai-music-generator`,
     datePublished: "2026-11-18",
     dateModified: "2026-11-18",
@@ -83,10 +83,12 @@ export default function GuidePage() {
             song is a structure problem as much as a sound problem.
           </p>
           <p>
-            FlowAI Music is built around a conversation rather than a single
+            Flow AI Music is built around a conversation rather than a single
             submit button. You describe the song, hear it back, then keep
             talking until the details are right — the same way you would work
-            with a producer in a room.
+            with a producer in a room. If you are choosing a tool, our{" "}
+            <Link href="/ai-music-creator">AI music creator overview</Link>{" "}
+            explains where Flow Music AI fits in a music workflow.
           </p>
 
           <h2 id="prompt">2. Write a prompt that actually works</h2>

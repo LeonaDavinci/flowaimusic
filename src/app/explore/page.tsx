@@ -8,9 +8,9 @@ import { CtaBanner } from "@/components/CtaBanner";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Explore AI Generated Songs & Playlists | FlowAI Music",
+  title: "Explore AI Generated Songs & Playlists | Flow AI Music",
   description:
-    "Listen to songs made with FlowAI Music. Browse original AI generated tracks by genre, read the prompts behind them, and find your next favourite creator.",
+    "Listen to songs made with Flow AI Music. Browse original AI generated tracks by genre, read the prompts behind them, and find your next favourite creator.",
   path: "/explore",
   keywords: ["AI generated songs", "AI music community", "AI playlist", "prompts for AI music"],
 });

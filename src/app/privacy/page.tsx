@@ -4,8 +4,8 @@ import { pageMetadata } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Privacy Policy | FlowAI Music",
-  description: "How the FlowAI Music demo website handles data, browser audio and analytics placeholders.",
+  title: "Privacy Policy | Flow AI Music",
+  description: "How the Flow AI Music demo website handles data, browser audio and analytics placeholders.",
   path: "/privacy",
 });
 
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <div className="container">
           <span className="eyebrow">Legal</span>
           <h1>Privacy policy</h1>
-          <p>What this demo site does — and does not — do with your data. Last updated 18 November 2026.</p>
+          <p>What this site does — and does not — do with your data. Last updated 18 November 2026.</p>
         </div>
       </section>
       <div className="container legal-body">

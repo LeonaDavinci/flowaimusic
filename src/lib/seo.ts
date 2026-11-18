@@ -48,11 +48,13 @@ export function softwareApplicationSchema() {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: SITE_NAME,
+    alternateName: "Flow Music AI",
     applicationCategory: "MultimediaApplication",
     operatingSystem: "Web browser",
     url: SITE_URL,
+    keywords: "AI music creator, flow music ai, AI music generator, text to music, create music with AI",
     description:
-      "FlowAI Music is a conversational AI music studio: describe a song, generate a full-length track, edit sections, split stems, create music videos and share playlists.",
+      "Flow AI Music is an AI music creator and conversational music studio: describe the music you want, generate a full-length track, edit sections, split stems, create music videos and share playlists.",
     offers: [
       {
         "@type": "Offer",
@@ -68,8 +70,8 @@ export function softwareApplicationSchema() {
       },
     ],
     featureList: [
-      "Text to song generation",
-      "Conversational editing",
+      "Text to music generation",
+      "Conversational music editing",
       "Stem split",
       "AI music videos",
       "Playlists and publishing",
@@ -82,7 +84,8 @@ export function organizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
+    alternateName: "Flow Music AI",
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
+    logo: `${SITE_URL}/logo.png`,
   };
 }

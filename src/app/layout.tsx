@@ -10,15 +10,16 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "FlowAI Music — Official AI Music Studio | Make Songs with AI",
+  title: "Flow AI Music — Official AI Music Creator & Music Studio",
   description:
-    "FlowAI Music is a conversational AI music studio. Describe a song in plain words, generate a full-length track, edit any section, split stems, make a music video and share it.",
+    "Flow AI Music (Flow Music AI) is an AI music creator for making original music from text. Generate full songs, edit any section, split stems and make music videos.",
   applicationName: SITE_NAME,
   keywords: [
     "AI music generator",
-    "make a song with AI",
+    "AI music creator",
+    "flow music ai",
+    "make music with AI",
     "text to music",
-    "AI song maker",
     "AI music studio",
   ],
   authors: [{ name: SITE_NAME }],
@@ -27,19 +28,27 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: "FlowAI Music — Official AI Music Studio",
+    title: "Flow AI Music — Official AI Music Creator & Music Studio",
     description:
-      "Turn the song in your head into a real one. Describe it, shape it, see it, share it.",
+      "Create music from a sentence. Flow Music AI is the AI music creator that keeps up with your ideas.",
     url: SITE_URL,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FlowAI Music — Official AI Music Studio",
-    description: "Turn the song in your head into a real one.",
+    title: "Flow AI Music — Official AI Music Creator",
+    description: "Create music from a sentence with Flow Music AI.",
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/logo.png", sizes: "128x128", type: "image/png" },
+    ],
+    apple: [{ url: "/logo.png", sizes: "128x128", type: "image/png" }],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {

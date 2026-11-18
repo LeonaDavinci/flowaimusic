@@ -1,8 +1,8 @@
-# FlowAI Music 产品需求文档（PRD）
+# Flow AI Music 产品需求文档（PRD）
 
 | 项目 | 内容 |
 | --- | --- |
-| 项目名 | FlowAI Music |
+| 项目名 | Flow AI Music |
 | 域名 | `www.flowaimusic.com` |
 | 仓库 | `flowaimusic.git`（main 分支） |
 | 文档版本 | v1.0 |
@@ -58,7 +58,7 @@
 | # | 区块 | 结构 | 关键元素 |
 | --- | --- | --- | --- |
 | 1 | 顶栏 | 左 Logo，右操作 | `Log in` / `Sign up` 按钮 |
-| 2 | Hero | H1 + 副标题 + 身份标签 + 创作入口 | H1「Welcome to the studio」，副标题「Make any song you can imagine. Unlimited downloads.」；身份切换 `Video creator` / `Just for fun` / `Artist` / `Producer` |
+| 2 | Hero | H1 + 副标题 + 身份标签 + 创作入口 | H1「Welcome to the studio」，副标题「Make any song you can imagine. Unlimited downloads.」；身份切换 `Video creator` / `Just for fun` / `Artist` / `Producer`（本项目已把首个标签改为 `Music creator`） |
 | 3 | Get started | H2 + 5 张快捷卡片 | `Make songs for fun` / `Create music for videos` / `Make tracks for my vocal` / `Remix unreleased tracks` / `Make FX / instruments`，`Create` 按钮 |
 | 4 | Your new instrument | 左文右示例 | 对话式 Producer 叙事 + 3 张歌曲卡（曲名 / 风格）+ `AI Music Video` 入口 |
 | 5 | Direct your own music videos | 左文右视频卡 | 模型能力叙事 + `Build` 按钮 |
@@ -96,7 +96,7 @@
 
 ## 3. 产品定位
 
-**一句话**：FlowAI Music 是「把一句话变成一首完整歌曲」的对话式 AI 音乐工作室——从灵感、编曲、人声到 MV 与分享，全程在同一个创作流里完成。
+**一句话**：Flow AI Music 是「把一句话变成一首完整歌曲」的对话式 AI 音乐工作室——从灵感、编曲、人声到 MV 与分享，全程在同一个创作流里完成。
 
 | 维度 | 定义 |
 | --- | --- |
@@ -130,6 +130,7 @@
 ├── /explore          发现 / 社区曲库（SSR 筛选 ?genre=）
 ├── /features         功能总览（6 大能力 + 工作流）
 ├── /pricing          定价（4 档 + 对比表 + FAQ）
+├── /ai-music-creator  长尾词落地页（ai music creator / flow music ai）
 ├── /guides
 │   └── /ai-music-generator   长尾 SEO 内容页（What / How / FAQ）
 ├── /library          我的作品库（空状态 + 三类入口）
@@ -142,14 +143,26 @@
 
 | 页面 | 渲染 | 主要关键词 | 优先级 |
 | --- | --- | --- | --- |
-| `/` | SSR | ai music generator, make a song with ai | P0 |
-| `/studio` | SSR + 客户端交互 | ai song maker, ai music studio | P0 |
+| `/` | SSR | ai music generator, **ai music creator**, flow music ai | P0 |
+| `/studio` | SSR + 客户端交互 | create music with ai, ai music studio | P0 |
 | `/explore` | SSR（searchParams 驱动） | ai generated songs, ai music community | P0 |
 | `/features` | SSR | ai music editor, stem split, ai music video | P1 |
-| `/pricing` | SSR | ai music pricing, free ai song generator | P1 |
-| `/guides/ai-music-generator` | SSR | how to make ai music, text to song | P1 |
+| `/pricing` | SSR | ai music pricing, free ai music generator | P1 |
+| `/ai-music-creator` | SSR | **ai music creator**, **flow music ai**, flowaimusic | P1 |
+| `/guides/ai-music-generator` | SSR | how to make ai music, text to music | P1 |
 | `/library/*` | SSR | — | P2 |
 | `/terms` `/privacy` | SSR | — | P2 |
+
+### 5.1 品牌写法与关键词策略（v1.1 追加）
+
+| 规则 | 说明 |
+| --- | --- |
+| 品牌标准写法 | **`Flow AI Music`**（三词、带空格）。全站 UI、title、description、OG、JSON-LD、页脚版权统一使用，禁止再使用原先的连写写法。 |
+| 连写词保留位 | `flowaimusic` **仅保留**在域名 `www.flowaimusic.com`、仓库/package 名 `flowaimusic`、Spaces URL 示例与文档的项目标识中，用于命中该品牌长尾搜索词。 |
+| 核心长尾词 | `ai music creator`、`flow music ai`。前者落在首页 H1 副区、独立落地页 `/ai-music-creator`、页脚内链与 `SoftwareApplication.keywords`；后者作为 `alternateName` 写入 `Organization` / `SoftwareApplication`，并在首页、落地页、指南页自然出现。 |
+| music 词密度 | CTA 由 `Create song` 系列统一改为 `Create music`；身份标签 `Video creator` → `Music creator`；hero 副标题、套餐描述、页脚品牌句、工作台标题均以 music 为主词；避免堆砌，每屏出现 2–4 次即可。 |
+| 内链结构 | 首页 capabilities 区块 → `/ai-music-creator`；页脚 Product 组 → `/ai-music-creator`；指南页 → 落地页 → `/features` / `/pricing` / `/studio` / `/explore`。 |
+| 页脚 | 去掉「· Demo site」字样；品牌句改为「Made for people who hear music before it exists.」 |
 
 ---
 
@@ -158,7 +171,8 @@
 ### 6.1 全局
 
 - **顶栏**（sticky，滚动后加细底边）：Logo（音符波形）+ 主导航 `Explore / Features / Pricing / Guides` + `Log in`（幽灵按钮）+ `Start creating`（实色主按钮）。移动端折叠为菜单按钮。
-- **页脚**：4 列（Product / Create / Resources / Legal）+ 品牌行 + 版权；含 `Terms` `Privacy` `Sitemap`。
+- **页脚**：4 列（Product / Create / Library / Legal）+ 品牌行 + 版权；含 `Terms` `Privacy` `Sitemap` 与 `AI music creator` 内链。
+- **图标资产**：`public/favicon.ico`（16/32/48/64/128/256 多尺寸）、`public/logo.png`（128×128 RGBA）、`public/icon.svg`（矢量）三者图形一致；`layout.tsx` 的 `icons` 声明 `icon` / `apple` / `shortcut`，`Organization` 结构化数据的 `logo` 指向 PNG。
 - **底部 CTA 条**：所有内容页复用，「Ready to make something?」+ 主按钮 + 「Free to start · No credit card required」。
 - 激活态控件**必须实色背景 + 高对比文字**（不使用半透明底叠字）。
 
@@ -166,7 +180,7 @@
 
 | 区块 | 内容与交互 | 验收 |
 | --- | --- | --- |
-| Hero | H1「Turn the song in your head into a real one.」+ 副标题 + 身份标签（4 个，可切换）+ 创作输入框（placeholder 示例）+ `Create my song` 按钮 + 右侧「工作室预览卡」（深色、动态波形、正在生成的对话气泡） | 一个 H1；输入提交跳转 `/studio?brief=<urlencoded>` |
+| Hero | H1 以品牌词开头：「Flow AI Music」+「Turn the song in your head into a real one.」+ 副标题（含 `AI music creator`）+ 身份标签（`Music creator / Just for fun / Artist / Producer`）+ 创作输入框 + `Create music` 按钮 + 右侧「工作室预览卡」（深色、动态波形、正在生成的对话气泡） | 一个 H1 且文本以 `Flow AI Music` 起始；输入提交跳转 `/studio?brief=<urlencoded>` |
 | Quick starts | H2「Start from anywhere」+ 5 张快捷卡（写首歌 / 视频配乐 / 给我的人声做伴奏 / 重制 / 音效与乐器），点击带入对应 brief | 卡片可键盘聚焦，hover 有位移 |
 | Studio story | 左文右「对话式 Producer」演示：3 条消息 + 3 张曲目卡 | 文案原创，不出现第三方模型名 |
 | Music videos | 左文右 MV 视觉卡（渐变 + 播放按钮 + 时长） | 播放按钮有视觉状态 |
@@ -201,7 +215,11 @@
 
 H1 + 目录锚点 + 3 段正文（What / How / Use cases）+ 3 条 FAQ + `BreadcrumbList` / `Article` JSON-LD + 内链到 `/studio`、`/features`、`/pricing`。作为后续长尾文章模板。
 
-### 6.8 其他
+### 6.8 长尾词落地页 `/ai-music-creator`（v1.1 新增）
+
+面向 `ai music creator` / `flow music ai` 的独立可索引页面：H1「An AI music creator that keeps up with your ideas.」+ 侧边目录 + 5 段正文（What / Why Flow Music AI / Who it is for / Workflow / FAQ）+ `FAQPage` 与 `BreadcrumbList` JSON-LD + 内链到 `/studio`、`/features`、`/pricing`、`/explore`、`/guides/ai-music-generator`。FAQ 中自然解释 `flowaimusic` 与 `Flow Music AI` 为同一产品，命中品牌长尾词。已加入 sitemap（priority 0.7 / weekly）与页脚 Product 组内链。
+
+### 6.9 其他
 
 `/library/*` 空状态页（引导去 `/studio`）；`/terms`、`/privacy` 简明条款（明确 Demo 数据、无真实支付、无音频上传）；`not-found` 自定义 404。
 
@@ -216,12 +234,14 @@ H1 + 目录锚点 + 3 段正文（What / How / Use cases）+ 3 条 FAQ + `Breadc
 | FR-3 | 交互式 Demo | 迷你键盘 Web Audio 发声、工作台模拟生成进度、试听波形动画 | P0 |
 | FR-4 | SSR 筛选 | `/explore?genre=` 服务端过滤，分类为真实 `<a href>` | P0 |
 | FR-5 | SEO 元数据 | 每页 `generateMetadata`（title/description/canonical/OG/Twitter/alternates） | P0 |
-| FR-6 | 结构化数据 | 首页 `SoftwareApplication` + `Organization`；定价页 `FAQPage`；指南页 `Article` + `BreadcrumbList` | P0 |
+| FR-6 | 结构化数据 | 首页 `SoftwareApplication` + `Organization`（含 `alternateName: Flow Music AI`）；定价页 `/ai-music-creator` 页 `FAQPage`；指南页 `Article` + `BreadcrumbList` | P0 |
 | FR-7 | sitemap / robots | `app/sitemap.ts`、`app/robots.ts`，域名指向 `https://www.flowaimusic.com` | P0 |
 | FR-8 | OG 图 | `app/opengraph-image.tsx` 用 `ImageResponse` 服务端生成 1200×630 | P1 |
 | FR-9 | 响应式 | 320 / 768 / 1024 / 1440 断点，移动导航折叠 | P0 |
 | FR-10 | 可访问性 | 语义化标签、可见 focus ring、按钮 aria-label、色彩对比 ≥ 4.5:1、`prefers-reduced-motion` | P1 |
 | FR-11 | 埋点占位 | `data-track` 属性标注 CTA / 生成 / 试听 / 定价点击，预留 `window.dataLayer` | P2 |
+| FR-12 | 品牌与词规范 | 全站品牌写 `Flow AI Music`；`flowaimusic` 仅保留于域名 / 仓库 / 示例 URL；`ai music creator`、`flow music ai` 在首页、落地页、指南页与结构化数据中自然出现 | P0 |
+| FR-13 | 图标资产 | `favicon.ico`（多尺寸）+ `logo.png`（128×128）+ `icon.svg` 三者图形一致并在 `layout.tsx` 声明 | P0 |
 
 ---
 
@@ -274,12 +294,13 @@ MVP 仅写 `data-track` 属性与 `dataLayer.push` 占位，不加载分析脚�
 ## 11. 验收标准
 
 1. `npm run build` 与 `npx tsc --noEmit` 均无错误。
-2. `curl -s http://localhost:3000/ | grep "Turn the song"` 能在服务端 HTML 中命中首屏 H1（证明 SSR）。
+2. `curl -s http://localhost:3100/ | grep "Flow AI Music"` 能在服务端 HTML 中命中首屏 H1（证明 SSR 且品牌词位于 H1 开头）；`/favicon.ico` 与 `/logo.png` 均返回 200，PNG 尺寸为 128×128。
 3. 主要路由构建产物标记为动态渲染；`/explore?genre=Electronic` 返回过滤后的 HTML。
 4. 每页 `<title>` / `<meta name="description">` / `<link rel="canonical">` 唯一且正确；`/sitemap.xml`、`/robots.txt` 返回 200。
 5. 桌面与 375px 宽度下无横向溢出；键盘 Tab 可遍历所有交互控件且焦点可见。
 6. 首页交互链路可走通：输入 brief → 跳 `/studio` → 显示该 brief → 点击生成出现曲目卡；迷你键盘点击发声并有高亮。
 7. 站内不出现参考站品牌名与其第三方模型名；无外部图片/音频资源请求失败。
+8. 全站品牌写 `Flow AI Music`（无连写形式）；`flowaimusic` 仅出现在域名 / 仓库 / 示例 URL；`ai music creator` 与 `flow music ai` 在首页、落地页、指南页 HTML 与结构化数据中可命中；页脚不再出现 `Demo site`；首屏身份标签为 `Music creator`，主 CTA 为 `Create music`。
 
 ---
 
@@ -308,15 +329,18 @@ MVP 仅写 `data-track` 属性与 `dataLayer.push` 占位，不加载分析脚�
 
 ---
 
-## 14. 实施与验证记录（2026-11-18）
+## 14. 实施与验证记录（2026-11-18 初版 / 2026-11-19 v1.1 修订）
 
 | 项 | 结果 |
 | --- | --- |
 | `npm run typecheck` | 通过，0 错误 |
-| `npm run build`（Next.js 16.4.6 / Turbopack） | 通过；12 个内容路由标记为 `ƒ`（Dynamic SSR），`sitemap.xml` / `robots.txt` / `opengraph-image` 静态生成 |
-| 首屏 SSR 校验 | 服务端 HTML 命中 H1「Turn the song in your head into a real one.」与 canonical `https://www.flowaimusic.com` |
-| 路由状态 | `/`、`/explore`、`/studio`、`/features`、`/pricing`、`/guides/ai-music-generator`、`/library/*`、`/terms`、`/privacy`、`/sitemap.xml`、`/robots.txt`、`/opengraph-image` 全部 200；未知路径返回自定义 404 |
+| `npm run build`（Next.js 16.4.6 / Turbopack） | 通过；13 个内容路由（另含 `/_not-found`）标记为 `ƒ`（Dynamic SSR），`sitemap.xml` / `robots.txt` / `opengraph-image` 静态生成 |
+| 首屏 SSR 校验 | 服务端 HTML 的 H1 文本为 `Flow AI Music Turn the song in your head into a real one.`，品牌词位于 H1 开头；canonical 为 `https://www.flowaimusic.com` |
+| 图标资产 | `public/favicon.ico`（16/32/48/64/128/256）、`public/logo.png`（128×128 RGBA）、`public/icon.svg` 均已生成并由 `layout.tsx` 声明；三者 HTTP 200，`image/x-icon` / `image/png` / `image/svg+xml` |
+| 路由状态 | `/`、`/ai-music-creator`、`/explore`、`/studio`、`/features`、`/pricing`、`/guides/ai-music-generator`、`/library/*`、`/terms`、`/privacy`、`/sitemap.xml`、`/robots.txt` 全部 200；未知路径返回自定义 404 |
 | SSR 筛选 | `/explore` 12 张卡片，`?genre=Electronic` 2 张，`?genre=R&B` 2 张；`/studio?brief=...` 的 brief 出现在服务端 HTML |
+| 品牌与词规范 | 源码与文档内 `FlowAI`（连写）出现 0 次；`flowaimusic` 仅保留在域名、package/仓库名、Spaces 示例 URL 与 `/ai-music-creator` 长尾页；`ai music creator` / `flow music ai` 在首页、落地页、指南页与 JSON-LD 中命中 |
+| 文案修订 | 主 CTA `Create music`；身份标签 `Music creator`；页脚无 `Demo site`；`Video creator` 在 src 中出现 0 次 |
 | 品牌合规 | `src/`、`public/`、`README.md` 内无参考站域名与第三方模型名（PRD 第 2 节的分析引用除外） |
 | 本地预览 | 生产模式运行于 `http://127.0.0.1:3100`（3000 端口被其他项目占用） |
 

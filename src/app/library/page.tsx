@@ -8,9 +8,9 @@ import { Icon } from "@/components/Icons";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "My Library — Songs, Playlists & Spaces | FlowAI Music",
+  title: "My Library — Songs, Playlists & Spaces | Flow AI Music",
   description:
-    "Your FlowAI Music library: saved songs, playlists, music videos and playable Spaces in one place.",
+    "Your Flow AI Music library: saved songs, playlists, music videos and playable Spaces in one place.",
   path: "/library",
 });
 
@@ -33,7 +33,7 @@ export default function LibraryPage() {
           <h2>Nothing saved yet — and that is easy to fix.</h2>
           <p>Open the studio and make a first take. Saved items will appear here in the production release.</p>
           <Link href="/studio" className="btn btn-primary btn-lg" data-track="cta_click" data-placement="library">
-            Create a song <Icon name="arrow" size={17} />
+            Create music <Icon name="arrow" size={17} />
           </Link>
         </div>
         <div className="card-grid">

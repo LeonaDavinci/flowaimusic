@@ -5,7 +5,7 @@ import { LibrarySectionView } from "@/components/LibrarySectionView";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "My Spaces — Playable Audio Tools | FlowAI Music",
+  title: "My Spaces — Playable Audio Tools | Flow AI Music",
   description: "Playable browser tools built from a prompt: keyboards, drum machines, games and effect racks.",
   path: "/library/spaces",
 });

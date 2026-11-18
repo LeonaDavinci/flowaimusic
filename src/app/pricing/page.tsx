@@ -9,9 +9,9 @@ import { JsonLd } from "@/components/JsonLd";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "AI Music Pricing — Free & Paid Plans | FlowAI Music",
+  title: "AI Music Pricing — Free & Paid Plans | Flow AI Music",
   description:
-    "Compare FlowAI Music plans: free daily credits, Creator, Pro and Studio. See monthly credits, concurrent generations, stem export, commercial use and team features.",
+    "Compare Flow AI Music plans: free daily credits, Creator, Pro and Studio. See monthly credits, concurrent generations, stem export, commercial use and team features.",
   path: "/pricing",
   keywords: ["AI music pricing", "free AI song generator", "AI music subscription", "AI music credits"],
 });

@@ -5,8 +5,8 @@ import { LibrarySectionView } from "@/components/LibrarySectionView";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "My Playlists | FlowAI Music",
-  description: "Collect and share the songs you made with FlowAI Music in playlists.",
+  title: "My Playlists | Flow AI Music",
+  description: "Collect and share the songs you made with Flow AI Music in playlists.",
   path: "/library/playlists",
 });
 

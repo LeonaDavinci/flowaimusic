@@ -124,7 +124,7 @@ export function StudioClient({ brief, persona }: { brief: string; persona: strin
                   <Icon name="play" size={18} />
                 </div>
               )}
-              <small>{message.role === "user" ? "You" : "FlowAI Producer"}</small>
+              <small>{message.role === "user" ? "You" : "Flow AI Music Producer"}</small>
             </div>
           ))}
           {generating && (

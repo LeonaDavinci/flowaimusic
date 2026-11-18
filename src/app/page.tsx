@@ -19,15 +19,16 @@ import { Icon, type IconName } from "@/components/Icons";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "FlowAI Music — Official AI Music Studio | Make Songs with AI",
+  title: "Flow AI Music — Official AI Music Creator & Music Studio",
   description:
-    "Turn the song in your head into a real one. Describe it in plain words, generate a full-length AI song, edit any section, split stems, make a music video and share it.",
+    "Flow AI Music is an AI music creator for making original music from text. Generate full songs, edit any section, split stems and make music videos — free to start.",
   path: "/",
   keywords: [
     "AI music generator",
-    "AI song maker",
-    "make a song with AI",
-    "text to song",
+    "AI music creator",
+    "flow music ai",
+    "make music with AI",
+    "text to music",
     "AI music studio",
     "free AI music generator",
   ],
@@ -52,14 +53,15 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="container hero-inner">
           <div className="hero-copy">
-            <span className="eyebrow">Welcome to the studio</span>
+            <span className="eyebrow">The official AI music studio</span>
             <h1 className="hero-title" id="hero-title">
+              <span className="hero-title-brand">Flow AI Music</span>
               Turn the song in your head into a <em>real one.</em>
             </h1>
             <p className="hero-sub">
-              Describe any song you can imagine and get a full-length track with
-              vocals, structure and feeling. Unlimited downloads, no gear
-              required.
+              Describe any music you can imagine and get a full-length track
+              with vocals, structure and feeling. Built for every AI music
+              creator — unlimited downloads, no gear required.
             </p>
             <HeroComposer />
             <div className="hero-stats">
@@ -286,6 +288,14 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          <p style={{ marginTop: 28, textAlign: "center", fontSize: 15, color: "var(--ink-2)" }}>
+            Flow Music AI is built for people who make music every day. See why
+            makers call it the{" "}
+            <Link href="/ai-music-creator" style={{ color: "var(--violet)", fontWeight: 750, textDecoration: "underline", textUnderlineOffset: 3 }}>
+              AI music creator
+            </Link>{" "}
+            they keep coming back to.
+          </p>
         </div>
       </section>
 

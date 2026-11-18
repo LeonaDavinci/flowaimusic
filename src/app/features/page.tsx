@@ -8,9 +8,9 @@ import { Icon } from "@/components/Icons";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "AI Music Studio Features — Edit, Split Stems & Make Videos | FlowAI Music",
+  title: "AI Music Studio Features — Edit, Split Stems & Make Videos | Flow AI Music",
   description:
-    "Explore the FlowAI Music feature set: conversational song creation, section-level editing, stem split, audio effects, AI music videos, playable Spaces and personalised discovery.",
+    "Explore the Flow AI Music feature set: conversational song creation, section-level editing, stem split, audio effects, AI music videos, playable Spaces and personalised discovery.",
   path: "/features",
   keywords: ["AI music editor", "stem split AI", "AI music video generator", "replace song section AI"],
 });

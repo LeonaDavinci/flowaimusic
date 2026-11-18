@@ -26,9 +26,9 @@ export function SiteHeader() {
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="container">
         <div className="header-inner">
-          <Link href="/" className="brand" aria-label="FlowAI Music home" data-track="nav_click">
+          <Link href="/" className="brand" aria-label="Flow AI Music home" data-track="nav_click">
             <BrandMark />
-            <span>FlowAI <span className="text-violet">Music</span></span>
+            <span>Flow AI <span className="text-violet">Music</span></span>
           </Link>
 
           <nav className="nav-links" aria-label="Main navigation">

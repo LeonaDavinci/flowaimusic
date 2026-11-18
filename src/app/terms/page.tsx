@@ -4,8 +4,8 @@ import { pageMetadata } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Terms of Service | FlowAI Music",
-  description: "The terms that apply when using the FlowAI Music website and demo studio.",
+  title: "Terms of Service | Flow AI Music",
+  description: "The terms that apply when using the Flow AI Music website and demo studio.",
   path: "/terms",
 });
 
@@ -22,7 +22,7 @@ export default function TermsPage() {
       <div className="container legal-body">
         <h2>1. About this site</h2>
         <p>
-          FlowAI Music is an independent product website. The studio, explore
+          Flow AI Music is an independent product website. The studio, explore
           feed, playlists and pricing information on this site are presented as
           a product demonstration. Track names, creator handles, play counts and
           testimonials are original demo content and do not represent real

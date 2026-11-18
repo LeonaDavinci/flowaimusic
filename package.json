@@ -2,7 +2,7 @@
   "name": "flowaimusic",
   "version": "1.0.0",
   "private": true,
-  "description": "FlowAI Music - turn an idea into a full song. Next.js SSR marketing site and interactive demo.",
+  "description": "Flow AI Music - turn an idea into a full song. Next.js SSR marketing site and interactive demo.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

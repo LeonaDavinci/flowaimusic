@@ -10,7 +10,7 @@ export function SiteFooter() {
           <div className="footer-brand">
             <Link href="/" className="brand" data-track="nav_click">
               <BrandMark />
-              <span>FlowAI Music</span>
+              <span>Flow AI Music</span>
             </Link>
             <p>
               A conversational AI music studio. Describe the song in your head,
@@ -30,7 +30,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {SITE_NAME}. All rights reserved.</span>
-          <span>Made for people who hear songs before they exist. · Demo site</span>
+          <span>Made for people who hear music before it exists.</span>
         </div>
       </div>
     </footer>

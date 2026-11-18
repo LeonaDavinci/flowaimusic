@@ -6,7 +6,7 @@ import { PERSONAS } from "@/lib/content";
 import { Icon } from "./Icons";
 
 const PERSONA_BRIEFS: Record<string, string> = {
-  creator: "A 60 second upbeat track for a travel vlog, bright and clean at the end",
+  creator: "A bright, radio-ready pop track with a memorable hook and a clean 3 minute arrangement",
   fun: "A ridiculous disco song about a cat who keeps stealing socks",
   artist: "A sparse neo-soul instrumental at 92 BPM with room for a lead vocal",
   producer: "A deep house groove with swung hats and a rolling sub bass line",
@@ -67,7 +67,7 @@ export function HeroComposer() {
             data-track="brief_submit"
             data-placement="hero"
           >
-            Create my song <Icon name="arrow" size={17} />
+            Create music <Icon name="arrow" size={17} />
           </button>
         </div>
       </form>

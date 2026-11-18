@@ -1,4 +1,4 @@
-# FlowAI Music
+# Flow AI Music
 
 `www.flowaimusic.com` — an AI music creation product site built with **Next.js App Router (SSR)**.
 
@@ -19,6 +19,17 @@ npm run typecheck    # tsc --noEmit
 
 Requires Node.js 20.9+ (developed on Node 22).
 
+## Brand & keyword convention
+
+The brand is written **`Flow AI Music`** everywhere in UI, metadata and
+structured data. The compact form `flowaimusic` is kept only where it belongs:
+the domain `www.flowaimusic.com`, the repository / package name, and a sample
+Space URL — this preserves the exact-match long-tail search term without
+turning the whole site into one concatenated word. `Flow Music AI` is declared
+as `alternateName`, and the long-tail phrases `ai music creator` and
+`flow music ai` are laid out on the homepage, the `/ai-music-creator` landing
+page, the guide and the JSON-LD keywords.
+
 ## What is inside
 
 | Route | Purpose |
@@ -28,6 +39,7 @@ Requires Node.js 20.9+ (developed on Node 22).
 | `/explore` | Community feed; `?genre=` filtering happens on the server |
 | `/features` | Six capability modules + workflow |
 | `/pricing` | Four plans, monthly/yearly switch, comparison table, FAQ |
+| `/ai-music-creator` | Long-tail landing page for `ai music creator` / `flow music ai` |
 | `/guides/ai-music-generator` | Long-form SEO guide (template for future articles) |
 | `/library/*` | Library empty states |
 | `/terms`, `/privacy` | Legal pages |
@@ -40,8 +52,9 @@ Full product requirements: [`docs/PRD.md`](docs/PRD.md).
   per request (`ƒ` in the build output) instead of being pre-rendered as static HTML.
 - `generateMetadata`-style per-page metadata via `src/lib/seo.ts`: title,
   description, canonical, Open Graph, Twitter card, robots.
-- JSON-LD: `SoftwareApplication` + `Organization` (home), `FAQPage` (pricing),
-  `Article` + `BreadcrumbList` (guide).
+- JSON-LD: `SoftwareApplication` + `Organization` (home, with
+  `alternateName: Flow Music AI`), `FAQPage` (pricing and AI music creator),
+  `Article` + `BreadcrumbList` (guide and landing page).
 - `app/sitemap.ts` → `/sitemap.xml`, `app/robots.ts` → `/robots.txt`,
   `app/opengraph-image.tsx` → dynamically generated 1200×630 OG image.
 - One `<h1>` per page, semantic landmarks, visible focus rings,
@@ -56,8 +69,16 @@ src/
 ├── lib/
 │   ├── content.ts       # all demo content (single source of truth)
 │   └── seo.ts           # metadata + schema helpers
+public/
+├── favicon.ico          # 16/32/48/64/128/256 multi-size ICO
+├── logo.png             # 128×128 RGBA brand logo
+└── icon.svg             # vector source for the same mark
 docs/PRD.md              # product requirements document
 ```
+
+All three icon assets share the same violet rounded-square waveform mark.
+`layout.tsx` declares `icon` / `apple` / `shortcut`, and the `Organization`
+schema points to `logo.png`.
 
 Client-side JavaScript is limited to the interactive islands (header, hero
 composer, mini keyboard, play buttons, studio workspace, pricing toggle).

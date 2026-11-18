@@ -1,10 +1,10 @@
 /**
- * Central demo content for FlowAI Music.
+ * Central demo content for Flow AI Music.
  * All copy, track names, creators and artwork are original demo data.
  */
 
 export const SITE_URL = "https://www.flowaimusic.com";
-export const SITE_NAME = "FlowAI Music";
+export const SITE_NAME = "Flow AI Music";
 export const SITE_TAGLINE = "Turn the song in your head into a real one.";
 
 export type Genre =
@@ -30,13 +30,14 @@ export const FOOTER_GROUPS = [
       { href: "/features", label: "Features" },
       { href: "/pricing", label: "Pricing" },
       { href: "/explore", label: "Explore songs" },
+      { href: "/ai-music-creator", label: "AI music creator" },
       { href: "/guides/ai-music-generator", label: "Getting started" },
     ],
   },
   {
     title: "Create",
     links: [
-      { href: "/studio", label: "Create a song" },
+      { href: "/studio", label: "Create music" },
       { href: "/studio?brief=Make%20a%20music%20video", label: "Create a music video" },
       { href: "/library/playlists", label: "Build a playlist" },
       { href: "/library/spaces", label: "Build a Space" },
@@ -61,7 +62,7 @@ export const FOOTER_GROUPS = [
 ];
 
 export const PERSONAS = [
-  { id: "creator", label: "Video creator" },
+  { id: "creator", label: "Music creator" },
   { id: "fun", label: "Just for fun" },
   { id: "artist", label: "Artist" },
   { id: "producer", label: "Producer" },
@@ -78,7 +79,7 @@ export type QuickStart = {
 export const QUICK_STARTS: QuickStart[] = [
   {
     id: "song",
-    title: "Make a song for fun",
+    title: "Make music for fun",
     hint: "Any genre, any mood",
     brief: "A bright, feel-good indie pop song about a spontaneous road trip",
     tone: "violet",
@@ -393,7 +394,7 @@ export const PLANS: Plan[] = [
     monthly: 9,
     credits: "2,500 credits / mo (~400 songs)",
     concurrency: "4 generations at a time",
-    blurb: "For video creators and everyday makers.",
+    blurb: "For music creators and everyday makers.",
     features: [
       "2,500 monthly credits",
       "4 concurrent generations",
@@ -447,7 +448,7 @@ export const COMPARE_ROWS = [
 
 export const FAQS = [
   {
-    q: "Is FlowAI Music free to start?",
+    q: "Is Flow AI Music free to start?",
     a: "Yes. The Free plan gives you a daily refreshed credit allowance and no credit card is required. You can make and download full songs before upgrading.",
   },
   {
@@ -477,7 +478,7 @@ export const TESTIMONIALS = [
     quote:
       "I describe the cut of my video and get a track that actually lands on the beat. It replaced an entire afternoon of library searching.",
     name: "Dana R.",
-    role: "Video creator",
+    role: "Music creator",
     tone: "violet",
   },
   {

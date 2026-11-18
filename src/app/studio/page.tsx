@@ -7,9 +7,9 @@ import { Icon } from "@/components/Icons";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "AI Music Studio — Create a Song from Text | FlowAI Music",
+  title: "AI Music Studio — Create Music from Text | Flow AI Music",
   description:
-    "Open the FlowAI Music studio and turn a text description into a full-length song. Refine any section, switch styles and preview separated stems in the demo workspace.",
+    "Open the Flow AI Music studio and turn a text description into a full-length music track. Refine any section, switch styles and preview separated stems in the demo workspace.",
   path: "/studio",
   keywords: ["AI song maker", "text to song", "AI music studio", "make a song online"],
 });

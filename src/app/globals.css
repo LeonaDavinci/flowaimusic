@@ -1,4 +1,4 @@
-/* FlowAI Music — design system
+/* Flow AI Music — design system
    Bright, high-contrast, sunlit visual language. Dark surfaces are reserved
    for the "studio" demo card so interactive elements always stay readable. */
 
@@ -447,6 +447,16 @@ main {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.hero-title-brand {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.4em;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--violet);
 }
 
 .hero-sub {
@@ -2262,6 +2272,10 @@ main {
   padding-bottom: 96px;
 }
 
+.card-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .simple-card {
   padding: 28px;
   border: 1.5px solid var(--line);
@@ -2424,6 +2438,7 @@ main {
   .cap-grid,
   .quote-grid,
   .card-grid,
+  .card-grid--2,
   .workflow,
   .pricing-grid,
   .track-strip,

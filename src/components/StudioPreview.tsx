@@ -3,9 +3,9 @@ import { Waveform } from "./Waveform";
 
 export function StudioPreview() {
   return (
-    <div className="studio-card" aria-label="Preview of the FlowAI Music studio">
+    <div className="studio-card" aria-label="Preview of the Flow AI Music studio">
       <div className="studio-card-top">
-        <span>FlowAI Studio · Session 04</span>
+        <span>Flow AI Music Studio · Session 04</span>
         <span className="studio-badge">
           <i /> Live demo
         </span>

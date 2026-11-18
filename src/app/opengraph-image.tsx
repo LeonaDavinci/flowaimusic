@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "FlowAI Music — turn the song in your head into a real one";
+export const alt = "Flow AI Music — turn the song in your head into a real one";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -38,7 +38,7 @@ export default function OpengraphImage() {
             ≈
           </div>
           <div style={{ fontSize: 30, fontWeight: 800, letterSpacing: -1 }}>
-            FlowAI Music
+            Flow AI Music
           </div>
         </div>
 
