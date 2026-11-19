@@ -19,7 +19,7 @@ import { Icon, type IconName } from "@/components/Icons";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Flow AI Music — Official AI Music Creator & Music Studio",
+  title: "Flow AI Music — AI Music Creator & Music Studio",
   description:
     "Flow AI Music is an AI music creator for making original music from text. Generate full songs, edit any section, split stems and make music videos — free to start.",
   path: "/",

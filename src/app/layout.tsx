@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Flow AI Music — Official AI Music Creator & Music Studio",
+  title: "Flow AI Music — AI Music Creator & Music Studio",
   description:
     "Flow AI Music (Flow Music AI) is an AI music creator for making original music from text. Generate full songs, edit any section, split stems and make music videos.",
   applicationName: SITE_NAME,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: "Flow AI Music — Official AI Music Creator & Music Studio",
+    title: "Flow AI Music — AI Music Creator & Music Studio",
     description:
       "Create music from a sentence. Flow Music AI is the AI music creator that keeps up with your ideas.",
     url: SITE_URL,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flow AI Music — Official AI Music Creator",
+    title: "Flow AI Music — AI Music Creator",
     description: "Create music from a sentence with Flow Music AI.",
   },
   robots: { index: true, follow: true },

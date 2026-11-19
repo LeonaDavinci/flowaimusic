@@ -195,8 +195,9 @@
 
 - SSR 读取 `searchParams.brief` 并渲染为「你的第一条需求」，体现真实服务端渲染。
 - 左侧：创作会话列表（mock）+ 新建按钮；中间：消息流（用户 brief → 助手回复 → 生成中卡片）；底部：输入框 + 风格 chip + 生成按钮。
-- 客户端交互：提交追加一条消息并显示模拟生成进度（0→100%，2 秒），完成后输出一张「新曲目卡」。**不调用真实 AI**。
-- 右侧：当前曲目参数（BPM / 调性 / 时长 / 分轨开关）+ 下载按钮（disabled + 提示「Demo mode」）。
+- 客户端交互：提交追加一条消息与生成进度；`src/lib/music-engine.ts` 用 `OfflineAudioContext` **真实合成音频**——每个和弦由多层波形（sine / triangle / sawtooth / square，依风格而定）叠加成声部，附 ADSR 包络、低通滤波、贝斯、五声音阶旋律与简单鼓组（kick/snare/hat + 总线压缩）；`brief + style + take` 经 FNV-1a 哈希 + mulberry32 决定调式、和弦进行与旋律游走，相同输入结果确定、不同 take 结果不同。渲染完成后输出曲目卡 + `StudioPlayer`（真实 `<audio>` 播放/暂停、进度/时间、下载 WAV）。**纯浏览器 JS 合成，不调用 AI、不上传、不发网络请求**。
+- 音频导出：`encodeWav` 将 AudioBuffer 编码为 16-bit PCM WAV（44.1 kHz 立体声，约 20 秒 / 8 小节）；对象 URL 在替换与卸载时 `revokeObjectURL` 释放。
+- 右侧：当前曲目参数（真实 BPM / 调性 / 时长 / 风格，来源为本次渲染结果）+ 可用下载按钮；无结果时按钮 disabled。
 
 ### 6.4 发现页 `/explore`
 
@@ -232,7 +233,7 @@ H1 + 目录锚点 + 3 段正文（What / How / Use cases）+ 3 条 FAQ + `Breadc
 | --- | --- | --- | --- |
 | FR-1 | 全站 SSR | 所有路由 `export const dynamic = 'force-dynamic'`，Server Components 渲染首屏 HTML | P0 |
 | FR-2 | 创作深链 | 首页输入框 → `/studio?brief=`；searchParams 服务端读取 | P0 |
-| FR-3 | 交互式 Demo | 迷你键盘 Web Audio 发声、工作台模拟生成进度、试听波形动画 | P0 |
+| FR-3 | 交互式 Demo + 本地合成 | 迷你键盘 Web Audio 发声；工作台用多重波形叠加真实合成 8 小节音频并可播放/下载 WAV；试听波形动画 | P0 |
 | FR-4 | SSR 筛选 | `/explore?genre=` 服务端过滤，分类为真实 `<a href>` | P0 |
 | FR-5 | SEO 元数据 | 每页 `generateMetadata`（title/description/canonical/OG/Twitter/alternates） | P0 |
 | FR-6 | 结构化数据 | 首页 `SoftwareApplication` + `Organization`（含 `alternateName: Flow Music AI`）；定价页 `/ai-music-creator` 页 `FAQPage`；指南页 `Article` + `BreadcrumbList` | P0 |
@@ -285,6 +286,8 @@ type Plan = { id: string; name: string; monthly: number; credits: string;
 | `cta_click` | 所有主 CTA | `placement`, `label` |
 | `brief_submit` | 首页 / 工作台输入提交 | `brief_length`, `persona` |
 | `demo_play` | 键盘按键 / 试听按钮 | `note` / `track_id` |
+| `studio_play` | 工作台曲目播放 | `title` |
+| `studio_download` | 工作台 WAV 下载 | `label` |
 | `plan_select` | 定价卡片按钮 | `plan_id`, `billing` |
 | `nav_click` | 顶栏与页脚链接 | `href` |
 

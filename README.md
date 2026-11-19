@@ -35,7 +35,7 @@ page, the guide and the JSON-LD keywords.
 | Route | Purpose |
 | --- | --- |
 | `/` | Landing page: hero composer, quick starts, studio preview, playable keyboard, capabilities, testimonials, CTA |
-| `/studio` | Demo creation workspace; reads `?brief=` and `?persona=` on the server |
+| `/studio` | Creation workspace; reads `?brief=`/`?persona=` on the server and synthesizes real audio in the browser (layered waveforms → playable WAV) |
 | `/explore` | Community feed; `?genre=` filtering happens on the server |
 | `/features` | Six capability modules + workflow |
 | `/pricing` | Four plans, monthly/yearly switch, comparison table, FAQ |
@@ -86,12 +86,25 @@ Client-side JavaScript is limited to the interactive islands (header, hero
 composer, mini keyboard, play buttons, studio workspace, pricing toggle).
 The content itself is rendered on the server.
 
+## Music synthesis (`/studio`)
+
+`src/lib/music-engine.ts` renders a short original arrangement entirely in the
+browser with `OfflineAudioContext`. Each chord voice layers several oscillator
+waveforms (sine / triangle / sawtooth / square per style) through an ADSR
+envelope and low-pass filter, joined by a bass line, a pentatonic melody and a
+small drum kit. The brief, style and take seed a deterministic PRNG, so a given
+input always reproduces the same track while a new take changes it. Output is
+encoded to 16-bit PCM WAV (`StudioPlayer` handles play/pause/progress and
+download); object URLs are revoked on replace/unmount. No model, upload or
+network call is involved.
+
 ## Demo scope
 
-No account, no payments, no database, no real music generation. The studio
-simulates a generation session in the browser, the keyboard synthesises notes
-with the Web Audio API, and analytics events are written only to an in-browser
-`dataLayer` array. See `/terms` and `/privacy` for the user-facing wording.
+No account, no payments, no database, no AI model. Music is generated locally
+by the JS synthesizer above (not a neural model), the mini keyboard synthesises
+notes with the Web Audio API, and analytics events are written only to an
+in-browser `dataLayer` array. See `/terms` and `/privacy` for the user-facing
+wording.
 
 ## Deployment
 

@@ -2,12 +2,24 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Icon } from "./Icons";
+import { StudioPlayer } from "./StudioPlayer";
+import { renderSong, revokeAudio } from "@/lib/music-engine";
+
+type Take = {
+  title: string;
+  meta: string;
+  gradient: [string, string];
+  src: string;
+  downloadName: string;
+  bpm: number;
+  keyName: string;
+};
 
 type Message = {
   id: number;
   role: "user" | "assistant";
   text: string;
-  result?: { title: string; meta: string; gradient: [string, string] };
+  result?: Take;
 };
 
 const STYLES = ["Indie pop", "Lo-fi", "Cinematic", "Electronic", "R&B", "Hip-Hop"];
@@ -24,17 +36,19 @@ export function StudioClient({ brief, persona }: { brief: string; persona: strin
     {
       id: 2,
       role: "assistant",
-      text: `On it. I hear ${persona === "producer" ? "a producer session" : "a full arrangement"} in this. Writing structure, lyrics and vocal direction now — you can change any single section afterwards.`,
+      text: `On it. I hear ${persona === "producer" ? "a producer session" : "a full arrangement"} in this. Pick a style and press Generate — the studio layers real audio waveforms in your browser, right now.`,
     },
   ]);
   const [input, setInput] = useState("");
   const [style, setStyle] = useState("Indie pop");
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [take, setTake] = useState(1);
+  const [take, setTake] = useState(0);
+  const [current, setCurrent] = useState<Take | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const feedRef = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const progressRef = useRef(0);
+  const sourceUrls = useRef<string[]>([]);
+  const latestSrc = useRef<string | null>(null);
 
   useEffect(() => {
     feedRef.current?.scrollTo({ top: feedRef.current.scrollHeight, behavior: "smooth" });
@@ -42,49 +56,70 @@ export function StudioClient({ brief, persona }: { brief: string; persona: strin
 
   useEffect(() => {
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      sourceUrls.current.forEach((url) => revokeAudio(url));
+      revokeAudio(latestSrc.current);
     };
   }, []);
 
-  const generate = (text: string) => {
+  const generate = async (text: string) => {
     if (!text.trim() || generating) return;
+    const prompt = text.trim();
     const nextTake = take + 1;
     setTake(nextTake);
-    setMessages((prev) => [...prev, { id: Date.now(), role: "user", text: text.trim() }]);
+    setMessages((prev) => [...prev, { id: Date.now(), role: "user", text: prompt }]);
     setInput("");
     setGenerating(true);
     setProgress(0);
-    progressRef.current = 0;
+    setError(null);
 
-    timerRef.current = setInterval(() => {
-      const next = Math.min(100, progressRef.current + 5);
-      progressRef.current = next;
-      setProgress(next);
-      if (next < 100) return;
+    // Honest progress animation while the offline audio graph renders.
+    const ticker = window.setInterval(() => {
+      setProgress((value) => Math.min(92, value + 6));
+    }, 70);
 
-      if (timerRef.current) clearInterval(timerRef.current);
-      setGenerating(false);
-      const words = text.trim().split(/\s+/).slice(0, 3).join(" ");
+    try {
+      const song = await renderSong({ brief: prompt, style, take: nextTake });
+      window.clearInterval(ticker);
+      setProgress(100);
+
+      const src = URL.createObjectURL(song.blob);
+      sourceUrls.current.push(src);
+      const result: Take = {
+        title: song.title,
+        meta: `${style} · ${song.keyName} · ${song.bpm} BPM · Take ${nextTake}`,
+        gradient: GRADIENTS[nextTake % GRADIENTS.length],
+        src,
+        downloadName: `flow-ai-music-take-${nextTake}.wav`,
+        bpm: song.bpm,
+        keyName: song.keyName,
+      };
+      setCurrent(result);
       setMessages((prev) => [
         ...prev,
         {
           id: Date.now() + 1,
           role: "assistant",
-          text: `Take ${nextTake} is ready. ${style} arrangement, full vocals and separated stems. Tell me which section to change next.`,
-          result: {
-            title: words.charAt(0).toUpperCase() + words.slice(1),
-            meta: `${style} · 3:12 · Take ${nextTake}`,
-            gradient: GRADIENTS[nextTake % GRADIENTS.length],
-          },
+          text: `Take ${nextTake} is ready — ${song.bars} bars of ${style} built from layered sine, triangle and sawtooth waves in your browser. Press play to hear it, or download the WAV.`,
+          result,
         },
       ]);
-    }, 90);
+    } catch (err) {
+      window.clearInterval(ticker);
+      setError(err instanceof Error ? err.message : "Audio synthesis failed in this browser.");
+    } finally {
+      setGenerating(false);
+    }
   };
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
-    generate(input);
+    void generate(input);
   };
+
+  const minutes = current ? Math.round((current.bpm ? 8 * 4 * 60 / current.bpm : 0)) : 0;
+  const lengthLabel = current
+    ? `${Math.floor(minutes / 60)}:${(minutes % 60).toString().padStart(2, "0")}`
+    : "3:12";
 
   return (
     <div className="studio-layout">
@@ -107,35 +142,40 @@ export function StudioClient({ brief, persona }: { brief: string; persona: strin
             <div key={message.id} className={`msg${message.role === "user" ? " msg-user" : ""}`}>
               {message.text}
               {message.result && (
-                <div className="gen-card">
+                <div className="gen-card gen-card-audio">
                   <span
+                    className="gen-art"
                     style={{
-                      width: 46,
-                      height: 46,
-                      borderRadius: 12,
-                      flexShrink: 0,
                       background: `linear-gradient(135deg, ${message.result.gradient[0]}, ${message.result.gradient[1]})`,
                     }}
                   />
-                  <div style={{ flex: 1 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <strong>{message.result.title}</strong>
                     <span>{message.result.meta}</span>
                   </div>
-                  <Icon name="play" size={18} />
                 </div>
+              )}
+              {message.result && (
+                <StudioPlayer
+                  src={message.result.src}
+                  title={message.result.title}
+                  durationLabel={message.result.meta.split(" · ")[1] ?? lengthLabel}
+                  downloadName={message.result.downloadName}
+                />
               )}
               <small>{message.role === "user" ? "You" : "Flow AI Music Producer"}</small>
             </div>
           ))}
           {generating && (
             <div className="msg">
-              Composing take {take + 1}… <strong>{progress}%</strong>
+              Synthesizing take {take + 1}… <strong>{progress}%</strong>
               <div className="progress">
                 <div className="progress-bar" style={{ width: `${progress}%` }} />
               </div>
-              <small>Generating arrangement, vocals and stems</small>
+              <small>Layering waveforms locally with the Web Audio API</small>
             </div>
           )}
+          {error && <div className="msg studio-error" role="alert">{error}</div>}
         </div>
 
         <div className="composer-bar">
@@ -160,7 +200,7 @@ export function StudioClient({ brief, persona }: { brief: string; persona: strin
               id="studio-input"
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="Make the chorus wider, or describe a new song…"
+              placeholder="Describe a new song or a change…"
               disabled={generating}
             />
             <button
@@ -178,18 +218,25 @@ export function StudioClient({ brief, persona }: { brief: string; persona: strin
 
       <aside className="studio-panel studio-aside" aria-label="Track parameters">
         <h2>Current track</h2>
-        <div className="param-row"><span>Tempo</span><b>104 BPM</b></div>
-        <div className="param-row"><span>Key</span><b>F major</b></div>
-        <div className="param-row"><span>Length</span><b>3:12</b></div>
-        <div className="param-row"><span>Vocals</span><b>Lead + backing</b></div>
-        <div className="param-row"><span>Stems</span><b>4 tracks</b></div>
+        <div className="param-row"><span>Tempo</span><b>{current ? `${current.bpm} BPM` : "104 BPM"}</b></div>
+        <div className="param-row"><span>Key</span><b>{current ? current.keyName : "F major"}</b></div>
+        <div className="param-row"><span>Length</span><b>{lengthLabel}</b></div>
+        <div className="param-row"><span>Vocals</span><b>Instrumental</b></div>
+        <div className="param-row"><span>Stems</span><b>Mixed WAV</b></div>
         <div className="param-row"><span>Style</span><b>{style}</b></div>
-        <button type="button" className="btn btn-ghost" style={{ width: "100%", marginTop: 18 }} aria-disabled="true" title="Downloads are disabled in demo mode">
-          <Icon name="download" size={17} /> Download
-        </button>
+        {current ? (
+          <a className="btn btn-primary" style={{ width: "100%", marginTop: 18 }} href={current.src} download={current.downloadName} data-track="studio_download">
+            <Icon name="download" size={17} /> Download WAV
+          </a>
+        ) : (
+          <button type="button" className="btn btn-ghost" style={{ width: "100%", marginTop: 18 }} disabled title="Generate a track first">
+            <Icon name="download" size={17} /> Download
+          </button>
+        )}
         <p className="aside-note">
-          Demo mode: the studio simulates generation locally. No audio is
-          uploaded and no account is required.
+          Local synthesis: sine, triangle and sawtooth waves are layered into
+          chords, bass and melody with the Web Audio API. Rendered on your
+          device — no upload, no account, no model call.
         </p>
       </aside>
     </div>

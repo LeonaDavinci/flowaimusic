@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = pageMetadata({
   title: "AI Music Studio — Create Music from Text | Flow AI Music",
   description:
-    "Open the Flow AI Music studio and turn a text description into a full-length music track. Refine any section, switch styles and preview separated stems in the demo workspace.",
+    "Open the Flow AI Music studio and turn a text description into real audio. Layered waveforms are synthesized in your browser and ready to play or download as WAV.",
   path: "/studio",
   keywords: ["AI song maker", "text to song", "AI music studio", "make a song online"],
 });
@@ -32,11 +32,13 @@ export default async function StudioPage({
           <div className="crumbs">
             <Link href="/">Home</Link> <span>/</span> <span>Studio</span>
           </div>
-          <span className="notice">Demo mode · No account or upload required</span>
+          <span className="notice">Local synthesis · No account or upload required</span>
           <h1>Your studio session.</h1>
           <p>
-            Your brief is already on the board. Keep the conversation going to
-            change a section, switch the style, or start a completely new song.
+            Your brief is already on the board. Pick a style and press Generate:
+            real audio is layered from multiple waveforms in your browser, then
+            ready to play or download. Change the style or describe a new song
+            to make another take.
           </p>
         </div>
       </section>

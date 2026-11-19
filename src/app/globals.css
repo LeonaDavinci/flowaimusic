@@ -2092,6 +2092,117 @@ main {
   color: var(--ink-3);
 }
 
+.gen-art {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.gen-card-audio strong,
+.gen-card-audio span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.studio-player {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #140e2d;
+  color: #fff;
+}
+
+.studio-player audio {
+  display: none;
+}
+
+.studio-play-btn,
+.studio-download-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: #140e2d;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.studio-play-btn {
+  width: 34px;
+  height: 34px;
+}
+
+.studio-play-btn:hover,
+.studio-download-btn:hover {
+  background: #ffbe2e;
+}
+
+.studio-player-track {
+  flex: 1;
+  min-width: 0;
+}
+
+.studio-player-bar {
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.studio-player-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b28cff, #ffbe2e);
+}
+
+.studio-player-meta {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-top: 6px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.studio-player-meta strong {
+  color: #fff;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 55%;
+}
+
+.studio-player-meta span {
+  white-space: nowrap;
+}
+
+.studio-download-btn {
+  border-radius: 999px;
+  height: 30px;
+  padding: 0 10px;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.studio-error {
+  color: #b4233a;
+  background: #fff0f2;
+  border-color: #ffc4ce;
+}
+
 .progress {
   height: 6px;
   border-radius: 999px;
