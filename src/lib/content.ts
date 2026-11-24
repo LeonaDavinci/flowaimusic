@@ -6,6 +6,8 @@
 export const SITE_URL = "https://www.flowaimusic.com";
 export const SITE_NAME = "Flow AI Music";
 export const SITE_TAGLINE = "Turn the song in your head into a real one.";
+/* Replace with the real, monitored support mailbox before going live. */
+export const SUPPORT_EMAIL = "support@flowaimusic.com";
 
 export type Genre =
   | "All"
@@ -52,10 +54,12 @@ export const FOOTER_GROUPS = [
     ],
   },
   {
-    title: "Legal",
+    title: "Legal & safety",
     links: [
       { href: "/terms", label: "Terms of service" },
       { href: "/privacy", label: "Privacy policy" },
+      { href: "/aigc", label: "AIGC use policy" },
+      { href: "/models", label: "Models & technology" },
       { href: "/sitemap.xml", label: "Sitemap" },
     ],
   },
@@ -392,7 +396,7 @@ export const PLANS: Plan[] = [
     creditsValue: 0,
     songs: "A few songs a day",
     musicTime: "Daily top-ups",
-    model: "Flow Audio 2 · Standard",
+    model: "Suno",
     maxDuration: "up to 3 min / song",
     concurrency: "1 generation at a time",
     blurb: "For the curious. Make real songs before deciding anything.",
@@ -411,14 +415,14 @@ export const PLANS: Plan[] = [
     creditsValue: 2500,
     songs: "~400 full songs / month",
     musicTime: "~20 hours of music / month",
-    model: "Flow Audio 2 · Standard",
+    model: "Suno",
     maxDuration: "up to 3 min / song",
     concurrency: "4 generations at a time",
     blurb: "For music creators and everyday makers.",
     features: [
       "2,500 monthly credits (~400 songs)",
       "≈ 20 hours of generated music",
-      "Flow Audio 2 · Standard model",
+      "Suno music generation",
       "4 concurrent generations",
       "Stem split & audio effects",
       "Music video export",
@@ -434,14 +438,14 @@ export const PLANS: Plan[] = [
     creditsValue: 9000,
     songs: "~1,500 full songs / month",
     musicTime: "~75 hours of music / month",
-    model: "Flow Audio 2 · Pro",
+    model: "Suno",
     maxDuration: "up to 5 min / song",
     concurrency: "8 generations at a time",
     blurb: "For artists shipping music on a schedule.",
     features: [
       "9,000 monthly credits (~1,500 songs)",
       "≈ 75 hours of generated music",
-      "Flow Audio 2 · Pro model",
+      "Suno music generation",
       "Up to 5 minutes per song",
       "8 concurrent generations",
       "Priority generation queue",
@@ -457,14 +461,14 @@ export const PLANS: Plan[] = [
     creditsValue: 25000,
     songs: "~4,000 full songs / month",
     musicTime: "~200 hours of music / month",
-    model: "Flow Audio 2 · Pro + early access",
+    model: "Suno",
     maxDuration: "up to 8 min / song",
     concurrency: "16 generations at a time",
     blurb: "For teams and producers running sessions.",
     features: [
       "25,000 monthly credits (~4,000 songs)",
       "≈ 200 hours of generated music",
-      "Flow Audio 2 · Pro + early access",
+      "Suno music generation",
       "Up to 8 minutes per song",
       "16 concurrent generations",
       "Team workspace & shared library",
@@ -483,7 +487,8 @@ export const COMPARE_ROWS = [
   { label: "Monthly credits", values: ["Daily top-ups", "2,500", "9,000", "25,000"] },
   { label: "Estimated songs / month", values: ["A few", "~400", "~1,500", "~4,000"] },
   { label: "Estimated music time", values: ["Daily", "~20 h", "~75 h", "~200 h"] },
-  { label: "Generation model", values: ["Standard", "Standard", "Pro", "Pro + early access"] },
+  { label: "Generation model", values: ["Suno", "Suno", "Suno", "Suno"] },
+  { label: "Music video model", values: ["—", "Google Flow", "Google Flow", "Google Flow"] },
   { label: "Max song duration", values: ["3 min", "3 min", "5 min", "8 min"] },
   { label: "Concurrent generations", values: ["1", "4", "8", "16"] },
   { label: "Full-length songs", values: ["Yes", "Yes", "Yes", "Yes"] },
@@ -516,7 +521,19 @@ export const FAQS = [
   },
   {
     q: "Does the site work without an account?",
-    a: "The demo on this site works without signing in: you can try the prompt composer, play the mini keyboard and browse the explore feed. Saving to a library requires an account in the production release.",
+    a: "The demo on this site works without signing in: you can try the prompt composer, play the mini keyboard and browse the explore feed. Paid generation and saving to a library require a Google sign-in.",
+  },
+  {
+    q: "Which AI models do you use?",
+    a: "Music is generated with Suno and music videos with Google Flow. The provider and model are shown before each generation. See the Models & technology page for details.",
+  },
+  {
+    q: "Can I cancel and get a refund?",
+    a: "Yes. Cancel at any time from your account or by emailing support; access continues to the end of the paid period. First-time subscribers can request a full refund within 7 days. Unused credits are a usage allowance and are not refunded. See the refund section of the terms.",
+  },
+  {
+    q: "How do I get my data removed?",
+    a: "Email support from your account address to view, correct, export or delete your data, or to close your account. We respond within 30 days. Details are in the privacy policy.",
   },
 ];
 

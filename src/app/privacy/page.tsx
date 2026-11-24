@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
+import { SUPPORT_EMAIL } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy | Flow AI Music",
-  description: "How the Flow AI Music demo website handles data, browser audio and analytics placeholders.",
+  description:
+    "What data Flow AI Music collects, where it is stored, how long it is kept, your data rights, and which cookies and analytics we use.",
   path: "/privacy",
 });
 
@@ -16,44 +19,188 @@ export default function PrivacyPage() {
         <div className="container">
           <span className="eyebrow">Legal</span>
           <h1>Privacy policy</h1>
-          <p>What this site does — and does not — do with your data. Last updated 18 November 2026.</p>
+          <p>
+            How we handle personal data on Flow AI Music. Last updated 25 November 2026.
+          </p>
         </div>
       </section>
       <div className="container legal-body">
-        <h2>1. No account, no upload</h2>
+        <h2>1. Information we collect</h2>
+        <p>Depending on how you use the site, we handle the following data:</p>
+        <ul>
+          <li>
+            <strong>Account information.</strong> When you sign in with Google we receive
+            your Google account identifier, email address, display name and profile
+            picture. We do not receive or store your Google password.
+          </li>
+          <li>
+            <strong>Billing information.</strong> Waffo Pancake, our Merchant of Record,
+            collects your payment details, billing address and transaction records. Full
+            card numbers are never transmitted to or stored on our servers. We receive
+            the plan, payment status, transaction identifier and the billing email
+            needed to grant and support your subscription.
+          </li>
+          <li>
+            <strong>Content and prompts.</strong> Text prompts, style settings and the
+            audio or visual output you generate are processed to deliver the service and
+            to enforce our content standards.
+          </li>
+          <li>
+            <strong>Technical and usage data.</strong> IP address, browser type, device
+            information, timestamps, pages viewed and interaction events, including
+            events recorded through Google Tag Manager.
+          </li>
+          <li>
+            <strong>Support communications.</strong> The content of emails you send us
+            and our replies.
+          </li>
+        </ul>
         <p>
-          The demo studio requires no sign-in. Text you type into the composer
-          is processed in your browser and is not transmitted to a server by
-          this site. No audio files are recorded or uploaded.
+          The browser studio can be used without signing in. In that mode your prompt is
+          processed locally in your browser to synthesise audio with the Web Audio API;
+          it is not uploaded, no microphone access is requested and no account is
+          created.
         </p>
-        <h2>2. Browser audio</h2>
+
+        <h2>2. How we use information</h2>
         <p>
-          The mini keyboard uses the Web Audio API to synthesise notes locally
-          after you click a key. It does not request microphone permission and
-          stores no recording.
+          We use the data above to provide and maintain the service, authenticate you,
+          process and support subscriptions, deliver generated output, detect abuse,
+          review reports of prohibited content, communicate service changes, and meet
+          legal and tax obligations. We do not sell personal data.
         </p>
-        <h2>3. Analytics placeholders</h2>
+
+        <h2>3. Legal bases</h2>
         <p>
-          Interaction elements carry <code>data-track</code> attributes and may
-          write events to an in-browser <code>dataLayer</code> array. In this
-          demo, no third-party analytics or advertising script is loaded and no
-          event leaves your device.
+          Where data protection law applies, we rely on contract performance to provide
+          paid features, legitimate interests to secure and improve the service and
+          prevent abuse, consent for optional analytics, and legal compliance for tax
+          and accounting records.
         </p>
-        <h2>4. Cookies</h2>
+
+        <h2>4. Data storage and security</h2>
         <p>
-          This demo does not set authentication, advertising or tracking
-          cookies. A production release would describe any essential and
-          optional cookies here and request consent where required.
+          Your sign-in state is kept in a signed, HTTP-only cookie on your device. The
+          cookie is signed with HMAC-SHA256, scoped to this site with SameSite=Lax and
+          marked Secure on HTTPS deployments, so it cannot be read by page scripts. A
+          short-lived cookie also protects the Google sign-in flow and an in-flight
+          checkout. We do not currently operate a general-purpose user database: account
+          state is derived from the signed cookie, and billing records are held by Waffo
+          Pancake as Merchant of Record. When generation features that require persistence
+          are enabled, generated content and prompts will be stored in an access-controlled
+          data store for as long as your account is active.
         </p>
-        <h2>5. External resources</h2>
         <p>
-          Web fonts may be requested from Google Fonts. Apart from that, page
-          styles, images and scripts are served from this site.
+          Data is transmitted over HTTPS. We limit access to personal data to what is
+          needed to operate the service, use least-privilege credentials, and rely on the
+          security controls of our infrastructure and payment providers. No system is
+          completely secure; if we become aware of a breach affecting your personal data,
+          we will notify you and the relevant authority where the law requires it.
         </p>
-        <h2>6. Changes</h2>
+
+        <h2>5. How long we keep data</h2>
+        <ul>
+          <li>Session cookie: up to 30 days, or until you sign out.</li>
+          <li>Google sign-in state cookie: 10 minutes. Checkout cookie: 30 minutes.</li>
+          <li>Technical and server logs: normally 90 days.</li>
+          <li>
+            Generated content and prompts: while your account remains active, until you
+            delete them or close your account.
+          </li>
+          <li>
+            Billing and tax records: retained by Waffo Pancake for the period required by
+            applicable accounting and tax law, typically up to 7 years.
+          </li>
+          <li>Support emails: up to 24 months after the conversation is closed.</li>
+        </ul>
+
+        <h2>6. Your data rights</h2>
         <p>
-          This policy will be updated before any real account, payment or
-          generation service is introduced.
+          You can ask us to confirm whether we hold personal data about you, give you a
+          copy of it, correct inaccurate data, delete data we no longer need, restrict or
+          object to certain processing, and provide data you gave us in a portable
+          format. You can close your account at any time.
+        </p>
+        <p>
+          To exercise any of these rights, email{" "}
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> from the address on
+          your account and tell us what you want. We may ask for information to verify
+          your identity. We respond within <strong>30 days</strong>; if a request is
+          complex we will tell you within that period and may extend once as the law
+          allows. Deleting your account removes your session and generated content under
+          our control; billing records that we must keep by law remain with Waffo Pancake.
+          If you are unhappy with our response, you may complain to your local data
+          protection authority.
+        </p>
+        <p>
+          You may withdraw consent for optional analytics at any time through the cookie
+          preferences described below, without affecting processing already carried out.
+        </p>
+
+        <h2>7. Cookies and tracking</h2>
+        <p>
+          <strong>Essential cookies.</strong> These are required for sign-in and checkout
+          and are set without additional consent:
+        </p>
+        <ul>
+          <li><code>flow_session</code> — signed sign-in session, 30 days.</li>
+          <li><code>flow_google_state</code> and <code>flow_google_next</code> — one-time Google sign-in state, 10 minutes.</li>
+          <li><code>flow_checkout</code> — ties a completed payment to your account, 30 minutes.</li>
+        </ul>
+        <p>
+          <strong>Optional analytics cookies.</strong> We load Google Tag Manager
+          container <code>GTM-K2ZP897G</code> only after you accept analytics in the
+          cookie notice shown on your first visit. Google Analytics may then set{" "}
+          <code>_ga</code> (up to 2 years) and <code>_gid</code> (24 hours) to measure
+          site usage. You can reject analytics in that notice, change your choice at any
+          time via the cookie settings link in the footer, or block these cookies in
+          your browser. Rejecting optional cookies does not affect sign-in, generation or
+          checkout.
+        </p>
+
+        <h2>8. Who we share data with</h2>
+        <ul>
+          <li>
+            <strong>Google</strong> — sign-in authentication and, if you consent,
+            analytics through Google Tag Manager / Google Analytics.
+          </li>
+          <li>
+            <strong>Waffo Pancake</strong> — Merchant of Record for payments, refunds,
+            taxes and subscription records.
+          </li>
+          <li>
+            <strong>Model providers</strong> — generation requests are sent to the
+            providers listed on our <Link href="/models">model disclosure page</Link>.
+          </li>
+          <li>
+            <strong>Infrastructure providers</strong> — hosting, log storage and web
+            font delivery (Google Fonts).
+          </li>
+        </ul>
+        <p>
+          Some of these providers process data outside your country. Where required, we
+          rely on standard contractual clauses or equivalent safeguards for those
+          transfers.
+        </p>
+
+        <h2>9. Children&rsquo;s privacy</h2>
+        <p>
+          The service is not directed to children under 13, and paid accounts require
+          the minimum age stated in our <Link href="/terms">terms of service</Link>. We
+          do not knowingly collect personal data from children below that age.
+        </p>
+
+        <h2>10. Changes to this policy</h2>
+        <p>
+          We update this policy when our practices or legal obligations change. The
+          current version and its update date are always shown on this page, and we will
+          give notice on the site before material changes take effect.
+        </p>
+
+        <h2>11. Contact</h2>
+        <p>
+          For privacy questions or data requests, write to{" "}
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </p>
       </div>
     </main>

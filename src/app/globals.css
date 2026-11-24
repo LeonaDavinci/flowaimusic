@@ -1318,6 +1318,16 @@ main {
   line-height: 1.7;
 }
 
+.footer-brand p + p {
+  margin-top: 12px;
+}
+
+.footer-brand .footer-contact a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .footer-col h3 {
   color: #fff;
   font-size: 13px;
@@ -2454,6 +2464,55 @@ main {
 .legal-body li {
   color: var(--ink-2);
   line-height: 1.8;
+}
+
+.legal-body a {
+  color: var(--violet, #7b5cff);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-body ul,
+.legal-body ol {
+  margin: 8px 0 18px;
+  padding-left: 22px;
+}
+
+.legal-list-numbered {
+  list-style: decimal;
+}
+
+.legal-body .legal-list-numbered li {
+  margin-bottom: 12px;
+}
+
+.legal-table-wrap {
+  overflow-x: auto;
+  margin: 12px 0 24px;
+}
+
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.legal-table th,
+.legal-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line, #ece6f3);
+  vertical-align: top;
+}
+
+.legal-table th {
+  font-weight: 800;
+  color: var(--ink-2);
+  background: var(--tint, #faf7ff);
+}
+
+.legal-table td {
+  color: var(--ink-2);
 }
 
 .not-found {

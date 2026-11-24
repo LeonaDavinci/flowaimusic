@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FOOTER_GROUPS, SITE_NAME } from "@/lib/content";
+import { FOOTER_GROUPS, SITE_NAME, SUPPORT_EMAIL } from "@/lib/content";
 import { BrandMark } from "./Icons";
 
 export function SiteFooter() {
@@ -15,6 +15,12 @@ export function SiteFooter() {
             <p>
               A conversational AI music studio. Describe the song in your head,
               shape every detail, then publish it to the world.
+            </p>
+            <p className="footer-contact">
+              Support:{" "}
+              <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+              <br />
+              Content reports and privacy requests welcome.
             </p>
           </div>
           {FOOTER_GROUPS.map((group) => (
