@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandMark } from "./Icons";
+import { AccountButton } from "./AccountButton";
 import { NAV_LINKS } from "@/lib/content";
 
 export function SiteHeader() {
@@ -45,9 +46,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="header-actions">
-            <Link href="/explore" className="btn btn-ghost btn-sm" data-track="nav_click">
-              Log in
-            </Link>
+            <AccountButton />
             <Link href="/studio" className="btn btn-primary btn-sm" data-track="cta_click" data-placement="header">
               Start creating
             </Link>
@@ -71,6 +70,9 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <a href="/api/auth/google/start" data-track="google_signin">
+            Log in with Google
+          </a>
           <Link href="/studio" className="btn btn-primary" data-track="cta_click" data-placement="mobile">
             Start creating
           </Link>

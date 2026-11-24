@@ -46,13 +46,22 @@ export function PricingCards() {
                 <span>/ month</span>
               </div>
               <div className="plan-credits">{plan.credits}</div>
+              {plan.monthly > 0 && (
+                <div className="plan-specs">
+                  {plan.model} · {plan.maxDuration}
+                </div>
+              )}
               <ul className="plan-list">
                 {plan.features.map((feature) => (
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
               <Link
-                href={plan.monthly === 0 ? "/studio" : "/studio?plan=upgrade"}
+                href={
+                  plan.monthly === 0
+                    ? "/studio"
+                    : `/payment?plan=${plan.id}&billing=${yearly ? "yearly" : "monthly"}`
+                }
                 className={`btn ${plan.featured ? "btn-primary" : "btn-ghost"}`}
                 data-track="plan_select"
                 data-plan={plan.id}

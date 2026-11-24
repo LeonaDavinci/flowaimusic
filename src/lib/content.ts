@@ -367,18 +367,33 @@ export type Plan = {
   name: string;
   monthly: number;
   credits: string;
+  creditsValue: number;
+  songs: string;
+  musicTime: string;
+  model: string;
+  maxDuration: string;
   concurrency: string;
   blurb: string;
   features: string[];
   featured?: boolean;
 };
 
+/**
+ * Plan entitlements. One full song costs about 6 credits and runs about
+ * 3 minutes, so 2,500 credits ~= 400 songs ~= 20 hours of music.
+ * `model` is the generation tier attached to the entitlement.
+ */
 export const PLANS: Plan[] = [
   {
     id: "free",
     name: "Free",
     monthly: 0,
     credits: "Daily free credits",
+    creditsValue: 0,
+    songs: "A few songs a day",
+    musicTime: "Daily top-ups",
+    model: "Flow Audio 2 · Standard",
+    maxDuration: "up to 3 min / song",
     concurrency: "1 generation at a time",
     blurb: "For the curious. Make real songs before deciding anything.",
     features: [
@@ -393,10 +408,17 @@ export const PLANS: Plan[] = [
     name: "Creator",
     monthly: 9,
     credits: "2,500 credits / mo (~400 songs)",
+    creditsValue: 2500,
+    songs: "~400 full songs / month",
+    musicTime: "~20 hours of music / month",
+    model: "Flow Audio 2 · Standard",
+    maxDuration: "up to 3 min / song",
     concurrency: "4 generations at a time",
     blurb: "For music creators and everyday makers.",
     features: [
-      "2,500 monthly credits",
+      "2,500 monthly credits (~400 songs)",
+      "≈ 20 hours of generated music",
+      "Flow Audio 2 · Standard model",
       "4 concurrent generations",
       "Stem split & audio effects",
       "Music video export",
@@ -407,12 +429,20 @@ export const PLANS: Plan[] = [
   {
     id: "pro",
     name: "Pro",
-    monthly: 24,
+    monthly: 18,
     credits: "9,000 credits / mo (~1,500 songs)",
+    creditsValue: 9000,
+    songs: "~1,500 full songs / month",
+    musicTime: "~75 hours of music / month",
+    model: "Flow Audio 2 · Pro",
+    maxDuration: "up to 5 min / song",
     concurrency: "8 generations at a time",
     blurb: "For artists shipping music on a schedule.",
     features: [
-      "9,000 monthly credits",
+      "9,000 monthly credits (~1,500 songs)",
+      "≈ 75 hours of generated music",
+      "Flow Audio 2 · Pro model",
+      "Up to 5 minutes per song",
       "8 concurrent generations",
       "Priority generation queue",
       "WAV & stems export",
@@ -422,22 +452,39 @@ export const PLANS: Plan[] = [
   {
     id: "studio",
     name: "Studio",
-    monthly: 59,
+    monthly: 28,
     credits: "25,000 credits / mo (~4,000 songs)",
+    creditsValue: 25000,
+    songs: "~4,000 full songs / month",
+    musicTime: "~200 hours of music / month",
+    model: "Flow Audio 2 · Pro + early access",
+    maxDuration: "up to 8 min / song",
     concurrency: "16 generations at a time",
     blurb: "For teams and producers running sessions.",
     features: [
-      "25,000 monthly credits",
+      "25,000 monthly credits (~4,000 songs)",
+      "≈ 200 hours of generated music",
+      "Flow Audio 2 · Pro + early access",
+      "Up to 8 minutes per song",
       "16 concurrent generations",
       "Team workspace & shared library",
-      "Early access to new models",
       "Priority support",
     ],
   },
 ];
 
+export const PAID_PLANS = PLANS.filter((plan) => plan.monthly > 0);
+
+export function getPlanById(id?: string | null): Plan | undefined {
+  return PLANS.find((plan) => plan.id === id);
+}
+
 export const COMPARE_ROWS = [
   { label: "Monthly credits", values: ["Daily top-ups", "2,500", "9,000", "25,000"] },
+  { label: "Estimated songs / month", values: ["A few", "~400", "~1,500", "~4,000"] },
+  { label: "Estimated music time", values: ["Daily", "~20 h", "~75 h", "~200 h"] },
+  { label: "Generation model", values: ["Standard", "Standard", "Pro", "Pro + early access"] },
+  { label: "Max song duration", values: ["3 min", "3 min", "5 min", "8 min"] },
   { label: "Concurrent generations", values: ["1", "4", "8", "16"] },
   { label: "Full-length songs", values: ["Yes", "Yes", "Yes", "Yes"] },
   { label: "Stem split & effects", values: ["Preview", "Yes", "Yes", "Yes"] },
