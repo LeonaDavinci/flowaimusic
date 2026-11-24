@@ -7,25 +7,47 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = pageMetadata({
   title: "AI Models & Technology | Flow AI Music",
   description:
-    "Flow AI Music uses Suno for music generation and Google Flow for music video generation. Provider details and how the active model is shown.",
+    "Flow AI Music generates songs with SeeAPI AI Music models (M1/M2/M3) and Google Flow for music video. Provider details and how the active model is shown.",
   path: "/models",
-  keywords: ["Suno", "Google Flow", "AI music model", "AI music video model", "model disclosure"],
+  keywords: ["SeeAPI AI Music", "AI music model", "Google Flow", "AI music video model", "model disclosure"],
 });
+
+const MUSIC_MODELS = [
+  {
+    model: "AI Music M1",
+    endpoint: "music-generation",
+    price: "16 credits per generation",
+    detail:
+      "Fastest text-to-music route — vocal songs or instrumental tracks from a text brief, with cover art and full-length audio (MP3).",
+  },
+  {
+    model: "AI Music M2",
+    endpoint: "music-generation",
+    price: "17 credits per generation",
+    detail:
+      "Balanced quality and speed for everyday songwriting, with the same inputs and outputs as the other AI Music models.",
+  },
+  {
+    model: "AI Music M3",
+    endpoint: "music-generation",
+    price: "18 credits per generation",
+    detail:
+      "Highest fidelity music generation — richer arrangement and vocals for finished tracks.",
+  },
+];
 
 const MODELS = [
   {
     task: "Music generation",
-    model: "Suno",
-    provider: "Suno",
+    model: "AI Music M1 / M2 / M3",
+    provider: "SeeAPI (seeapi.com)",
     status: "In use",
-    detail: "Full-length songs from a text brief, including vocals, structure and style. All music generation plans use Suno.",
   },
   {
     task: "Music video generation",
     model: "Google Flow",
     provider: "Google",
-    status: "In use",
-    detail: "Directed music videos built around a finished track, using Google Flow for frame-aware visual generation.",
+    status: "Planned",
   },
 ];
 
@@ -45,9 +67,10 @@ export default function ModelsPage() {
       <div className="container legal-body">
         <h2>1. Models in use</h2>
         <p>
-          Flow AI Music uses two third-party models: <strong>Suno</strong> for music
-          generation and <strong>Google Flow</strong> for music video generation. These
-          are the actual providers behind the generation features offered on paid plans.
+          Music generation runs on the <strong>AI Music M1, M2 and M3</strong> models
+          accessed through <strong>SeeAPI</strong> (api.seeapi.com), a unified AI
+          generation gateway. Music video generation is planned on{" "}
+          <strong>Google Flow</strong> and is not offered until it goes live.
         </p>
         <div className="legal-table-wrap">
           <table className="legal-table">
@@ -72,35 +95,32 @@ export default function ModelsPage() {
           </table>
         </div>
         <ul>
-          {MODELS.map((item) => (
-            <li key={item.task}>
-              <strong>{item.model} — {item.task}:</strong> {item.detail}
+          {MUSIC_MODELS.map((item) => (
+            <li key={item.model}>
+              <strong>{item.model} — {item.price}:</strong> {item.detail}
             </li>
           ))}
         </ul>
 
-        <h2>2. About the plan labels</h2>
+        <h2>2. Choosing and seeing the model</h2>
         <p>
-          Labels such as &ldquo;Flow Audio 2 · Standard&rdquo; on plan cards describe the
-          product tier and its credit allowance, not a model name. The provider model used
-          for your generation is Suno for audio and Google Flow for video. We are replacing
-          misleading tier labels with the real provider names across the site.
+          In the studio you pick the AI Music model (M1, M2 or M3) before each
+          generation; the selected model is shown on the track panel and every
+          generated result records which model produced it. A generation returns one
+          or more tracks as permanent MP3 files with cover art.
         </p>
 
-        <h2>3. How the active model is shown</h2>
+        <h2>3. About the plan labels</h2>
         <p>
-          The studio identifies the active model before a generation starts: Suno for a
-          song and Google Flow for a video. A result records which model produced it.
-          Model availability can change with provider capacity, regional restrictions and
-          content-safety requirements; if the selected model is unavailable, the studio
-          will show that before you are charged. We may add or replace providers as long
-          as the capabilities of your paid plan are preserved.
+          Plan cards name the actual generation model (AI Music M1/M2/M3) alongside
+          the credit allowance. If we add or replace providers, the capabilities of
+          your paid plan are preserved and this page is updated first.
         </p>
 
         <h2>4. Provider policies</h2>
         <p>
-          Suno and Google Flow apply their own usage and safety rules. Requests and
-          outputs are subject to both those rules and our{" "}
+          SeeAPI and the upstream AI Music models apply their own usage and safety
+          rules. Requests and outputs are subject to both those rules and our{" "}
           <Link href="/aigc">AIGC use policy</Link>. Prompts are passed to the selected
           provider to produce a result; see the{" "}
           <Link href="/privacy">privacy policy</Link> for how that data is handled.

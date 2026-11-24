@@ -51,8 +51,9 @@ export default function PricingPage() {
             Yearly billing is charged once a year at 20% off the monthly rate. All prices in USD.
           </p>
           <p style={{ textAlign: "center", margin: "16px 0 0", fontSize: 13.5, color: "var(--ink-3)" }}>
-            Music is generated with <Link href="/models">Suno</Link> and music videos with{" "}
-            <Link href="/models">Google Flow</Link>. Subscriptions auto-renew until cancelled;
+            Music is generated with the{" "}
+            <Link href="/models">AI Music M1/M2/M3 models via SeeAPI</Link>; music video
+            generation on Google Flow is planned. Subscriptions auto-renew until cancelled;
             see the <Link href="/terms">refund terms</Link>.
           </p>
         </div>

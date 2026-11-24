@@ -2110,6 +2110,10 @@ main {
   display: block;
 }
 
+img.gen-art {
+  object-fit: cover;
+}
+
 .gen-card-audio strong,
 .gen-card-audio span {
   overflow: hidden;
