@@ -19,6 +19,10 @@ const CATEGORIES = [
     text: "No explicit sexual content, nudity, erotic vocals or lyrics, or material intended to arouse. Suggestive but non-explicit artistic expression may be allowed at our discretion.",
   },
   {
+    title: "AI NCII — non-consensual intimate imagery",
+    text: "No AI-generated nude, sexual or intimate imagery of any real person, and no sexualised content generated to harass, extort, shame or impersonate an identifiable individual. This prohibition applies regardless of whether the person consented and is enforced without exception. Reports of NCII are actioned immediately and may be referred to law enforcement.",
+  },
+  {
     title: "Violence and gore",
     text: "No graphic depictions of violence, gore, severe injury, torture, or content that instructs or encourages violent acts.",
   },
@@ -66,7 +70,7 @@ export default function AigcPolicyPage() {
         <h2>2. Content standards and prohibited categories</h2>
         <p>
           You must not use the service to create, upload, publish or distribute content
-          in any of the following six categories. Requests that fall into these
+          in any of the following categories. Requests that fall into these
           categories are refused, and outputs may be removed after they are created.
         </p>
         <ol className="legal-list-numbered">

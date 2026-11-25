@@ -76,6 +76,54 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* What is this app — purpose statement visible without login (Google OAuth review) */}
+      <section className="section app-purpose" aria-labelledby="purpose-title">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">About this app</span>
+            <h2 className="section-title" id="purpose-title">
+              What is Flow AI Music?
+            </h2>
+          </div>
+          <div className="purpose-grid">
+            <div className="purpose-card">
+              <h3>The purpose of this app</h3>
+              <p>
+                Flow AI Music is an AI-powered music studio that runs entirely
+                in your browser. You describe a song in plain language — genre,
+                mood, tempo, instruments — and the app generates a
+                full-length original track with vocals, structure and feeling.
+                You can then edit sections, split stems, and export your
+                music. No recording gear or music theory is required.
+              </p>
+            </div>
+            <div className="purpose-card">
+              <h3>Use it without an account</h3>
+              <p>
+                No sign-up is needed to explore this site. Right now you can
+                compose prompts, play the mini keyboard, listen to demos and
+                try the local synthesis studio without logging in. Everything
+                on this page is open to every visitor.
+              </p>
+            </div>
+            <div className="purpose-card">
+              <h3>Why we offer Google sign-in</h3>
+              <p>
+                Google sign-in is entirely optional. It is used for one thing:
+                to identify your account so AI song generation, saved tracks
+                and paid subscriptions belong to you. We request only your
+                name, email address and profile picture — never your Google
+                password, and your Google data is never used for advertising
+                or AI training. See our{" "}
+                <Link href="/privacy">privacy policy</Link>,{" "}
+                <Link href="/terms">terms</Link> and{" "}
+                <Link href="/aigc">AIGC use policy</Link>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Quick starts */}
       <section className="section" aria-labelledby="quick-title">
         <div className="container">

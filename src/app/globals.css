@@ -2883,3 +2883,36 @@ img.gen-art {
 .linklike:hover {
   color: var(--ink-2);
 }
+
+/* Homepage app-purpose cards (Google OAuth review) */
+.purpose-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.purpose-card {
+  padding: 24px 22px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.purpose-card h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.purpose-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+@media (max-width: 900px) {
+  .purpose-grid {
+    grid-template-columns: 1fr;
+  }
+}

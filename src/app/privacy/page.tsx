@@ -75,19 +75,39 @@ export default function PrivacyPage() {
         </p>
 
         <h2>2. How we use information</h2>
+        <p>We process the data described in section 1 for the following purposes:</p>
+        <ul>
+          <li>To create and maintain your account and identify you when you sign in.</li>
+          <li>To deliver the music-generation service you request: sending your prompt
+            and settings to the model provider, returning your generated audio, and
+            displaying your generation history.</li>
+          <li>To process subscriptions, payments and refunds, and to grant the plan
+            benefits you purchase, through Waffo Pancake as our Merchant of Record.</li>
+          <li>To detect, investigate and prevent abuse, fraud and violations of our{" "}
+            <Link href="/terms">terms</Link> and{" "}
+            <Link href="/aigc">AIGC use policy</Link>, including reviewing reported
+            content.</li>
+          <li>To measure aggregate site usage and improve the product, via Google Tag
+            Manager analytics (optional; loaded only after you accept analytics
+            cookies).</li>
+          <li>To answer your support requests sent to{" "}
+            <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.</li>
+          <li>To comply with legal, tax and accounting obligations.</li>
+        </ul>
         <p>
-          We use the data above to provide and maintain the service, authenticate you,
-          process and support subscriptions, deliver generated output, detect abuse,
-          review reports of prohibited content, communicate service changes, and meet
-          legal and tax obligations. We do not sell personal data.
+          We do not sell personal data, and we do not share personal data for
+          cross-context behavioural advertising.
         </p>
         <p>
-          <strong>Limited use.</strong> Data received from Google sign-in is used only
-          to operate and secure this website: creating and maintaining your account,
-          showing your profile, and preventing abuse. We do not sell that data, use it
-          for advertising, or transfer it to third parties except as described in
-          section 8 below. Our use of information received from Google APIs will adhere
-          to the{" "}
+          <strong>How we use data from Google sign-in.</strong> The Google account data
+          we receive (identifier, email address, display name, profile picture) is used
+          only to operate and secure this website: creating and maintaining your
+          account, showing your profile, and preventing abuse. We do not use it for
+          advertising, we do not use it to train machine-learning or AI models, we do
+          not sell it, and we do not transfer it to any third party except the
+          infrastructure providers described in section 8, or after you ask us to, or
+          where the law requires it. Our use of information received from Google APIs
+          will adhere to the{" "}
           <a
             href="https://developers.google.com/terms/api-services-user-data-policy"
             rel="noopener noreferrer"

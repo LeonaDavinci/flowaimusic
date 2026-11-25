@@ -125,13 +125,16 @@ export default function TermsPage() {
         <h2>7. Content standards and prohibited categories</h2>
         <p>
           The service may not be used to generate, upload or distribute content that is
-          sexual or NSFW, violently graphic, hateful, sexually unsafe for children,
-          a deceptive deepfake or impersonation, or an infringement of copyright or
-          trademark. These six categories, with examples, are set out in our{" "}
+          sexual or NSFW, an AI-generated non-consensual intimate image or depiction of
+          a real person (AI NCII), violently graphic, hateful, sexually unsafe for
+          children, a deceptive deepfake or impersonation, or an infringement of
+          copyright or trademark. These categories, with examples, are set out in our{" "}
           <Link href="/aigc">AIGC use policy</Link>, which forms part of these terms.
           Generating prohibited content is a material breach; we may reject or remove it,
           deduct no credits for refused requests, warn you, suspend your account or
-          terminate it, and report cases required by law.
+          terminate it, and report cases required by law. The service must not be used
+          to create NCII or to misuse Google APIs in any way prohibited by the Google
+          API Services User Data Policy.
         </p>
 
         <h2>8. Reports and content moderation</h2>
