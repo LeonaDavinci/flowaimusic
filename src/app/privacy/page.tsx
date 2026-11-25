@@ -34,6 +34,18 @@ export default function PrivacyPage() {
             picture. We do not receive or store your Google password.
           </li>
           <li>
+            <strong>Google sign-in scope.</strong> The only permissions we request are{" "}
+            <code>openid</code>, <code>email</code> and <code>profile</code> — the
+            basics needed to create your account and show your name and avatar. We
+            request online access only: no refresh token is stored and we never read
+            your Gmail, Drive, photos, contacts, YouTube or any other Google service.
+            You can revoke this access at any time from your{" "}
+            <a href="https://myaccount.google.com/permissions" rel="noopener noreferrer">
+              Google account permissions page
+            </a>
+            .
+          </li>
+          <li>
             <strong>Billing information.</strong> Waffo Pancake, our Merchant of Record,
             collects your payment details, billing address and transaction records. Full
             card numbers are never transmitted to or stored on our servers. We receive
@@ -68,6 +80,21 @@ export default function PrivacyPage() {
           process and support subscriptions, deliver generated output, detect abuse,
           review reports of prohibited content, communicate service changes, and meet
           legal and tax obligations. We do not sell personal data.
+        </p>
+        <p>
+          <strong>Limited use.</strong> Data received from Google sign-in is used only
+          to operate and secure this website: creating and maintaining your account,
+          showing your profile, and preventing abuse. We do not sell that data, use it
+          for advertising, or transfer it to third parties except as described in
+          section 8 below. Our use of information received from Google APIs will adhere
+          to the{" "}
+          <a
+            href="https://developers.google.com/terms/api-services-user-data-policy"
+            rel="noopener noreferrer"
+          >
+            Google API Services User Data Policy
+          </a>
+          , including the Limited Use requirements.
         </p>
 
         <h2>3. Legal bases</h2>
@@ -148,6 +175,11 @@ export default function PrivacyPage() {
           <li><code>flow_checkout</code> — ties a completed payment to your account, 30 minutes.</li>
         </ul>
         <p>
+          Your banner choice is remembered in a <code>flow_cookie_consent</code> entry
+          in your browser&rsquo;s local storage on this device — it is not a tracking
+          cookie and is never sent to our servers.
+        </p>
+        <p>
           <strong>Optional analytics cookies.</strong> We load Google Tag Manager
           container <code>GTM-K2ZP897G</code> only after you accept analytics in the
           cookie notice shown on your first visit. Google Analytics may then set{" "}
@@ -169,8 +201,10 @@ export default function PrivacyPage() {
             taxes and subscription records.
           </li>
           <li>
-            <strong>Model providers</strong> — generation requests are sent to the
-            providers listed on our <Link href="/models">model disclosure page</Link>.
+            <strong>Model providers</strong> — generation requests are sent through the{" "}
+            <strong>SeeAPI</strong> gateway (api.seeapi.com) to the AI Music models
+            listed on our <Link href="/models">model disclosure page</Link>. Your prompt
+            and style selection are passed to the selected model to produce audio.
           </li>
           <li>
             <strong>Infrastructure providers</strong> — hosting, log storage and web

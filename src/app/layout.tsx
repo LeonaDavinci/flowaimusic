@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TrackBridge } from "@/components/TrackBridge";
+import { CookieNotice } from "@/components/CookieNotice";
 import { SITE_NAME, SITE_URL } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
@@ -63,19 +64,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="waffo-verify" content="56ddf2bac5ed2e95f5af5426c0a981e5" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-K2ZP897G"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-`,
-          }}
-        />
+        {/* GTM/Google Analytics load only after the visitor accepts optional
+            analytics — see components/CookieNotice.tsx and the privacy policy. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -88,6 +78,7 @@ gtag('js', new Date());
         {children}
         <SiteFooter />
         <TrackBridge />
+        <CookieNotice />
       </body>
     </html>
   );

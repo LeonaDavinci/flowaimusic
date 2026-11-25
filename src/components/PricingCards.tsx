@@ -1,38 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { PLANS } from "@/lib/content";
 
+/* Monthly billing only for now — yearly Waffo products are not published yet.
+   Re-introduce the toggle once PANCAKE_PRODUCT_*_YEARLY exist. */
 export function PricingCards() {
-  const [yearly, setYearly] = useState(false);
-
   return (
     <>
-      <div style={{ textAlign: "center" }}>
-        <div className="billing-toggle" role="group" aria-label="Billing period">
-          <button
-            type="button"
-            className={!yearly ? "is-active" : ""}
-            aria-pressed={!yearly}
-            onClick={() => setYearly(false)}
-          >
-            Monthly
-          </button>
-          <button
-            type="button"
-            className={yearly ? "is-active" : ""}
-            aria-pressed={yearly}
-            onClick={() => setYearly(true)}
-          >
-            Yearly <span className="billing-save">−20%</span>
-          </button>
-        </div>
-      </div>
-
       <div className="pricing-grid">
         {PLANS.map((plan) => {
-          const price = yearly ? Math.round(plan.monthly * 0.8) : plan.monthly;
+          const price = plan.monthly;
           return (
             <article
               key={plan.id}
@@ -60,12 +38,12 @@ export function PricingCards() {
                 href={
                   plan.monthly === 0
                     ? "/studio"
-                    : `/payment?plan=${plan.id}&billing=${yearly ? "yearly" : "monthly"}`
+                    : `/payment?plan=${plan.id}&billing=monthly`
                 }
                 className={`btn ${plan.featured ? "btn-primary" : "btn-ghost"}`}
                 data-track="plan_select"
                 data-plan={plan.id}
-                data-billing={yearly ? "yearly" : "monthly"}
+                data-billing="monthly"
               >
                 {plan.monthly === 0 ? "Start for free" : `Choose ${plan.name}`}
               </Link>

@@ -39,18 +39,24 @@ export default function TermsPage() {
 
         <h2>2. Accounts and eligibility</h2>
         <p>
-          Paid features require a Google account. You must be at least 16 years old, or
-          have reached the age of digital consent in your country, to create an account.
-          You agree to provide accurate information and to keep your account secure. You
-          are responsible for activity that occurs under your account. We may suspend or
-          close an account that is used in breach of these terms.
+          Paid features require signing in with Google (OAuth 2.0). We receive only
+          your Google account identifier, email address, display name and profile
+          picture — we never see your Google password, and the permissions we request
+          are limited to <code>openid</code>, <code>email</code> and{" "}
+          <code>profile</code> as described in the{" "}
+          <Link href="/privacy">privacy policy</Link>. You must be at least 16 years
+          old, or have reached the age of digital consent in your country, to create an
+          account. You agree to provide accurate information and to keep your account
+          secure. You are responsible for activity that occurs under your account. We
+          may suspend or close an account that is used in breach of these terms.
         </p>
 
         <h2>3. Subscription plans and billing</h2>
         <p>
-          Paid plans are billed in advance. The published monthly prices are Creator
-          USD 9, Pro USD 18 and Studio USD 28 per month; where a yearly option is offered,
-          it is charged once per year. Prices are shown in USD and are exclusive of any
+          Paid plans are billed monthly in advance. The published prices are Creator
+          USD 9, Pro USD 18 and Studio USD 28 per month; where a yearly option is
+          introduced, it will be charged once per year and announced on the pricing
+          page before it goes on sale. Prices are shown in USD and are exclusive of any
           taxes or duties that apply in your jurisdiction.
         </p>
         <p>
@@ -141,11 +147,13 @@ export default function TermsPage() {
 
         <h2>9. AI models and third-party services</h2>
         <p>
-          Generation may be carried out by third-party model providers. The models used,
-          their providers and their current availability are disclosed on the{" "}
-          <Link href="/models">model disclosure page</Link>. Third-party providers may
-          apply their own usage policies. We are not responsible for the independent
-          actions of third-party services that you choose to connect to the site.
+          Generation is carried out by third-party model providers. Music generation
+          requests are sent through the SeeAPI gateway (api.seeapi.com) to the AI Music
+          models listed on the <Link href="/models">model disclosure page</Link>;
+          payments are processed by Waffo Pancake as Merchant of Record. Third-party
+          providers may apply their own usage policies. We are not responsible for the
+          independent actions of third-party services that you choose to connect to the
+          site.
         </p>
 
         <h2>10. Disclaimer of warranties</h2>

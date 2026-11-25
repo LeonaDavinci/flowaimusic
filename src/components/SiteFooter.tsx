@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FOOTER_GROUPS, SITE_NAME, SUPPORT_EMAIL } from "@/lib/content";
 import { BrandMark } from "./Icons";
+import { CookieSettingsLink } from "./CookieNotice";
 
 export function SiteFooter() {
   return (
@@ -36,6 +37,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} {SITE_NAME}. All rights reserved.</span>
+          <CookieSettingsLink />
           <span>Made for people who hear music before it exists.</span>
         </div>
       </div>

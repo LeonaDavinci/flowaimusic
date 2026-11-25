@@ -48,7 +48,7 @@ export default function PricingPage() {
         <div className="container">
           <PricingCards />
           <p style={{ textAlign: "center", margin: "-56px 0 0", fontSize: 13.5, color: "var(--ink-3)" }}>
-            Yearly billing is charged once a year at 20% off the monthly rate. All prices in USD.
+            All prices in USD, billed monthly. Cancel any time.
           </p>
           <p style={{ textAlign: "center", margin: "16px 0 0", fontSize: 13.5, color: "var(--ink-3)" }}>
             Music is generated with the{" "}
