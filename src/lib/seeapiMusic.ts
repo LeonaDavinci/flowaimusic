@@ -58,17 +58,6 @@ export function hasSeeApiKey(): boolean {
   return getSeeApiKey().length > 0;
 }
 
-/* The SeeAPI account is currently on the free tier: generations are free of
-   charge but capped at 30-second tracks. Override with SEEAPI_MAX_DURATION
-   once the account is upgraded. */
-export const FREE_TIER_MAX_DURATION = 30;
-
-export function getMaxDurationSeconds(): number {
-  const raw = Number(process.env.SEEAPI_MAX_DURATION);
-  if (Number.isFinite(raw) && raw > 0) return Math.min(360, Math.round(raw));
-  return FREE_TIER_MAX_DURATION;
-}
-
 export type MusicGenerationInput = {
   model: MusicModelInfo;
   prompt: string;
@@ -83,7 +72,6 @@ export function buildMusicRequest({ model, prompt, style, instrumental }: MusicG
   custom?: boolean;
   title?: string;
   lyrics?: string;
-  durationSeconds?: number;
   vocalGender?: "m" | "f";
 }): { model: string; endpoint: string; provider: string; input: Record<string, unknown> } {
   const text = String(prompt || "").trim().slice(0, 3000);
@@ -95,15 +83,8 @@ export function buildMusicRequest({ model, prompt, style, instrumental }: MusicG
   if (extra?.custom === true) {
     if (extra.title) input.title = String(extra.title).slice(0, 80);
     if (extra.lyrics) input.lyrics = String(extra.lyrics).slice(0, 5000);
-    /* duration_seconds is only accepted in custom mode — sending it in
-       normal mode makes SeeAPI reject the whole request. The free-tier
-       30 s ceiling is enforced server-side by SeeAPI itself. */
-    if (extra.durationSeconds) {
-      const d = Math.round(Number(extra.durationSeconds));
-      if (Number.isFinite(d)) {
-        input.duration_seconds = Math.min(getMaxDurationSeconds(), Math.max(10, d));
-      }
-    }
+    /* Note: duration_seconds is never sent — SeeAPI only accepts it in
+       custom mode and the models pick a sensible default length otherwise. */
     if (extra.vocalGender && !instrumental) input.vocal_gender = extra.vocalGender;
   }
   const tags = String(style || "").trim().slice(0, 1000);

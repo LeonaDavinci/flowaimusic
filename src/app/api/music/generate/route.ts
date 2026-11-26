@@ -8,7 +8,6 @@ import {
 } from "@/lib/auth/session";
 import {
   buildMusicRequest,
-  getMaxDurationSeconds,
   getMusicModel,
   hasSeeApiKey,
   normalizeUpstreamError,
@@ -110,7 +109,6 @@ export async function POST(request: Request) {
     style?: string;
     model?: string;
     instrumental?: boolean;
-    durationSeconds?: number;
   } = {};
   try {
     body = await request.json();
@@ -146,15 +144,12 @@ export async function POST(request: Request) {
     );
   }
 
-  const payload = buildMusicRequest(
-    {
-      model,
-      prompt,
-      style: String(body?.style || ""),
-      instrumental: body?.instrumental === true,
-    },
-    { durationSeconds: Number(body?.durationSeconds) || getMaxDurationSeconds() },
-  );
+  const payload = buildMusicRequest({
+    model,
+    prompt,
+    style: String(body?.style || ""),
+    instrumental: body?.instrumental === true,
+  });
 
   try {
     const { res, json, text } = await submitMusicGeneration(payload);
@@ -181,7 +176,6 @@ export async function POST(request: Request) {
         stage: task.stage,
         model: model.id,
         modelLabel: model.label,
-        maxDurationSeconds: getMaxDurationSeconds(),
         statusUrl: `/api/music/status?id=${encodeURIComponent(task.id)}`,
       },
       responseInit,
