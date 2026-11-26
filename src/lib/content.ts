@@ -397,7 +397,7 @@ export const PLANS: Plan[] = [
     songs: "A few songs a day",
     musicTime: "Daily top-ups",
     model: "AI Music M1",
-    maxDuration: "up to 3 min / song",
+    maxDuration: "30 s / song (free tier)",
     concurrency: "1 generation at a time",
     blurb: "For the curious. Make real songs before deciding anything.",
     features: [
@@ -416,7 +416,7 @@ export const PLANS: Plan[] = [
     songs: "~400 full songs / month",
     musicTime: "~20 hours of music / month",
     model: "AI Music M1 / M2",
-    maxDuration: "up to 3 min / song",
+    maxDuration: "30 s / song (free tier)",
     concurrency: "4 generations at a time",
     blurb: "For music creators and everyday makers.",
     features: [
@@ -439,7 +439,7 @@ export const PLANS: Plan[] = [
     songs: "~1,500 full songs / month",
     musicTime: "~75 hours of music / month",
     model: "AI Music M2 / M3",
-    maxDuration: "up to 5 min / song",
+    maxDuration: "30 s / song (free tier)",
     concurrency: "8 generations at a time",
     blurb: "For artists shipping music on a schedule.",
     features: [
@@ -462,7 +462,7 @@ export const PLANS: Plan[] = [
     songs: "~4,000 full songs / month",
     musicTime: "~200 hours of music / month",
     model: "AI Music M3",
-    maxDuration: "up to 8 min / song",
+    maxDuration: "30 s / song (free tier)",
     concurrency: "16 generations at a time",
     blurb: "For teams and producers running sessions.",
     features: [

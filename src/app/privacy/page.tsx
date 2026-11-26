@@ -68,10 +68,15 @@ export default function PrivacyPage() {
           </li>
         </ul>
         <p>
-          The browser studio can be used without signing in. In that mode your prompt is
-          processed locally in your browser to synthesise audio with the Web Audio API;
-          it is not uploaded, no microphone access is requested and no account is
-          created.
+          AI music generation requires signing in. Every account receives one
+          free generation capped at 30 seconds; after that, a paid plan is
+          needed. When you generate, the text prompt you enter is sent to the
+          model provider named on our{" "}
+          <Link href="/models">model disclosure page</Link> solely to produce
+          your audio. If the AI service is unavailable, the studio falls back
+          to local synthesis in your browser with the Web Audio API; in that
+          fallback mode nothing is uploaded and no microphone access is
+          requested.
         </p>
 
         <h2>2. How we use information</h2>

@@ -98,23 +98,23 @@ export default function HomePage() {
               </p>
             </div>
             <div className="purpose-card">
-              <h3>Use it without an account</h3>
+              <h3>Free to try — no card needed</h3>
               <p>
-                No sign-up is needed to explore this site. Right now you can
-                compose prompts, play the mini keyboard, listen to demos and
-                try the local synthesis studio without logging in. Everything
-                on this page is open to every visitor.
+                Explore this page without an account. To generate, sign in
+                with Google: every new account gets one free AI-generated
+                track of up to 30 seconds. After that free take, a
+                subscription unlocks more — browse the{" "}
+                <Link href="/pricing">plans</Link> any time.
               </p>
             </div>
             <div className="purpose-card">
               <h3>Why we offer Google sign-in</h3>
               <p>
-                Google sign-in is entirely optional. It is used for one thing:
-                to identify your account so AI song generation, saved tracks
-                and paid subscriptions belong to you. We request only your
-                name, email address and profile picture — never your Google
-                password, and your Google data is never used for advertising
-                or AI training. See our{" "}
+                Google sign-in is required for AI generation so each account
+                receives its free take and its subscription benefits. We
+                request only your name, email address and profile picture —
+                never your Google password, and your Google data is never
+                used for advertising or AI training. See our{" "}
                 <Link href="/privacy">privacy policy</Link>,{" "}
                 <Link href="/terms">terms</Link> and{" "}
                 <Link href="/aigc">AIGC use policy</Link>.
