@@ -67,7 +67,7 @@ export default function HomePage() {
             <div className="hero-stats">
               <span><b>12M+</b> songs made</span>
               <span><b>4</b> stems per track</span>
-              <span><b>Free</b> daily credits</span>
+              <span><b>1</b> free AI track</span>
             </div>
           </div>
           <div className="hero-visual">

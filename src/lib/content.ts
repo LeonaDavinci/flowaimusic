@@ -348,8 +348,8 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     id: "credits",
-    title: "Daily credits",
-    description: "A fresh free allowance every day, so experimenting never feels expensive.",
+    title: "One free take",
+    description: "Every new account gets one free AI-generated song — no card required.",
     tone: "sun",
   },
   {
@@ -388,25 +388,6 @@ export type Plan = {
  * `model` is the generation tier attached to the entitlement.
  */
 export const PLANS: Plan[] = [
-  {
-    id: "free",
-    name: "Free",
-    monthly: 0,
-    credits: "Daily free credits",
-    creditsValue: 0,
-    songs: "A few songs a day",
-    musicTime: "Daily top-ups",
-    model: "AI Music M1",
-    maxDuration: "30 s / song (free tier)",
-    concurrency: "1 generation at a time",
-    blurb: "For the curious. Make real songs before deciding anything.",
-    features: [
-      "Daily refreshed credits",
-      "Full-length song generation",
-      "Chat-based editing",
-      "Standard downloads",
-    ],
-  },
   {
     id: "creator",
     name: "Creator",
@@ -484,24 +465,24 @@ export function getPlanById(id?: string | null): Plan | undefined {
 }
 
 export const COMPARE_ROWS = [
-  { label: "Monthly credits", values: ["Daily top-ups", "2,500", "9,000", "25,000"] },
-  { label: "Estimated songs / month", values: ["A few", "~400", "~1,500", "~4,000"] },
-  { label: "Estimated music time", values: ["Daily", "~20 h", "~75 h", "~200 h"] },
-  { label: "Generation model", values: ["AI Music M1", "AI Music M1 / M2", "AI Music M2 / M3", "AI Music M3"] },
-  { label: "Music video model", values: ["—", "Google Flow", "Google Flow", "Google Flow"] },
-  { label: "Max song duration", values: ["3 min", "3 min", "5 min", "8 min"] },
-  { label: "Concurrent generations", values: ["1", "4", "8", "16"] },
-  { label: "Full-length songs", values: ["Yes", "Yes", "Yes", "Yes"] },
-  { label: "Stem split & effects", values: ["Preview", "Yes", "Yes", "Yes"] },
-  { label: "Music video export", values: ["—", "Yes", "Yes", "Yes"] },
-  { label: "Commercial use", values: ["—", "Yes", "Yes", "Yes"] },
-  { label: "Team workspace", values: ["—", "—", "—", "Yes"] },
+  { label: "Monthly credits", values: ["2,500", "9,000", "25,000"] },
+  { label: "Estimated songs / month", values: ["~400", "~1,500", "~4,000"] },
+  { label: "Estimated music time", values: ["~20 h", "~75 h", "~200 h"] },
+  { label: "Generation model", values: ["AI Music M1 / M2", "AI Music M2 / M3", "AI Music M3"] },
+  { label: "Music video model", values: ["Google Flow", "Google Flow", "Google Flow"] },
+  { label: "Max song duration", values: ["30 s", "30 s", "30 s"] },
+  { label: "Concurrent generations", values: ["4", "8", "16"] },
+  { label: "Full-length songs", values: ["Yes", "Yes", "Yes"] },
+  { label: "Stem split & effects", values: ["Yes", "Yes", "Yes"] },
+  { label: "Music video export", values: ["Yes", "Yes", "Yes"] },
+  { label: "Commercial use", values: ["Yes", "Yes", "Yes"] },
+  { label: "Team workspace", values: ["—", "—", "Yes"] },
 ];
 
 export const FAQS = [
   {
     q: "Is Flow AI Music free to start?",
-    a: "Yes. The Free plan gives you a daily refreshed credit allowance and no credit card is required. You can make and download full songs before upgrading.",
+    a: "Yes. Sign in with Google and your first AI-generated track (up to 30 seconds) is free — no credit card required. After that free take, choose a plan to keep creating.",
   },
   {
     q: "Do I own the songs I make?",
