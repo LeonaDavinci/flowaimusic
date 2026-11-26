@@ -388,7 +388,7 @@ export type Plan = {
  * Plan entitlements. SeeAPI charges about 16 credits per generation (M1) and
  * a full song runs about 2 minutes, so 1,600 credits ~= 100 songs ~= 200 minutes
  * of music. Download allowances are 50% above comparable Suno tiers
- * (Suno Pro 20/mo -> 30, Premier 60/mo -> 90).
+ * (monthly download allowance doubled: 60 / 120 / 180).
  * `model` is the generation tier attached to the entitlement.
  */
 export const PLANS: Plan[] = [
@@ -399,8 +399,8 @@ export const PLANS: Plan[] = [
     credits: "1,600 credits / mo (~100 songs)",
     creditsValue: 1600,
     songs: "~100 full songs / month",
-    downloads: "30 song downloads / mo",
-    downloadsValue: 30,
+    downloads: "60 song downloads / mo",
+    downloadsValue: 60,
     musicTime: "~200 minutes of music / month",
     model: "AI Music M1 / M2",
     maxDuration: "Full song · model default length",
@@ -408,7 +408,7 @@ export const PLANS: Plan[] = [
     blurb: "For music creators and everyday makers.",
     features: [
       "1,600 monthly credits (~100 songs)",
-      "30 song downloads per month",
+      "60 song downloads per month",
       "≈ 200 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
       "4 concurrent generations",
@@ -425,8 +425,8 @@ export const PLANS: Plan[] = [
     credits: "4,000 credits / mo (~250 songs)",
     creditsValue: 4000,
     songs: "~250 full songs / month",
-    downloads: "60 song downloads / mo",
-    downloadsValue: 60,
+    downloads: "120 song downloads / mo",
+    downloadsValue: 120,
     musicTime: "~500 minutes of music / month",
     model: "AI Music M2 / M3",
     maxDuration: "Full song · model default length",
@@ -434,7 +434,7 @@ export const PLANS: Plan[] = [
     blurb: "For artists shipping music on a schedule.",
     features: [
       "4,000 monthly credits (~250 songs)",
-      "60 song downloads per month",
+      "120 song downloads per month",
       "≈ 500 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
       "8 concurrent generations",
@@ -450,8 +450,8 @@ export const PLANS: Plan[] = [
     credits: "9,600 credits / mo (~600 songs)",
     creditsValue: 9600,
     songs: "~600 full songs / month",
-    downloads: "90 song downloads / mo",
-    downloadsValue: 90,
+    downloads: "180 song downloads / mo",
+    downloadsValue: 180,
     musicTime: "~1,200 minutes of music / month",
     model: "AI Music M3",
     maxDuration: "Full song · model default length",
@@ -459,7 +459,7 @@ export const PLANS: Plan[] = [
     blurb: "For teams and producers running sessions.",
     features: [
       "9,600 monthly credits (~600 songs)",
-      "90 song downloads per month",
+      "180 song downloads per month",
       "≈ 1,200 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
       "16 concurrent generations",
@@ -477,7 +477,7 @@ export function getPlanById(id?: string | null): Plan | undefined {
 
 export const COMPARE_ROWS = [
   { label: "Monthly credits", values: ["1,600", "4,000", "9,600"] },
-  { label: "Song downloads / month", values: ["30", "60", "90"] },
+  { label: "Song downloads / month", values: ["60", "120", "180"] },
   { label: "Estimated songs / month", values: ["~100", "~250", "~600"] },
   { label: "Estimated music time", values: ["~200 min", "~500 min", "~1,200 min"] },
   { label: "Generation model", values: ["AI Music M1 / M2", "AI Music M2 / M3", "AI Music M3"] },
@@ -510,7 +510,7 @@ export const FAQS = [
   },
   {
     q: "How do song downloads work?",
-    a: "Each paid plan includes a monthly download allowance — 30 songs on Creator, 60 on Pro and 90 on Studio — which resets with your billing period. Downloads are counted separately from generation credits, and unused downloads do not roll over.",
+    a: "Each paid plan includes a monthly download allowance — 60 songs on Creator, 120 on Pro and 180 on Studio — which resets with your billing period. Downloads are counted separately from generation credits, and unused downloads do not roll over.",
   },
   {
     q: "What are Spaces?",
