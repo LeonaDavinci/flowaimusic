@@ -40,7 +40,7 @@ export const FOOTER_GROUPS = [
     title: "Create",
     links: [
       { href: "/studio", label: "Create music" },
-      { href: "/studio?brief=Make%20a%20music%20video", label: "Create a music video" },
+      { href: "/studio?brief=Make%20a%20music%20video", label: "Music video (planned)" },
       { href: "/library/playlists", label: "Build a playlist" },
       { href: "/library/spaces", label: "Build a Space" },
     ],
@@ -124,11 +124,18 @@ export type Track = {
   prompt: string;
   creator: string;
   genre: Exclude<Genre, "All">;
+  /** Demo counters for the sample feed; not live engagement data. */
   plays: string;
   likes: string;
   duration: string;
   bpm: number;
   gradient: [string, string];
+  /** Absolute URL of a real generated master, once one exists. */
+  audioUrl?: string | null;
+  /** Model that produced the take, when it came from SeeAPI. */
+  model?: string;
+  /** Test session the take belongs to. */
+  session?: string;
 };
 
 export const TRACKS: Track[] = [
@@ -413,7 +420,7 @@ export const PLANS: Plan[] = [
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
       "4 concurrent generations",
       "Stem split & audio effects",
-      "Music video export",
+      "Music video export (planned)",
       "Commercial use licence",
     ],
     featured: true,
@@ -481,12 +488,12 @@ export const COMPARE_ROWS = [
   { label: "Estimated songs / month", values: ["~100", "~250", "~600"] },
   { label: "Estimated music time", values: ["~200 min", "~500 min", "~1,200 min"] },
   { label: "Generation model", values: ["AI Music M1 / M2", "AI Music M2 / M3", "AI Music M3"] },
-  { label: "Music video model", values: ["Google Flow", "Google Flow", "Google Flow"] },
+  { label: "Music video model", values: ["Planned · Google Flow", "Planned · Google Flow", "Planned · Google Flow"] },
   { label: "Max song duration", values: ["Model default", "Model default", "Model default"] },
   { label: "Concurrent generations", values: ["4", "8", "16"] },
   { label: "Full-length songs", values: ["Yes", "Yes", "Yes"] },
   { label: "Stem split & effects", values: ["Yes", "Yes", "Yes"] },
-  { label: "Music video export", values: ["Yes", "Yes", "Yes"] },
+  { label: "Music video export", values: ["Planned", "Planned", "Planned"] },
   { label: "Commercial use", values: ["Yes", "Yes", "Yes"] },
   { label: "Team workspace", values: ["—", "—", "Yes"] },
 ];
@@ -494,7 +501,7 @@ export const COMPARE_ROWS = [
 export const FAQS = [
   {
     q: "Is Flow AI Music free to start?",
-    a: "Yes. Sign in with Google and your first AI-generated track (up to 30 seconds) is free — no credit card required. After that free take, choose a plan to keep creating.",
+    a: "Yes. Sign in with Google and your first AI-generated song is free — no credit card required. After that free take, choose a plan to keep creating.",
   },
   {
     q: "Do I own the songs I make?",
@@ -506,7 +513,7 @@ export const FAQS = [
   },
   {
     q: "What formats can I export?",
-    a: "Every plan can download MP3. Creator and above add WAV and separated stems, plus music video export.",
+    a: "Every plan can download MP3. Creator and above add WAV and separated stems. Music video export is planned and not available yet.",
   },
   {
     q: "How do song downloads work?",
@@ -531,30 +538,6 @@ export const FAQS = [
   {
     q: "How do I get my data removed?",
     a: "Email support from your account address to view, correct, export or delete your data, or to close your account. We respond within 30 days. Details are in the privacy policy.",
-  },
-];
-
-export const TESTIMONIALS = [
-  {
-    quote:
-      "I describe the cut of my video and get a track that actually lands on the beat. It replaced an entire afternoon of library searching.",
-    name: "Dana R.",
-    role: "Music creator",
-    tone: "violet",
-  },
-  {
-    quote:
-      "Being able to say 'redo only the bridge' is the difference between a toy and a tool. I use it for every writing session now.",
-    name: "Miles T.",
-    role: "Singer-songwriter",
-    tone: "coral",
-  },
-  {
-    quote:
-      "The tiny keyboard demo sold me. Ten seconds in I was making noise instead of reading a feature list.",
-    name: "Priya S.",
-    role: "Producer",
-    tone: "cyan",
   },
 ];
 
@@ -613,8 +596,8 @@ export const FEATURE_MODULES = [
   {
     id: "video",
     eyebrow: "04 / Visualise",
-    title: "Direct the video yourself",
-    text: "Give your song a visual world. Choose the characters, the palette and the pacing, and the studio renders a music video built around your track — no crew, no timeline.",
+    title: "Direct the video yourself (planned)",
+    text: "Planned feature. Once music video generation launches on Google Flow, you will describe the characters, the palette and the pacing and get a video built around your track — no crew, no timeline. Not available today.",
     bullets: ["Character and aesthetic control", "Beat-aware visual pacing", "Ready-to-share exports"],
     tone: "sun",
   },

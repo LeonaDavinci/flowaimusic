@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Track } from "@/lib/content";
 import { PlayButton } from "./PlayButton";
 import { Icon } from "./Icons";
@@ -24,7 +25,9 @@ export function TrackCard({ track }: { track: Track }) {
       </div>
       <div className="track-body">
         <div className="track-title">
-          <h3>{track.title}</h3>
+          <h3>
+            <Link href={`/songs/${track.id}`}>{track.title}</Link>
+          </h3>
           <span className="pill">AI</span>
         </div>
         <p className="track-prompt">{track.prompt}</p>
@@ -34,12 +37,12 @@ export function TrackCard({ track }: { track: Track }) {
         </div>
         <div className="track-stats">
           <span>
-            by <b>@{track.creator}</b>
+            prompt by <b>@{track.creator}</b>
           </span>
           <span>
-            <Icon name="play" size={12} style={{ display: "inline-block", verticalAlign: "-2px" }} /> {track.plays}
+            <Icon name="play" size={12} style={{ display: "inline-block", verticalAlign: "-2px" }} /> {track.duration}
             {"  "}
-            <Icon name="heart" size={12} style={{ display: "inline-block", verticalAlign: "-2px" }} /> {track.likes}
+            sample
           </span>
         </div>
       </div>

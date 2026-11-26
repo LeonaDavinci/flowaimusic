@@ -54,10 +54,12 @@ export default function TermsPage() {
         <h2>3. Subscription plans and billing</h2>
         <p>
           Paid plans are billed monthly in advance. The published prices are Creator
-          USD 9, Pro USD 18 and Studio USD 28 per month; where a yearly option is
-          introduced, it will be charged once per year and announced on the pricing
-          page before it goes on sale. Prices are shown in USD and are exclusive of any
-          taxes or duties that apply in your jurisdiction.
+          USD 9, Pro USD 18 and Studio USD 28 per month. The pricing page is the single
+          source of truth for prices, monthly credits, song download allowances and
+          features; these terms describe the same plans. Plans are offered monthly
+          only at present — if a yearly option is introduced it will be announced on
+          the pricing page before it goes on sale. Prices are shown in USD and are
+          exclusive of any taxes or duties that apply in your jurisdiction.
         </p>
         <p>
           <strong>Automatic renewal.</strong> A subscription renews automatically at the
@@ -88,9 +90,13 @@ export default function TermsPage() {
           unavailable for more than 72 consecutive hours and we could not restore it.
         </p>
         <p>
-          Monthly credits are a usage allowance, not a stored-value balance. Unused
-          credits do not roll over to the next period, are not exchangeable for cash, and
-          are not refunded when you cancel or when a subscription ends. On cancellation
+          Monthly credits and monthly song downloads are usage allowances, not a
+          stored-value balance. Each paid plan includes the credits and download
+          allowance shown on the pricing page; a song generation uses about 16&ndash;18
+          credits depending on the model, and downloads are counted per track. Allowances
+          reset at the start of each billing month, do not roll over, are not
+          exchangeable for cash, and are not refunded when you cancel or when a
+          subscription ends. On cancellation
           your paid features remain available until the end of the period you already
           paid for; no further charge is made.
         </p>

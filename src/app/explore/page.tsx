@@ -8,9 +8,9 @@ import { CtaBanner } from "@/components/CtaBanner";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Explore AI Generated Songs & Playlists | Flow AI Music",
+  title: "Sample AI Music Tracks & Prompts | Flow AI Music",
   description:
-    "Listen to songs made with Flow AI Music. Browse original AI generated tracks by genre, read the prompts behind them, and find your next favourite creator.",
+    "Browse sample AI music tracks made with Flow AI Music: the prompts behind each track, genre, tempo and length. The community feed is not live yet — these are demonstration tracks.",
   path: "/explore",
   keywords: ["AI generated songs", "AI music community", "AI playlist", "prompts for AI music"],
 });
@@ -32,11 +32,12 @@ export default async function ExplorePage({
           <div className="crumbs">
             <Link href="/">Home</Link> <span>/</span> <span>Explore</span>
           </div>
-          <span className="eyebrow">Community feed</span>
+          <span className="eyebrow">Sample tracks · demo content</span>
           <h1>Songs that started as a sentence.</h1>
           <p>
-            Every track here began with a prompt. Read what the maker asked for,
-            hear the result, and borrow the idea for your own session.
+            Every track here began with a prompt. Read what was asked for and
+            borrow the idea for your own session. These are demonstration tracks
+            from our test sessions — the public community feed is not live yet.
           </p>
         </div>
       </section>

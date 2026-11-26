@@ -69,8 +69,8 @@ export default function PrivacyPage() {
         </ul>
         <p>
           AI music generation requires signing in. Every account receives one
-          free generation capped at 30 seconds; after that, a paid plan is
-          needed. When you generate, the text prompt you enter is sent to the
+          free song generation; after that, a paid plan is needed. When you
+          generate, the text prompt you enter is sent to the
           model provider named on our{" "}
           <Link href="/models">model disclosure page</Link> solely to produce
           your audio. If the AI service is unavailable, the studio falls back

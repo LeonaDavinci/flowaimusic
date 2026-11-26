@@ -6,13 +6,13 @@ import {
   TRACKS,
   PLAYLISTS,
   CAPABILITIES,
-  TESTIMONIALS,
   WORKFLOW,
 } from "@/lib/content";
 import { HeroComposer } from "@/components/HeroComposer";
 import { StudioPreview } from "@/components/StudioPreview";
 import { MiniKeyboard } from "@/components/MiniKeyboard";
 import { CtaBanner } from "@/components/CtaBanner";
+import { Spotlight } from "@/components/Spotlight";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon, type IconName } from "@/components/Icons";
 
@@ -21,7 +21,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = pageMetadata({
   title: "Flow AI Music — AI Music Creator & Music Studio",
   description:
-    "Flow AI Music is an AI music creator for making original music from text. Generate full songs, edit any section, split stems and make music videos — free to start.",
+    "Flow AI Music is an AI music creator for making original music from text. Generate full songs, edit any section and split stems — one free track to start, music video creation planned.",
   path: "/",
   keywords: [
     "AI music generator",
@@ -65,7 +65,7 @@ export default function HomePage() {
             </p>
             <HeroComposer />
             <div className="hero-stats">
-              <span><b>12M+</b> songs made</span>
+              <span><b>3</b> AI music models</span>
               <span><b>4</b> stems per track</span>
               <span><b>1</b> free AI track</span>
             </div>
@@ -102,7 +102,7 @@ export default function HomePage() {
               <p>
                 Explore this page without an account. To generate, sign in
                 with Google: every new account gets one free AI-generated
-                track of up to 30 seconds. After that free take, a
+                song at the model's default length. After that free take, a
                 subscription unlocks more — browse the{" "}
                 <Link href="/pricing">plans</Link> any time.
               </p>
@@ -123,6 +123,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Spotlight />
 
       {/* Quick starts */}
       <section className="section" aria-labelledby="quick-title">
@@ -214,14 +216,15 @@ export default function HomePage() {
       <section className="section" aria-labelledby="video-title">
         <div className="container split split--reverse">
           <div className="split-copy">
-            <span className="eyebrow">Direct your own music video</span>
+            <span className="eyebrow">Music video — planned feature</span>
             <h2 className="section-title" id="video-title">
               Give your sound a whole visual world.
             </h2>
             <p>
-              Choose the characters, the palette and the pacing. The studio
-              builds a music video around your finished track — no camera crew,
-              no editing timeline, no extra software.
+              Planned, not shipped: music video generation is not available yet.
+              When it launches on Google Flow, you will be able to choose the
+              characters, the palette and the pacing and get a video built around
+              your finished track — no camera crew, no editing timeline.
             </p>
             <ul className="feature-list">
               <li>Character and aesthetic control in plain words</li>
@@ -238,9 +241,9 @@ export default function HomePage() {
             <div className="video-overlay">
               <span className="play-orb"><Icon name="play" size={26} /></span>
               <strong>Neon Cartography</strong>
-              <small>Directed in the studio · 3:12</small>
+              <small>Preview mockup · coming soon</small>
             </div>
-            <span className="video-tag">AI music video · 1080p</span>
+            <span className="video-tag">Planned feature · Google Flow</span>
           </div>
         </div>
       </section>
@@ -363,29 +366,6 @@ export default function HomePage() {
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section--tint" aria-labelledby="quotes-title">
-        <div className="container">
-          <div className="section-head section-head--center">
-            <span className="eyebrow">From the studio</span>
-            <h2 className="section-title" id="quotes-title">
-              Makers, not prompt engineers.
-            </h2>
-          </div>
-          <div className="quote-grid">
-            {TESTIMONIALS.map((item) => (
-              <figure className={`quote-card tone-${item.tone}`} key={item.name}>
-                <span className="quote-mark" aria-hidden="true">“</span>
-                <blockquote>{item.quote}</blockquote>
-                <figcaption>
-                  <b>{item.name}</b>
-                  {item.role}
-                </figcaption>
-              </figure>
             ))}
           </div>
         </div>

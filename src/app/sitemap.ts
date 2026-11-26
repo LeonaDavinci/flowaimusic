@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/content";
+import { SITE_URL, TRACKS } from "@/lib/content";
 
 const LAST_MOD = new Date("2026-11-25T00:00:00.000Z");
 
@@ -22,8 +22,12 @@ const ROUTES: { path: string; priority: number; changeFrequency: "daily" | "week
   { path: "/privacy", priority: 0.2, changeFrequency: "monthly" },
 ];
 
+const SONG_ROUTES: { path: string; priority: number; changeFrequency: "monthly" }[] = TRACKS.map(
+  (track) => ({ path: `/songs/${track.id}`, priority: 0.6, changeFrequency: "monthly" }),
+);
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((route) => ({
+  return [...ROUTES, ...SONG_ROUTES].map((route) => ({
     url: `${SITE_URL}${route.path}`,
     lastModified: LAST_MOD,
     changeFrequency: route.changeFrequency,
