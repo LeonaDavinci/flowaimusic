@@ -27,6 +27,7 @@ export default async function PaymentPage({ searchParams }: Params) {
   const price = billing === "yearly" ? Math.round(plan.monthly * 0.8) : plan.monthly;
   const specs = [
     ["Monthly credits", plan.credits],
+    ["Song downloads", plan.downloads],
     ["Estimated output", plan.songs],
     ["Music time", plan.musicTime],
     ["Generation model", plan.model],

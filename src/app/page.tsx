@@ -61,7 +61,7 @@ export default function HomePage() {
             <p className="hero-sub">
               Describe any music you can imagine and get a full-length track
               with vocals, structure and feeling. Built for every AI music
-              creator — unlimited downloads, no gear required.
+              creator — download-ready tracks, no gear required.
             </p>
             <HeroComposer />
             <div className="hero-stats">

@@ -360,8 +360,8 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     id: "downloads",
-    title: "Unlimited downloads",
-    description: "Export every take you love, in the formats your workflow needs.",
+    title: "Downloads included",
+    description: "MP3 on every plan, WAV and stems when you upgrade. Export the takes you keep.",
     tone: "pink",
   },
 ];
@@ -373,6 +373,8 @@ export type Plan = {
   credits: string;
   creditsValue: number;
   songs: string;
+  downloads: string;
+  downloadsValue: number;
   musicTime: string;
   model: string;
   maxDuration: string;
@@ -383,8 +385,10 @@ export type Plan = {
 };
 
 /**
- * Plan entitlements. One full song costs about 6 credits and runs about
- * 3 minutes, so 2,500 credits ~= 400 songs ~= 20 hours of music.
+ * Plan entitlements. SeeAPI charges about 16 credits per generation (M1) and
+ * a full song runs about 2 minutes, so 1,600 credits ~= 100 songs ~= 200 minutes
+ * of music. Download allowances are 50% above comparable Suno tiers
+ * (Suno Pro 20/mo -> 30, Premier 60/mo -> 90).
  * `model` is the generation tier attached to the entitlement.
  */
 export const PLANS: Plan[] = [
@@ -392,17 +396,20 @@ export const PLANS: Plan[] = [
     id: "creator",
     name: "Creator",
     monthly: 9,
-    credits: "2,500 credits / mo (~400 songs)",
-    creditsValue: 2500,
-    songs: "~400 full songs / month",
-    musicTime: "~20 hours of music / month",
+    credits: "1,600 credits / mo (~100 songs)",
+    creditsValue: 1600,
+    songs: "~100 full songs / month",
+    downloads: "30 song downloads / mo",
+    downloadsValue: 30,
+    musicTime: "~200 minutes of music / month",
     model: "AI Music M1 / M2",
-    maxDuration: "30 s / song (free tier)",
+    maxDuration: "Full song · model default length",
     concurrency: "4 generations at a time",
     blurb: "For music creators and everyday makers.",
     features: [
-      "2,500 monthly credits (~400 songs)",
-      "≈ 20 hours of generated music",
+      "1,600 monthly credits (~100 songs)",
+      "30 song downloads per month",
+      "≈ 200 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
       "4 concurrent generations",
       "Stem split & audio effects",
@@ -415,19 +422,21 @@ export const PLANS: Plan[] = [
     id: "pro",
     name: "Pro",
     monthly: 18,
-    credits: "9,000 credits / mo (~1,500 songs)",
-    creditsValue: 9000,
-    songs: "~1,500 full songs / month",
-    musicTime: "~75 hours of music / month",
+    credits: "4,000 credits / mo (~250 songs)",
+    creditsValue: 4000,
+    songs: "~250 full songs / month",
+    downloads: "60 song downloads / mo",
+    downloadsValue: 60,
+    musicTime: "~500 minutes of music / month",
     model: "AI Music M2 / M3",
-    maxDuration: "30 s / song (free tier)",
+    maxDuration: "Full song · model default length",
     concurrency: "8 generations at a time",
     blurb: "For artists shipping music on a schedule.",
     features: [
-      "9,000 monthly credits (~1,500 songs)",
-      "≈ 75 hours of generated music",
+      "4,000 monthly credits (~250 songs)",
+      "60 song downloads per month",
+      "≈ 500 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
-      "Up to 5 minutes per song",
       "8 concurrent generations",
       "Priority generation queue",
       "WAV & stems export",
@@ -438,19 +447,21 @@ export const PLANS: Plan[] = [
     id: "studio",
     name: "Studio",
     monthly: 28,
-    credits: "25,000 credits / mo (~4,000 songs)",
-    creditsValue: 25000,
-    songs: "~4,000 full songs / month",
-    musicTime: "~200 hours of music / month",
+    credits: "9,600 credits / mo (~600 songs)",
+    creditsValue: 9600,
+    songs: "~600 full songs / month",
+    downloads: "90 song downloads / mo",
+    downloadsValue: 90,
+    musicTime: "~1,200 minutes of music / month",
     model: "AI Music M3",
-    maxDuration: "30 s / song (free tier)",
+    maxDuration: "Full song · model default length",
     concurrency: "16 generations at a time",
     blurb: "For teams and producers running sessions.",
     features: [
-      "25,000 monthly credits (~4,000 songs)",
-      "≈ 200 hours of generated music",
+      "9,600 monthly credits (~600 songs)",
+      "90 song downloads per month",
+      "≈ 1,200 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
-      "Up to 8 minutes per song",
       "16 concurrent generations",
       "Team workspace & shared library",
       "Priority support",
@@ -465,12 +476,13 @@ export function getPlanById(id?: string | null): Plan | undefined {
 }
 
 export const COMPARE_ROWS = [
-  { label: "Monthly credits", values: ["2,500", "9,000", "25,000"] },
-  { label: "Estimated songs / month", values: ["~400", "~1,500", "~4,000"] },
-  { label: "Estimated music time", values: ["~20 h", "~75 h", "~200 h"] },
+  { label: "Monthly credits", values: ["1,600", "4,000", "9,600"] },
+  { label: "Song downloads / month", values: ["30", "60", "90"] },
+  { label: "Estimated songs / month", values: ["~100", "~250", "~600"] },
+  { label: "Estimated music time", values: ["~200 min", "~500 min", "~1,200 min"] },
   { label: "Generation model", values: ["AI Music M1 / M2", "AI Music M2 / M3", "AI Music M3"] },
   { label: "Music video model", values: ["Google Flow", "Google Flow", "Google Flow"] },
-  { label: "Max song duration", values: ["30 s", "30 s", "30 s"] },
+  { label: "Max song duration", values: ["Model default", "Model default", "Model default"] },
   { label: "Concurrent generations", values: ["4", "8", "16"] },
   { label: "Full-length songs", values: ["Yes", "Yes", "Yes"] },
   { label: "Stem split & effects", values: ["Yes", "Yes", "Yes"] },
@@ -495,6 +507,10 @@ export const FAQS = [
   {
     q: "What formats can I export?",
     a: "Every plan can download MP3. Creator and above add WAV and separated stems, plus music video export.",
+  },
+  {
+    q: "How do song downloads work?",
+    a: "Each paid plan includes a monthly download allowance — 30 songs on Creator, 60 on Pro and 90 on Studio — which resets with your billing period. Downloads are counted separately from generation credits, and unused downloads do not roll over.",
   },
   {
     q: "What are Spaces?",

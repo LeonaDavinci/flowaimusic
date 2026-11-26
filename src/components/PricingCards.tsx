@@ -24,6 +24,7 @@ export function PricingCards() {
                 <span>/ month</span>
               </div>
               <div className="plan-credits">{plan.credits}</div>
+              <div className="plan-downloads">{plan.downloads}</div>
               {plan.monthly > 0 && (
                 <div className="plan-specs">
                   {plan.model} · {plan.maxDuration}
