@@ -1531,6 +1531,7 @@ main {
   color: var(--violet-deep);
   display: grid;
   place-items: center;
+  text-decoration: none;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
   transition: transform 0.16s ease;
 }

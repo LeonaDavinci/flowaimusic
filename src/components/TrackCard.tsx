@@ -20,7 +20,7 @@ export function TrackCard({ track }: { track: Track }) {
           loading="lazy"
           decoding="async"
         />
-        <PlayButton trackId={track.id} title={track.title} />
+        <PlayButton trackId={track.id} title={track.title} src={track.audioUrl} />
         <span className="track-duration">{track.duration}</span>
       </div>
       <div className="track-body">

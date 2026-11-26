@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "sunday-static",
+    "style": "Lo-fi",
+    "prompt": "Warm tape hiss, lazy rhodes chords, brushed drums, no vocals, 76 BPM",
+    "instrumental": true,
+    "taskId": "task_37dfb3f27bc14726b13366e3e0532381",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_37dfb3f27bc14726b13366e3e0532381/track_cd4c0a354a39215995040e83/audio.mp3",
+    "duration": 169.2,
+    "title": "Late-Afternoon Hiss"
+  },
+  {
+    "slug": "neon-cartography",
+    "style": "Synthwave",
+    "prompt": "Driving synthwave with arpeggiated bass, city-at-night energy, 118 BPM",
+    "instrumental": true,
+    "taskId": "task_a5423940ecf240feb11c83e470bde8a6",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_a5423940ecf240feb11c83e470bde8a6/track_ac491930c9430fddb2d93a49/audio.mp3",
+    "duration": 179.6,
+    "title": "Neon Horizon Drive"
+  },
+  {
+    "slug": "paper-planes",
+    "style": "Acoustic pop",
+    "prompt": "Breezy acoustic pop, female vocal, hand claps, hopeful chorus",
+    "instrumental": false,
+    "taskId": "task_1d7c7a5d90b844a9888379fa93654785",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_1d7c7a5d90b844a9888379fa93654785/track_bba226382e0d67980e3e87e7/audio.mp3",
+    "duration": 194,
+    "title": "Here Comes a Better Day"
+  },
+  {
+    "slug": "velvet-detour",
+    "style": "R&B",
+    "prompt": "Late-night R&B, breathy male vocal, fretless bass, slow pocket",
+    "instrumental": false,
+    "taskId": "task_862cbd7c909c4df9bbadfe5bcc05f349",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_862cbd7c909c4df9bbadfe5bcc05f349/track_45afbd05b6d9789e7d0b0d8c/audio.mp3",
+    "duration": 267.6,
+    "title": "Save You A Little Room"
+  },
+  {
+    "slug": "glasshouse",
+    "style": "Cinematic",
+    "prompt": "Minimal piano to swelling strings, documentary trailer arc, instrumental",
+    "instrumental": true,
+    "taskId": "task_c6631c2c85d14781aaa08540eda766db",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_c6631c2c85d14781aaa08540eda766db/track_49ea6e5079f76ab2c60446a3/audio.mp3",
+    "duration": 170,
+    "title": "The Weight of Silence"
+  },
+  {
+    "slug": "marmalade-sky",
+    "style": "Boom bap",
+    "prompt": "Dusty boom-bap textures with a soft electric piano loop, 82 BPM",
+    "instrumental": true,
+    "taskId": "task_7cd9ad15ab0d4f3e83ee9728a7b3e8e6",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_7cd9ad15ab0d4f3e83ee9728a7b3e8e6/track_7f3b1406be9cac765852bf01/audio.mp3",
+    "duration": 153.4,
+    "title": "Late-Loft Session"
+  }
+]
