@@ -92,15 +92,18 @@ export function buildMusicRequest({ model, prompt, style, instrumental }: MusicG
     instrumental: instrumental === true,
     prompt: text,
   };
-  /* Duration always rides the request and is clamped to the current plan
-     ceiling (30 s on the SeeAPI free tier) so the upstream never rejects a
-     too-long track. */
-  const maxDuration = getMaxDurationSeconds();
-  const requested = Math.round(Number(extra?.durationSeconds) || maxDuration);
-  input.duration_seconds = Math.min(maxDuration, Math.max(10, requested));
   if (extra?.custom === true) {
     if (extra.title) input.title = String(extra.title).slice(0, 80);
     if (extra.lyrics) input.lyrics = String(extra.lyrics).slice(0, 5000);
+    /* duration_seconds is only accepted in custom mode — sending it in
+       normal mode makes SeeAPI reject the whole request. The free-tier
+       30 s ceiling is enforced server-side by SeeAPI itself. */
+    if (extra.durationSeconds) {
+      const d = Math.round(Number(extra.durationSeconds));
+      if (Number.isFinite(d)) {
+        input.duration_seconds = Math.min(getMaxDurationSeconds(), Math.max(10, d));
+      }
+    }
     if (extra.vocalGender && !instrumental) input.vocal_gender = extra.vocalGender;
   }
   const tags = String(style || "").trim().slice(0, 1000);
