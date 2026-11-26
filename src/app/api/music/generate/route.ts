@@ -14,6 +14,8 @@ import {
   parseMusicTask,
   submitMusicGeneration,
 } from "@/lib/seeapiMusic";
+import { getUsage, consumeGeneration, refreshAllowance, ledgerMode } from "@/lib/usage";
+import { getPlanById } from "@/lib/content";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -38,8 +40,7 @@ function freeUsedFor(request: Request, email: string): boolean {
 
 /* ---------------------------------------------------------------- rate limit
    In-memory per-account limiter (per server instance) as a second guard
-   behind the one-free-generation rule: 8 generations per rolling hour,
-   24 per day, for paid subscribers too. */
+   behind the ledger: 8 generations per rolling hour, 24 per day. */
 const RATE_HITS = new Map<string, number[]>();
 const RATE_WINDOW_MS = 60 * 60 * 1000;
 const RATE_MAX_HOURLY = 8;
@@ -66,12 +67,13 @@ function rateLimit(key: string): { ok: boolean; retryAfterSec: number } {
 }
 
 /* Submit a text-to-music generation to SeeAPI.
-   Access rules:
+   Access rules (server-side ledger in Turso):
    - Google sign-in is required for every generation.
-   - Paid plans (session.plan) generate freely within rate limits.
-   - Everyone else gets exactly one free take (up to 30 s); the next click
-     is answered with a subscribe prompt. The free-take marker is an
-     HMAC-signed, HTTP-only cookie bound to the account email. */
+   - Paid plans draw down their monthly credits per generation
+     (16-18 credits per song, per the SeeAPI model tables); the allowance
+     refills at the start of each billing month.
+   - Everyone else gets exactly one free take; the marker lives in the
+     usage_accounts table (the signed cookie is kept as a legacy fallback). */
 export async function POST(request: Request) {
   const session = sessionFromRequest(request);
   if (!session) {
@@ -82,25 +84,15 @@ export async function POST(request: Request) {
   }
 
   const paid = isPaid(session.plan);
-  if (!paid && freeUsedFor(request, session.email)) {
+  const plan = paid ? getPlanById(session.plan) : null;
+  const ledgerReady = ledgerMode() !== "missing";
+  if (!ledgerReady) {
     return NextResponse.json(
       {
-        error: "Your free generation has been used. Subscribe to a plan to keep creating.",
-        code: "FREE_USED",
-        subscribe: true,
+        error: "Usage accounting is temporarily unavailable. Please try again soon.",
+        code: "LEDGER_OFFLINE",
       },
-      { status: 402, ...NO_STORE },
-    );
-  }
-
-  const limit = rateLimit(`u:${session.email}`);
-  if (!limit.ok) {
-    return NextResponse.json(
-      {
-        error: `Generation limit reached — try again in about ${Math.ceil(limit.retryAfterSec / 60)} minutes.`,
-        code: "RATE_LIMITED",
-      },
-      { status: 429, ...NO_STORE },
+      { status: 503, ...NO_STORE },
     );
   }
 
@@ -144,6 +136,45 @@ export async function POST(request: Request) {
     );
   }
 
+  const limit = rateLimit(`u:${session.email}`);
+  if (!limit.ok) {
+    return NextResponse.json(
+      {
+        error: `Generation limit reached — try again in about ${Math.ceil(limit.retryAfterSec / 60)} minutes.`,
+        code: "RATE_LIMITED",
+      },
+      { status: 429, ...NO_STORE },
+    );
+  }
+
+  /* Ledger pre-check: fail fast before calling SeeAPI. */
+  let account = await getUsage(session.email);
+  if (paid && plan) {
+    account = await refreshAllowance(session.email, plan.id, plan.creditsValue, plan.downloadsValue);
+    if ((account?.credits ?? 0) < model.credits) {
+      return NextResponse.json(
+        {
+          error: "You are out of credits for this month. Subscribe to a higher plan or wait for your next billing cycle.",
+          code: "CREDITS_EXHAUSTED",
+          subscribe: true,
+        },
+        { status: 402, ...NO_STORE },
+      );
+    }
+  } else {
+    const cookieUsed = freeUsedFor(request, session.email);
+    if ((account && account.freeUsed) || (!account && cookieUsed)) {
+      return NextResponse.json(
+        {
+          error: "Your free generation has been used. Subscribe to a plan to keep creating.",
+          code: "FREE_USED",
+          subscribe: true,
+        },
+        { status: 402, ...NO_STORE },
+      );
+    }
+  }
+
   const payload = buildMusicRequest({
     model,
     prompt,
@@ -167,8 +198,46 @@ export async function POST(request: Request) {
         { status: 502, ...NO_STORE },
       );
     }
-    const headers: HeadersInit = { ...NO_STORE.headers };
-    const responseInit = { status: 202, headers };
+
+    /* Bookkeeping happens only after SeeAPI accepted the task, so a failed
+       submission never burns credits or the free take. */
+    const consumed = await consumeGeneration(session.email, {
+      paid,
+      cost: model.credits,
+      modelId: model.id,
+    });
+    if (!consumed.ok) {
+      if (consumed.reason === "free_used") {
+        return NextResponse.json(
+          {
+            error: "Your free generation has been used. Subscribe to a plan to keep creating.",
+            code: "FREE_USED",
+            subscribe: true,
+          },
+          { status: 402, ...NO_STORE },
+        );
+      }
+      /* Concurrent requests raced past the pre-check and drained the balance. */
+      return NextResponse.json(
+        {
+          error: "You are out of credits for this month. Subscribe to a higher plan or wait for your next billing cycle.",
+          code: "CREDITS_EXHAUSTED",
+          subscribe: true,
+        },
+        { status: 402, ...NO_STORE },
+      );
+    }
+
+    const headers: Record<string, string> = { ...NO_STORE.headers };
+    if (!paid) {
+      /* Keep the signed free-take cookie in sync (legacy clients). */
+      headers["Set-Cookie"] = cookieString(
+        FREE_USED_COOKIE,
+        createSignedToken({ email: session.email } satisfies FreeUseMark, FREE_USED_TTL_S),
+        FREE_USED_TTL_S,
+      );
+    }
+    const remaining = paid ? consumed.account.credits : null;
     const response = NextResponse.json(
       {
         id: task.id,
@@ -176,22 +245,11 @@ export async function POST(request: Request) {
         stage: task.stage,
         model: model.id,
         modelLabel: model.label,
+        creditsRemaining: remaining,
         statusUrl: `/api/music/status?id=${encodeURIComponent(task.id)}`,
       },
-      responseInit,
+      { status: 202, headers },
     );
-    /* Mark the free take as consumed for non-paid accounts once SeeAPI has
-       accepted the task (a failed task does not burn the free take). */
-    if (!paid) {
-      response.headers.append(
-        "Set-Cookie",
-        cookieString(
-          FREE_USED_COOKIE,
-          createSignedToken({ email: session.email } satisfies FreeUseMark, FREE_USED_TTL_S),
-          FREE_USED_TTL_S,
-        ),
-      );
-    }
     return response;
   } catch (e) {
     return NextResponse.json(

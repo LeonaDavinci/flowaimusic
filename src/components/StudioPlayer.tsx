@@ -8,6 +8,7 @@ type Props = {
   title: string;
   durationLabel: string;
   downloadName: string;
+  downloadHref?: string;
 };
 
 function formatTime(seconds: number): string {
@@ -17,7 +18,7 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export function StudioPlayer({ src, title, durationLabel, downloadName }: Props) {
+export function StudioPlayer({ src, title, durationLabel, downloadName, downloadHref }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -76,13 +77,13 @@ export function StudioPlayer({ src, title, durationLabel, downloadName }: Props)
       </div>
       <a
         className="studio-download-btn"
-        href={src}
-        download={downloadName}
-        aria-label={`Download ${title} as WAV`}
+        href={downloadHref || src}
+        download={downloadHref ? undefined : downloadName}
+        aria-label={`Download ${title}`}
         data-track="studio_download"
       >
         <Icon name="download" size={16} />
-        <span>WAV</span>
+        <span>{downloadName.endsWith(".mp3") ? "MP3" : "WAV"}</span>
       </a>
     </div>
   );
