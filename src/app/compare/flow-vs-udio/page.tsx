@@ -28,7 +28,7 @@ const data: CompareData = {
   columns: ["Flow Creator", "Udio Standard", "Udio Pro"],
   rows: [
     { label: "Monthly price (USD)", values: ["$9", "$10 ($8/mo billed yearly)", "$30 ($24/mo billed yearly)"] },
-    { label: "Monthly credits", values: ["1,600", "2,400", "6,000"] },
+    { label: "Monthly credits", values: ["2,400", "2,400", "6,000"] },
     { label: "Approx. songs / month", values: ["~100", "Not stated as a song count", "Not stated as a song count"] },
     { label: "Song downloads / month", values: ["60", "Not stated on pricing page", "Not stated on pricing page"] },
     { label: "Commercial use", values: ["Included on paid plans", "Not stated on the pricing page excerpt", "Not stated on the pricing page excerpt"] },
@@ -39,12 +39,12 @@ const data: CompareData = {
     { label: "Music video", values: ["Planned, not available", "Not listed on pricing page", "Not listed on pricing page"] },
   ],
   note:
-    "Udio's free tier limits full-length generations to 2:10 per song; its credit units are not comparable to Flow AI Music's, where roughly 16 credits produce one full song. Figures were read on 26 November 2026 and can change without notice.",
+    "Udio's free tier limits full-length generations to 2:10 per song; its credit units are not comparable to Flow AI Music's, where one full song costs 24–35 credits depending on the model. Figures were read on 26 November 2026 and can change without notice.",
   sections: [
     {
       heading: "Price, credits and limits",
       paragraphs: [
-        "Flow Creator is $9 per month with 1,600 credits and about 100 full songs; Udio Standard is $10 per month, or $8 per month on annual billing, with 2,400 credits per month. Udio Pro is $30 per month, or $24 annually, with 6,000 credits.",
+        "Flow Creator is $9 per month with 2,400 credits and about 100 full songs at the lowest-cost model; Udio Standard is $10 per month, or $8 per month on annual billing, with 2,400 credits per month. Udio Pro is $30 per month, or $24 annually, with 6,000 credits.",
         "Udio's pricing page states a free allowance of 10 credits per day and 100 per month, with up to three full-length 2:10 songs per day. Flow requires a Google sign-in and offers one free full song per account. Credit numbers are not directly comparable between the two systems, so focus on output and limits that matter to you.",
       ],
     },

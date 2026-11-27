@@ -81,7 +81,7 @@ const data: UseCaseData = {
     "Keep a copy of the approved intro, outro and bed in your own library so every episode uses the same audio rather than a fresh take that drifts in style.",
   ],
   downloadPoints: [
-    "One generation uses roughly 16–18 credits depending on the model.",
+    "One generation uses 24–35 credits depending on the model (M1 24, M2 29, M3 35).",
     "Monthly credits and downloads reset each billing period and do not roll over.",
     "A free account gets one song to test your show's theme before subscribing.",
     "Music video generation is a planned feature and is not available yet.",

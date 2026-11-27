@@ -70,7 +70,7 @@ function rateLimit(key: string): { ok: boolean; retryAfterSec: number } {
    Access rules (server-side ledger in Turso):
    - Google sign-in is required for every generation.
    - Paid plans draw down their monthly credits per generation
-     (16-18 credits per song, per the SeeAPI model tables); the allowance
+     (24-35 credits per song, by model: M1 24, M2 29, M3 35); the allowance
      refills at the start of each billing month.
    - Everyone else gets exactly one free take; the marker lives in the
      usage_accounts table (the signed cookie is kept as a legacy fallback). */

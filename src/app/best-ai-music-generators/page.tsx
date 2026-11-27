@@ -34,7 +34,7 @@ const data: CompareData = {
   rows: [
     { label: "Entry paid tier", values: ["Creator $9/mo", "Pro $10/mo ($8 yearly)", "Standard $10/mo ($8 yearly)"] },
     { label: "Top tier listed here", values: ["Studio $28/mo", "Premier $30/mo ($24 yearly)", "Pro $30/mo ($24 yearly)"] },
-    { label: "Monthly credits at entry tier", values: ["1,600 (~100 songs)", "2,500", "2,400"] },
+    { label: "Monthly credits at entry tier", values: ["2,400 (~100 songs)", "2,500", "2,400"] },
     { label: "Downloads at entry tier", values: ["60/mo", "20/mo", "Not stated on pricing page"] },
     { label: "Free option", values: ["1 free song per account", "50 credits/day, no downloads", "10 credits/day, 3 full songs/day"] },
     { label: "Commercial use on paid plans", values: ["Yes", "Yes", "Check current terms"] },
@@ -59,7 +59,7 @@ const data: CompareData = {
     {
       heading: "Credits are not comparable across tools",
       paragraphs: [
-        "Almost every generator publishes a credit number, but the unit differs. Flow AI Music states that roughly 16 credits produce one full song; Suno and Udio publish credit totals without the same fixed song conversion on their pricing pages.",
+        "Almost every generator publishes a credit number, but the unit differs. Flow AI Music states that one full song costs 24–35 credits depending on the model; Suno and Udio publish credit totals without the same fixed song conversion on their pricing pages.",
         "Treat the credit number as internal accounting for each tool. The comparable figures are songs produced per month, downloads allowed per month, and the effective monthly price — and even songs per month is an estimate when a provider does not publish it.",
       ],
     },

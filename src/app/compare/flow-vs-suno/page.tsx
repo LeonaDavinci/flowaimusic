@@ -28,7 +28,7 @@ const data: CompareData = {
   columns: ["Flow Creator", "Suno Pro", "Suno Premier"],
   rows: [
     { label: "Monthly price (USD)", values: ["$9", "$10 ($8/mo billed yearly)", "$30 ($24/mo billed yearly)"] },
-    { label: "Monthly credits", values: ["1,600", "2,500", "10,000"] },
+    { label: "Monthly credits", values: ["2,400", "2,500", "10,000"] },
     { label: "Approx. songs / month", values: ["~100", "Not stated as a song count", "Not stated as a song count"] },
     { label: "Song downloads / month", values: ["60", "20", "60"] },
     { label: "Commercial use", values: ["Included on paid plans", "Included", "Included"] },
@@ -38,13 +38,13 @@ const data: CompareData = {
     { label: "Music video", values: ["Planned, not available", "Visual credits on Platinum tier only", "Not on this tier"] },
   ],
   note:
-    "Credit units are not the same across tools: Flow AI Music charges roughly 16 credits for a full song, while Suno lists credits without a fixed song conversion, so the credit numbers are not a like-for-like measure of output. Prices are monthly unless stated and were read on 26 November 2026.",
+    "Credit units are not the same across tools: Flow AI Music charges 24–35 credits for a full song depending on the model, while Suno lists credits without a fixed song conversion, so the credit numbers are not a like-for-like measure of output. Prices are monthly unless stated and were read on 26 November 2026.",
   sections: [
     {
       heading: "Price and what is included",
       paragraphs: [
         "At the entry level the two tools are close in price: Flow AI Music Creator is $9 per month and Suno Pro is $10 per month, or $8 per month when billed yearly. The difference shows up in what the price includes.",
-        "Flow Creator lists 1,600 credits per month, about 100 full songs, and 60 song downloads. Suno Pro lists 2,500 credits and 20 song downloads. Suno's higher Premier tier is $30 per month ($24 yearly) with 10,000 credits and 60 downloads, and adds its Suno Studio workspace.",
+        "Flow Creator lists 2,400 credits per month, about 100 full songs at the lowest-cost model, and 60 song downloads. Suno Pro lists 2,500 credits and 20 song downloads. Suno's higher Premier tier is $30 per month ($24 yearly) with 10,000 credits and 60 downloads, and adds its Suno Studio workspace.",
       ],
       bullets: [
         "If downloads matter for your workflow, compare the download column rather than the credit column.",
@@ -55,7 +55,7 @@ const data: CompareData = {
     {
       heading: "Credits are not a common currency",
       paragraphs: [
-        "A credit in one tool is not a credit in another. Flow AI Music publishes a conversion — roughly 16 credits for one full song, depending on the model — so its 1,600 credits map to about 100 songs. Suno publishes credit totals and daily or monthly allowances but does not state a fixed songs-per-credit conversion on the pricing page.",
+        "A credit in one tool is not a credit in another. Flow AI Music publishes a conversion — 24–35 credits for one full song, depending on the model — so its 2,400 credits map to about 100 songs at the lowest-cost model. Suno publishes credit totals and daily or monthly allowances but does not state a fixed songs-per-credit conversion on the pricing page.",
         "That means the headline credit numbers should not be compared directly. A more useful comparison is the number of songs and downloads you actually get at a given monthly price, and how much of your allowance you typically use.",
       ],
     },

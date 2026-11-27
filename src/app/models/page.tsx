@@ -16,21 +16,21 @@ const MUSIC_MODELS = [
   {
     model: "AI Music M1",
     endpoint: "music-generation",
-    price: "16 credits per generation",
+    price: "24 credits per generation",
     detail:
       "Fastest text-to-music route — vocal songs or instrumental tracks from a text brief, with cover art and full-length audio (MP3).",
   },
   {
     model: "AI Music M2",
     endpoint: "music-generation",
-    price: "17 credits per generation",
+    price: "29 credits per generation",
     detail:
       "Balanced quality and speed for everyday songwriting, with the same inputs and outputs as the other AI Music models.",
   },
   {
     model: "AI Music M3",
     endpoint: "music-generation",
-    price: "18 credits per generation",
+    price: "35 credits per generation",
     detail:
       "Highest fidelity music generation — richer arrangement and vocals for finished tracks.",
   },

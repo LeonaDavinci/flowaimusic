@@ -440,8 +440,8 @@ export type Plan = {
 };
 
 /**
- * Plan entitlements. SeeAPI charges about 16 credits per generation (M1) and
- * a full song runs about 2 minutes, so 1,600 credits ~= 100 songs ~= 200 minutes
+ * Plan entitlements. A generation costs 24-35 credits by model (M1 24, M2 29,
+ * M3 35) and a full song runs about 2 minutes, so 2,400 credits ~= 100 songs ~= 200 minutes
  * of music. Download allowances are 50% above comparable Suno tiers
  * (monthly download allowance doubled: 60 / 120 / 180).
  * `model` is the generation tier attached to the entitlement.
@@ -451,8 +451,8 @@ export const PLANS: Plan[] = [
     id: "creator",
     name: "Creator",
     monthly: 9,
-    credits: "1,600 credits / mo (~100 songs)",
-    creditsValue: 1600,
+    credits: "2,400 credits / mo (~100 songs)",
+    creditsValue: 2400,
     songs: "~100 full songs / month",
     downloads: "60 song downloads / mo",
     downloadsValue: 60,
@@ -462,7 +462,7 @@ export const PLANS: Plan[] = [
     concurrency: "4 generations at a time",
     blurb: "For music creators and everyday makers.",
     features: [
-      "1,600 monthly credits (~100 songs)",
+      "2,400 monthly credits (~100 songs)",
       "60 song downloads per month",
       "≈ 200 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
@@ -477,8 +477,8 @@ export const PLANS: Plan[] = [
     id: "pro",
     name: "Pro",
     monthly: 18,
-    credits: "4,000 credits / mo (~250 songs)",
-    creditsValue: 4000,
+    credits: "6,000 credits / mo (~250 songs)",
+    creditsValue: 6000,
     songs: "~250 full songs / month",
     downloads: "120 song downloads / mo",
     downloadsValue: 120,
@@ -488,7 +488,7 @@ export const PLANS: Plan[] = [
     concurrency: "8 generations at a time",
     blurb: "For artists shipping music on a schedule.",
     features: [
-      "4,000 monthly credits (~250 songs)",
+      "6,000 monthly credits (~250 songs)",
       "120 song downloads per month",
       "≈ 500 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
@@ -502,8 +502,8 @@ export const PLANS: Plan[] = [
     id: "studio",
     name: "Studio",
     monthly: 28,
-    credits: "9,600 credits / mo (~600 songs)",
-    creditsValue: 9600,
+    credits: "14,400 credits / mo (~600 songs)",
+    creditsValue: 14400,
     songs: "~600 full songs / month",
     downloads: "180 song downloads / mo",
     downloadsValue: 180,
@@ -513,7 +513,7 @@ export const PLANS: Plan[] = [
     concurrency: "16 generations at a time",
     blurb: "For teams and producers running sessions.",
     features: [
-      "9,600 monthly credits (~600 songs)",
+      "14,400 monthly credits (~600 songs)",
       "180 song downloads per month",
       "≈ 1,200 minutes of generated music",
       "AI Music M1/M2/M3 music generation (via SeeAPI)",
@@ -531,7 +531,7 @@ export function getPlanById(id?: string | null): Plan | undefined {
 }
 
 export const COMPARE_ROWS = [
-  { label: "Monthly credits", values: ["1,600", "4,000", "9,600"] },
+  { label: "Monthly credits", values: ["2,400", "6,000", "14,400"] },
   { label: "Song downloads / month", values: ["60", "120", "180"] },
   { label: "Estimated songs / month", values: ["~100", "~250", "~600"] },
   { label: "Estimated music time", values: ["~200 min", "~500 min", "~1,200 min"] },

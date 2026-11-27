@@ -80,7 +80,7 @@ const data: UseCaseData = {
     "Keep the prompt with the exported file. When a clip performs well, the same brief is the fastest way to make a companion video that sounds like part of the same series.",
   ],
   downloadPoints: [
-    "One generation uses roughly 16–18 credits depending on the model.",
+    "One generation uses 24–35 credits depending on the model (M1 24, M2 29, M3 35).",
     "Monthly credits and downloads reset each billing period; unused allowance does not carry over.",
     "A free account gets one song to try the workflow.",
     "Music video generation is a planned feature and is not available yet.",

@@ -81,7 +81,7 @@ const data: UseCaseData = {
     "Store the prompt next to the audio file. When a level gets a revision, regenerating from the original description is faster and more consistent than starting over.",
   ],
   downloadPoints: [
-    "One generation uses roughly 16–18 credits depending on the model.",
+    "One generation uses 24–35 credits depending on the model (M1 24, M2 29, M3 35).",
     "Monthly credits and downloads reset each billing period and do not roll over.",
     "A free account gets one song to test a cue before choosing a plan.",
     "Music video generation is a planned feature and is not available yet.",

@@ -18,25 +18,25 @@ export type MusicModelInfo = {
   blurb: string;
 };
 
-/* Pricing per published SeeAPI tables: M1 16 credits, M3 18 credits per
-   generation (covers every track returned). M2 sits between them. */
+/* Cost per generation in Flow credits (24-35, by model): M1 24, M2 29,
+   M3 35. One generation returns one full song. */
 export const MUSIC_MODELS: MusicModelInfo[] = [
   {
     id: "ai-music-m1",
     label: "AI Music M1",
-    credits: 16,
+    credits: 24,
     blurb: "Fastest text-to-music route — vocal songs or instrumental tracks.",
   },
   {
     id: "ai-music-m2",
     label: "AI Music M2",
-    credits: 17,
+    credits: 29,
     blurb: "Balanced quality and speed for everyday songwriting.",
   },
   {
     id: "ai-music-m3",
     label: "AI Music M3",
-    credits: 18,
+    credits: 35,
     blurb: "Highest fidelity music generation — richer arrangement and vocals.",
   },
 ];

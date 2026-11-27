@@ -92,8 +92,8 @@ export default function TermsPage() {
         <p>
           Monthly credits and monthly song downloads are usage allowances, not a
           stored-value balance. Each paid plan includes the credits and download
-          allowance shown on the pricing page; a song generation uses about 16&ndash;18
-          credits depending on the model, and downloads are counted per track. Allowances
+          allowance shown on the pricing page; a song generation uses 24&ndash;35
+          credits depending on the model (M1 24, M2 29, M3 35), and downloads are counted per track. Allowances
           reset at the start of each billing month, do not roll over, are not
           exchangeable for cash, and are not refunded when you cancel or when a
           subscription ends. On cancellation

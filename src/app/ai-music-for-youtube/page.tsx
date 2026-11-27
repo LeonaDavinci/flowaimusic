@@ -80,7 +80,7 @@ const data: UseCaseData = {
     "Save the prompt alongside the file. When a series needs a consistent sound, the fastest route is to reuse the wording with one small change rather than starting from scratch.",
   ],
   downloadPoints: [
-    "One generation uses roughly 16–18 credits depending on the model.",
+    "One generation uses 24–35 credits depending on the model (M1 24, M2 29, M3 35).",
     "Monthly credits and downloads reset at the start of each billing period and do not roll over.",
     "A free account gets one song to test the workflow before choosing a plan.",
     "Music video generation is a planned feature and is not available yet.",
