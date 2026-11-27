@@ -14,8 +14,8 @@ export function TrackCard({ track }: { track: Track }) {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/album-cover.png"
-          alt="flow ai music"
+          src={track.cover || "/album-cover.png"}
+          alt={`${track.title} cover art`}
           className="track-cover-image"
           loading="lazy"
           decoding="async"

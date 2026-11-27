@@ -48,6 +48,10 @@ export default async function SongPage({ params }: Params) {
     ["Genre", track.genre],
     ["Tempo", `${track.bpm} BPM`],
     ["Length", track.duration],
+    ["Generation mode", track.settings?.mode || "Text to music"],
+    ["Vocals", track.settings?.vocals || "See prompt"],
+    ["Instrumental", track.settings?.instrumental ? "Yes" : "No — with vocals"],
+    ["Variation", track.settings?.variation || "Default (first take)"],
     ["Session", track.session || "Internal test session"],
     ["Prompt length", `${track.prompt.length} characters`],
   ];
@@ -80,7 +84,7 @@ export default async function SongPage({ params }: Params) {
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/album-cover.png" alt={`${track.title} cover art`} loading="eager" />
+              <img src={track.cover || "/album-cover.png"} alt={`${track.title} cover art`} loading="eager" />
             </div>
             <div className="song-copy">
               <span className="eyebrow">Sample track · test session</span>
@@ -118,21 +122,45 @@ export default async function SongPage({ params }: Params) {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="prompt-title">
+      <section className="section" aria-labelledby="about-title">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">About this track</span>
+            <h2 className="section-title" id="about-title">
+              What it sounds like.
+            </h2>
+          </div>
+          <p className="song-description">
+            {track.description ||
+              `${track.genre} at ${track.bpm} BPM, ${track.duration} long — a sample take generated from the prompt below.`}
+          </p>
+        </div>
+      </section>
+
+      <section className="section section--tint" aria-labelledby="prompt-title">
         <div className="container song-detail-grid">
           <div>
             <h2 className="section-title" id="prompt-title">
-              The prompt
+              The exact prompt
             </h2>
             <blockquote className="song-prompt">{track.prompt}</blockquote>
             <p className="song-prompt-note">
               One sentence, the same kind of brief the studio takes. Anything you
               can describe — genre, mood, tempo, instruments, vocal type, the scene
-              it scores — carries into the arrangement.
+              it scores — carries into the arrangement. Copy it into the studio to
+              generate your own take.
             </p>
+            <Link
+              href={studioHref}
+              className="btn btn-primary song-prompt-cta"
+              data-track="cta_click"
+              data-placement="song_prompt"
+            >
+              Reuse this prompt <Icon name="play" size={15} />
+            </Link>
           </div>
           <div>
-            <h2 className="section-title">How it was made</h2>
+            <h2 className="section-title">Generation settings</h2>
             <table className="song-spec">
               <tbody>
                 {spec.map(([label, value]) => (
@@ -145,8 +173,46 @@ export default async function SongPage({ params }: Params) {
             </table>
             <p className="song-prompt-note">
               Track names, handles and counters on this site are demonstration
-              content; the prompt and settings are real and reusable.
+              content; the prompt, audio and settings are real and reusable.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="usage-title">
+        <div className="container song-detail-grid">
+          <div>
+            <span className="eyebrow">Where it fits</span>
+            <h2 className="section-title" id="usage-title">
+              Suggested uses.
+            </h2>
+            <ul className="song-usage-list">
+              {(track.usage || []).map((use) => (
+                <li key={use}>
+                  <Icon name="play" size={13} /> {use}
+                </li>
+              ))}
+            </ul>
+            <p className="song-prompt-note">
+              These are suggested placements, not a claim that the track is
+              licensed for a specific campaign. Check the licence terms before
+              commercial use.
+            </p>
+          </div>
+          <div>
+            <span className="eyebrow">Publishing</span>
+            <h2 className="section-title">Platforms.</h2>
+            <p className="song-prompt-note">
+              The generated master is a standard audio file you can download and
+              upload to the channels you already use.
+            </p>
+            <div className="song-tags song-platforms">
+              {(track.platforms || []).map((platform) => (
+                <span className="tag" key={platform}>
+                  {platform}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>

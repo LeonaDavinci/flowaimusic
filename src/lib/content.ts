@@ -142,6 +142,21 @@ export type Track = {
   duration: string;
   bpm: number;
   gradient: [string, string];
+  /** AI-generated cover art (WebP under /covers). */
+  cover?: string;
+  /** Plain-language description of the sound and mood. */
+  description?: string;
+  /** Generation settings recorded for this take. */
+  settings?: {
+    mode: string;
+    vocals: string;
+    instrumental: boolean;
+    variation: string;
+  };
+  /** Suggested placements / use cases for the track. */
+  usage?: string[];
+  /** Where a listener could publish or embed the track. */
+  platforms?: string[];
   /** Absolute URL of a real generated master, once one exists. */
   audioUrl?: string | null;
   /** Model that produced the take, when it came from SeeAPI. */
@@ -162,6 +177,16 @@ export const TRACKS: Track[] = [
     duration: "2:49",
     bpm: 76,
     gradient: ["#ffd36e", "#ff7a59"],
+    cover: "/covers/sunday-static.webp",
+    description: "Slow, warm and unhurried. Tape hiss and lazy Rhodes chords drift over brushed drums — the kind of background bed that makes a quiet afternoon feel cinematic.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "None — instrumental",
+      instrumental: true,
+      variation: "Default (first take)",
+    },
+    usage: ["Study and focus playlists", "Coffee-shop and café ambience", "Calm video intros", "Podcast under-beds"],
+    platforms: ["YouTube", "Spotify", "Apple Music", "Instagram Reels"],
     audioUrl: "https://assets.seeapi.com/music/task_37dfb3f27bc14726b13366e3e0532381/track_cd4c0a354a39215995040e83/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -177,6 +202,16 @@ export const TRACKS: Track[] = [
     duration: "3:00",
     bpm: 118,
     gradient: ["#7b5cff", "#00c2ff"],
+    cover: "/covers/neon-cartography.webp",
+    description: "Driving synthwave built on an arpeggiated bassline and a glowing night-city atmosphere. Wide, energetic and made for motion — like headlights on a wet street.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "None — instrumental",
+      instrumental: true,
+      variation: "Default (first take)",
+    },
+    usage: ["Gaming streams and trailers", "Tech product videos", "Night-drive edits", "Sports highlight reels"],
+    platforms: ["YouTube", "Twitch", "TikTok", "Instagram Reels"],
     audioUrl: "https://assets.seeapi.com/music/task_a5423940ecf240feb11c83e470bde8a6/track_ac491930c9430fddb2d93a49/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -192,6 +227,16 @@ export const TRACKS: Track[] = [
     duration: "3:14",
     bpm: 104,
     gradient: ["#ff9ec4", "#ffc44d"],
+    cover: "/covers/paper-planes.webp",
+    description: "Breezy acoustic pop with a clear female vocal, hand claps and an open, hopeful chorus. Light enough for a montage, memorable enough to carry a hook.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "Female lead",
+      instrumental: false,
+      variation: "Default (first take)",
+    },
+    usage: ["Travel vlogs", "Wedding and lifestyle edits", "Brand films", "Feel-good social clips"],
+    platforms: ["YouTube", "TikTok", "Instagram", "Spotify"],
     audioUrl: "https://assets.seeapi.com/music/task_1d7c7a5d90b844a9888379fa93654785/track_bba226382e0d67980e3e87e7/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -207,6 +252,16 @@ export const TRACKS: Track[] = [
     duration: "4:28",
     bpm: 84,
     gradient: ["#8f6bff", "#ff6f91"],
+    cover: "/covers/velvet-detour.webp",
+    description: "Late-night R&B with a breathy male vocal, fretless bass and a slow pocket. Intimate and low-lit — a track that sits close to the listener.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "Male lead",
+      instrumental: false,
+      variation: "Default (first take)",
+    },
+    usage: ["Late-night radio", "Fashion films", "Slow social edits", "Podcast outro beds"],
+    platforms: ["Spotify", "Apple Music", "YouTube", "SoundCloud"],
     audioUrl: "https://assets.seeapi.com/music/task_862cbd7c909c4df9bbadfe5bcc05f349/track_45afbd05b6d9789e7d0b0d8c/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -222,6 +277,16 @@ export const TRACKS: Track[] = [
     duration: "2:50",
     bpm: 68,
     gradient: ["#4bc0c8", "#3b5bdb"],
+    cover: "/covers/glasshouse.webp",
+    description: "A minimal piano figure opens into swelling strings — a patient, documentary-style build that resolves without ever feeling forced. Instrumental throughout.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "None — instrumental",
+      instrumental: true,
+      variation: "Default (first take)",
+    },
+    usage: ["Documentary trailers", "Nonprofit and cause videos", "Cinematic title cards", "Presentation background"],
+    platforms: ["YouTube", "Vimeo", "Film festivals", "Spotify"],
     audioUrl: "https://assets.seeapi.com/music/task_c6631c2c85d14781aaa08540eda766db/track_49ea6e5079f76ab2c60446a3/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -237,6 +302,16 @@ export const TRACKS: Track[] = [
     duration: "4:05",
     bpm: 112,
     gradient: ["#ffb347", "#ff5f6d"],
+    cover: "/covers/backseat-chorus.webp",
+    description: "A group-vocal hook over jangly guitars and a summer-drive groove, ending in a full singalong. Bright, social and built for shared moments.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "Group / ensemble",
+      instrumental: false,
+      variation: "Default (first take)",
+    },
+    usage: ["Summer campaign videos", "Travel compilations", "Sports and team edits", "Party playlists"],
+    platforms: ["YouTube", "TikTok", "Spotify", "Instagram Reels"],
     audioUrl: "https://assets.seeapi.com/music/task_fbe8091a8f4644a0b50a1c671fa6f153/track_5eaed03a0e0fb4b1a1c68fba/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -252,6 +327,16 @@ export const TRACKS: Track[] = [
     duration: "2:33",
     bpm: 82,
     gradient: ["#ffd97d", "#a0e57c"],
+    cover: "/covers/marmalade-sky.webp",
+    description: "Dusty boom-bap textures loop under a soft electric piano — hazy, mellow and unhurried, with the warm grain of an old afternoon recording.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "None — instrumental",
+      instrumental: true,
+      variation: "Default (first take)",
+    },
+    usage: ["Lo-fi study streams", "Background for live broadcasts", "Chill playlists", "Podcast beds"],
+    platforms: ["YouTube", "Spotify", "SoundCloud", "Twitch"],
     audioUrl: "https://assets.seeapi.com/music/task_7cd9ad15ab0d4f3e83ee9728a7b3e8e6/track_7f3b1406be9cac765852bf01/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -267,6 +352,16 @@ export const TRACKS: Track[] = [
     duration: "3:11",
     bpm: 132,
     gradient: ["#00d4ff", "#6a3cff"],
+    cover: "/covers/signal-fires.webp",
+    description: "Glitchy breakbeat energy with chopped vocal textures and a bright supersaw drop. Restless and high-impact — designed for quick cuts and big reveals.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "Chopped / sampled textures",
+      instrumental: false,
+      variation: "Default (first take)",
+    },
+    usage: ["Esports and gaming edits", "Product launch trailers", "Dance and movement videos", "Ad stingers"],
+    platforms: ["YouTube", "TikTok", "Twitch", "Instagram Reels"],
     audioUrl: "https://assets.seeapi.com/music/task_c5d12297e5074fe4ae70f3100072dbf9/track_6cf035592c2fb0f6c87bd3ab/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -282,6 +377,16 @@ export const TRACKS: Track[] = [
     duration: "2:59",
     bpm: 72,
     gradient: ["#b06cff", "#ff8fa3"],
+    cover: "/covers/slow-motion-apology.webp",
+    description: "An intimate alt-R&B piece: close-mic female vocal, deep sub bass and sparse clicks. The space between the sounds carries as much feeling as the notes.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "Female lead",
+      instrumental: false,
+      variation: "Default (first take)",
+    },
+    usage: ["Emotional film scenes", "Slow portrait edits", "Late-night playlists", "Podcast reflections"],
+    platforms: ["Spotify", "Apple Music", "YouTube", "SoundCloud"],
     audioUrl: "https://assets.seeapi.com/music/task_3ff0b79252804d988148b6a9050d5878/track_285b0b153fb04ba5ba443459/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -297,6 +402,16 @@ export const TRACKS: Track[] = [
     duration: "2:28",
     bpm: 90,
     gradient: ["#ff8a3d", "#ffd84d"],
+    cover: "/covers/cardboard-kingdom.webp",
+    description: "Playful boom-bap with a toy-piano sample and laid-back, confident verses. Quirky without being noisy — a soundtrack for making something out of nothing.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "Rap / spoken",
+      instrumental: false,
+      variation: "Default (first take)",
+    },
+    usage: ["Explainer and how-to videos", "DIY and craft content", "Comedy sketches", "Streetwear edits"],
+    platforms: ["YouTube", "TikTok", "Instagram", "SoundCloud"],
     audioUrl: "https://assets.seeapi.com/music/task_f0e40246ab074623b0414c0839655be5/track_55fd31e4736f3188ecb40340/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -312,6 +427,16 @@ export const TRACKS: Track[] = [
     duration: "3:04",
     bpm: 96,
     gradient: ["#5b8cff", "#22d3a6"],
+    cover: "/covers/atlas-unfolding.webp",
+    description: "A slow orchestral build punctuated by taiko hits, resolving into a clear piano motif. Epic but patient — made for reveals, journeys and scale.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "None — instrumental",
+      instrumental: true,
+      variation: "Default (first take)",
+    },
+    usage: ["Movie and game trailers", "Travel documentaries", "Keynote openings", "Award-show background"],
+    platforms: ["YouTube", "Vimeo", "Film festivals", "Spotify"],
     audioUrl: "https://assets.seeapi.com/music/task_91c9b04268fe40a280322ef0eec4cb4a/track_1a3aed10bd7e5f92d4cd3182/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",
@@ -327,6 +452,16 @@ export const TRACKS: Track[] = [
     duration: "3:02",
     bpm: 102,
     gradient: ["#ffcf3f", "#ff6b45"],
+    cover: "/covers/two-left-feet.webp",
+    description: "Bouncy dancehall-flavoured hip-hop with hand percussion and a cheeky hook. Rhythmic, playful and impossible to sit still to.",
+    settings: {
+      mode: "Text to music (SeeAPI Music M2)",
+      vocals: "Rap / vocal hook",
+      instrumental: false,
+      variation: "Default (first take)",
+    },
+    usage: ["Dance challenge videos", "Fitness and workout edits", "Comedy content", "Party and festival reels"],
+    platforms: ["TikTok", "Instagram Reels", "YouTube", "Spotify"],
     audioUrl: "https://assets.seeapi.com/music/task_4eb42ab93f1a4fefa97932bdc36726e1/track_424d64746deb1e4ec1bfc77a/audio.mp3",
     model: "AI Music M2 (SeeAPI)",
     session: "Internal test session · 2026-11",

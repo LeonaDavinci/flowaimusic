@@ -34,7 +34,12 @@ export function Spotlight({ limit = 6 }: { limit?: number }) {
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/album-cover.png" alt="" loading="lazy" decoding="async" />
+                <img
+                  src={track.cover || "/album-cover.png"}
+                  alt={`${track.title} cover art`}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span className="spotlight-duration">{track.duration}</span>
                 <span className="spotlight-play" aria-hidden="true">
                   <Icon name="play" size={14} />
