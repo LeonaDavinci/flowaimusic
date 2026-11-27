@@ -146,6 +146,14 @@ export type Track = {
   cover?: string;
   /** Plain-language description of the sound and mood. */
   description?: string;
+  /** Shareable style keyword, e.g. "Analog lo-fi / downtempo". */
+  style?: string;
+  /** Mood tags shown as a copyable chip group. */
+  mood?: string[];
+  /** Key instruments and textures named in the prompt. */
+  instruments?: string[];
+  /** Line-by-line reading of what each part of the prompt does. */
+  promptBreakdown?: { element: string; effect: string }[];
   /** Generation settings recorded for this take. */
   settings?: {
     mode: string;
@@ -177,6 +185,16 @@ export const TRACKS: Track[] = [
     duration: "2:49",
     bpm: 76,
     gradient: ["#ffd36e", "#ff7a59"],
+    style: "Analog lo-fi / downtempo",
+    mood: ["Warm", "Lazy", "Unhurried", "Nostalgic"],
+    instruments: ["Rhodes electric piano", "Brushed drums", "Tape hiss"],
+    promptBreakdown: [
+      { element: "Warm tape hiss", effect: "Adds analog grain and a lived-in, recorded-on-tape texture." },
+      { element: "lazy rhodes chords", effect: "Sets the slow, jazzy harmonic bed at the centre of the track." },
+      { element: "brushed drums", effect: "Keeps the groove soft and shuffling instead of hard-hitting." },
+      { element: "no vocals", effect: "Leaves the whole track open for voiceover, lyrics or ambience." },
+      { element: "76 BPM", effect: "A slow tempo — relaxed enough for study or background listening." }
+    ],
     cover: "/covers/sunday-static.webp",
     description: "Slow, warm and unhurried. Tape hiss and lazy Rhodes chords drift over brushed drums — the kind of background bed that makes a quiet afternoon feel cinematic.",
     settings: {
@@ -202,6 +220,15 @@ export const TRACKS: Track[] = [
     duration: "3:00",
     bpm: 118,
     gradient: ["#7b5cff", "#00c2ff"],
+    style: "Synthwave / retrowave",
+    mood: ["Driving", "Energetic", "Neon", "Night-time"],
+    instruments: ["Arpeggiated bass", "Analog synth leads", "Drum machine"],
+    promptBreakdown: [
+      { element: "Driving synthwave", effect: "Anchors the track in the neon 80s electronic palette." },
+      { element: "arpeggiated bass", effect: "The repeating bass figure gives the track its forward motion." },
+      { element: "city-at-night energy", effect: "Guides the arrangement toward a wide, cinematic nighttime feel." },
+      { element: "118 BPM", effect: "An upbeat dance tempo that keeps the energy high without rushing." }
+    ],
     cover: "/covers/neon-cartography.webp",
     description: "Driving synthwave built on an arpeggiated bassline and a glowing night-city atmosphere. Wide, energetic and made for motion — like headlights on a wet street.",
     settings: {
@@ -227,6 +254,15 @@ export const TRACKS: Track[] = [
     duration: "3:14",
     bpm: 104,
     gradient: ["#ff9ec4", "#ffc44d"],
+    style: "Acoustic indie pop",
+    mood: ["Breezy", "Hopeful", "Warm", "Uplifting"],
+    instruments: ["Acoustic guitar", "Hand claps", "Female vocal"],
+    promptBreakdown: [
+      { element: "Breezy acoustic pop", effect: "Sets a light, organic, radio-friendly tone." },
+      { element: "female vocal", effect: "Puts a clear human voice at the front of the arrangement." },
+      { element: "hand claps", effect: "Adds a tactile, communal pulse under the chorus." },
+      { element: "hopeful chorus", effect: "Shapes the emotional peak — the part that lifts and resolves." }
+    ],
     cover: "/covers/paper-planes.webp",
     description: "Breezy acoustic pop with a clear female vocal, hand claps and an open, hopeful chorus. Light enough for a montage, memorable enough to carry a hook.",
     settings: {
@@ -252,6 +288,15 @@ export const TRACKS: Track[] = [
     duration: "4:28",
     bpm: 84,
     gradient: ["#8f6bff", "#ff6f91"],
+    style: "Late-night R&B / slow jam",
+    mood: ["Intimate", "Smoky", "Slow", "Sensual"],
+    instruments: ["Fretless bass", "Male vocal", "Soft drum kit"],
+    promptBreakdown: [
+      { element: "Late-night R&B", effect: "Sets a low-lit, after-hours mood." },
+      { element: "breathy male vocal", effect: "Asks for a close, soft lead vocal rather than a powerful belt." },
+      { element: "fretless bass", effect: "The smooth, sliding bassline carries most of the groove." },
+      { element: "slow pocket", effect: "A relaxed, behind-the-beat feel that makes the track unhurried." }
+    ],
     cover: "/covers/velvet-detour.webp",
     description: "Late-night R&B with a breathy male vocal, fretless bass and a slow pocket. Intimate and low-lit — a track that sits close to the listener.",
     settings: {
@@ -277,6 +322,15 @@ export const TRACKS: Track[] = [
     duration: "2:50",
     bpm: 68,
     gradient: ["#4bc0c8", "#3b5bdb"],
+    style: "Minimal cinematic / documentary",
+    mood: ["Patient", "Expansive", "Hopeful", "Sparse"],
+    instruments: ["Piano", "String section", "Ambient textures"],
+    promptBreakdown: [
+      { element: "Minimal piano", effect: "Starts the piece with a single, exposed instrument." },
+      { element: "swelling strings", effect: "Builds the arrangement gradually toward an emotional peak." },
+      { element: "documentary trailer arc", effect: "Shapes the structure as a slow build and release." },
+      { element: "instrumental", effect: "Keeps the piece usable under narration or visuals." }
+    ],
     cover: "/covers/glasshouse.webp",
     description: "A minimal piano figure opens into swelling strings — a patient, documentary-style build that resolves without ever feeling forced. Instrumental throughout.",
     settings: {
@@ -302,6 +356,15 @@ export const TRACKS: Track[] = [
     duration: "4:05",
     bpm: 112,
     gradient: ["#ffb347", "#ff5f6d"],
+    style: "Summer indie pop / singalong",
+    mood: ["Bright", "Carefree", "Social", "Nostalgic"],
+    instruments: ["Jangly guitars", "Group vocals", "Hand percussion"],
+    promptBreakdown: [
+      { element: "Group-vocal hook", effect: "A stacked, shared chorus rather than a single lead singer." },
+      { element: "jangly guitars", effect: "Bright, ringing guitar tones that define the summer feel." },
+      { element: "summer drive", effect: "Sets the scene — open windows, warm light, forward motion." },
+      { element: "singalong ending", effect: "Builds to a final chorus designed to be shouted back." }
+    ],
     cover: "/covers/backseat-chorus.webp",
     description: "A group-vocal hook over jangly guitars and a summer-drive groove, ending in a full singalong. Bright, social and built for shared moments.",
     settings: {
@@ -327,6 +390,14 @@ export const TRACKS: Track[] = [
     duration: "2:33",
     bpm: 82,
     gradient: ["#ffd97d", "#a0e57c"],
+    style: "Lo-fi boom-bap",
+    mood: ["Dusty", "Mellow", "Hazy", "Warm"],
+    instruments: ["Electric piano", "Boom-bap drums", "Vinyl texture"],
+    promptBreakdown: [
+      { element: "Dusty boom-bap textures", effect: "A hip-hop groove with a deliberately worn, sampled quality." },
+      { element: "soft electric piano loop", effect: "The repeating chord loop is the warm centre of the track." },
+      { element: "82 BPM", effect: "A mid-slow tempo — steady enough to work under long sessions." }
+    ],
     cover: "/covers/marmalade-sky.webp",
     description: "Dusty boom-bap textures loop under a soft electric piano — hazy, mellow and unhurried, with the warm grain of an old afternoon recording.",
     settings: {
@@ -352,6 +423,15 @@ export const TRACKS: Track[] = [
     duration: "3:11",
     bpm: 132,
     gradient: ["#00d4ff", "#6a3cff"],
+    style: "Glitch electronic / big-beat",
+    mood: ["Restless", "Bright", "High-energy", "Digital"],
+    instruments: ["Breakbeat", "Supersaw synth", "Chopped vocal samples"],
+    promptBreakdown: [
+      { element: "Glitchy breakbeat", effect: "A chopped, irregular drum pattern that keeps the rhythm tense." },
+      { element: "chopped vocal textures", effect: "Uses the voice as a rhythmic texture, not a sung melody." },
+      { element: "bright supersaw drop", effect: "The big moment — a wide, layered synth chord at the release." },
+      { element: "132 BPM", effect: "Fast enough for dance floors and high-energy edits." }
+    ],
     cover: "/covers/signal-fires.webp",
     description: "Glitchy breakbeat energy with chopped vocal textures and a bright supersaw drop. Restless and high-impact — designed for quick cuts and big reveals.",
     settings: {
@@ -377,6 +457,15 @@ export const TRACKS: Track[] = [
     duration: "2:59",
     bpm: 72,
     gradient: ["#b06cff", "#ff8fa3"],
+    style: "Alt-R&B / slow ballad",
+    mood: ["Intimate", "Tender", "Melancholic", "Quiet"],
+    instruments: ["Close-mic female vocal", "Sub bass", "Sparse clicks"],
+    promptBreakdown: [
+      { element: "Intimate alt-R&B", effect: "A stripped-back, emotionally close style of R&B." },
+      { element: "close-mic female vocal", effect: "Asks for a soft, near-whispered lead delivery." },
+      { element: "sub bass", effect: "Low frequencies give the quiet track weight without clutter." },
+      { element: "sparse clicks", effect: "Tiny percussive details fill the space between the notes." }
+    ],
     cover: "/covers/slow-motion-apology.webp",
     description: "An intimate alt-R&B piece: close-mic female vocal, deep sub bass and sparse clicks. The space between the sounds carries as much feeling as the notes.",
     settings: {
@@ -402,6 +491,14 @@ export const TRACKS: Track[] = [
     duration: "2:28",
     bpm: 90,
     gradient: ["#ff8a3d", "#ffd84d"],
+    style: "Playful boom-bap hip-hop",
+    mood: ["Playful", "Confident", "Quirky", "Warm"],
+    instruments: ["Toy piano", "Boom-bap drums", "Rap vocal"],
+    promptBreakdown: [
+      { element: "Playful boom-bap", effect: "A classic hip-hop groove with a light, humorous tone." },
+      { element: "toy piano sample", effect: "The off-kilter keyboard hook gives the track its character." },
+      { element: "confident laid-back verses", effect: "A relaxed but self-assured vocal delivery." }
+    ],
     cover: "/covers/cardboard-kingdom.webp",
     description: "Playful boom-bap with a toy-piano sample and laid-back, confident verses. Quirky without being noisy — a soundtrack for making something out of nothing.",
     settings: {
@@ -427,6 +524,14 @@ export const TRACKS: Track[] = [
     duration: "3:04",
     bpm: 96,
     gradient: ["#5b8cff", "#22d3a6"],
+    style: "Orchestral cinematic",
+    mood: ["Epic", "Patient", "Grand", "Hopeful"],
+    instruments: ["Orchestra", "Taiko drums", "Solo piano"],
+    promptBreakdown: [
+      { element: "Orchestral build", effect: "Layers the ensemble gradually for a sense of scale." },
+      { element: "taiko hits", effect: "Percussive accents that punctuate the arrangement." },
+      { element: "resolving piano motif", effect: "A recurring piano phrase that brings the piece home." }
+    ],
     cover: "/covers/atlas-unfolding.webp",
     description: "A slow orchestral build punctuated by taiko hits, resolving into a clear piano motif. Epic but patient — made for reveals, journeys and scale.",
     settings: {
@@ -452,6 +557,14 @@ export const TRACKS: Track[] = [
     duration: "3:02",
     bpm: 102,
     gradient: ["#ffcf3f", "#ff6b45"],
+    style: "Dancehall-tinged hip-hop",
+    mood: ["Bouncy", "Cheeky", "Joyful", "Rhythmic"],
+    instruments: ["Hand percussion", "Vocal hook", "Bass"],
+    promptBreakdown: [
+      { element: "Bouncy dancehall-flavoured hip-hop", effect: "A reggae-tinged rhythm with a hip-hop attitude." },
+      { element: "hand percussion", effect: "Live-feeling drums that drive the bounce." },
+      { element: "cheeky hook", effect: "A short, playful vocal phrase built to stick." }
+    ],
     cover: "/covers/two-left-feet.webp",
     description: "Bouncy dancehall-flavoured hip-hop with hand percussion and a cheeky hook. Rhythmic, playful and impossible to sit still to.",
     settings: {

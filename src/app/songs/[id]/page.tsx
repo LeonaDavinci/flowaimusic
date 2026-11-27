@@ -7,6 +7,7 @@ import { TrackCard } from "@/components/TrackCard";
 import { CtaBanner } from "@/components/CtaBanner";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon } from "@/components/Icons";
+import { SongTags } from "@/components/SongTags";
 
 export const dynamic = "force-dynamic";
 
@@ -43,6 +44,22 @@ export default async function SongPage({ params }: Params) {
     .sort((a, b) => (a.genre === track.genre ? -1 : 0) - (b.genre === track.genre ? -1 : 0))
     .slice(0, 3);
   const studioHref = `/studio?brief=${encodeURIComponent(track.prompt)}`;
+  const shareTags = [
+    { label: "Genre", value: track.genre },
+    { label: "Style", value: track.style || track.genre },
+    { label: "Tempo", value: `${track.bpm} BPM` },
+    { label: "Length", value: track.duration },
+    ...(track.mood || []).slice(0, 3).map((m) => ({ label: "Mood", value: m })),
+  ];
+  const shareSummary = [
+    `${track.title} — ${track.genre} / ${track.style || track.genre}`,
+    `BPM: ${track.bpm} · Length: ${track.duration} · Vocals: ${track.settings?.vocals || "see prompt"}`,
+    `Mood: ${(track.mood || []).join(", ")}`,
+    `Instruments: ${(track.instruments || []).join(", ")}`,
+    `Prompt: ${track.prompt}`,
+    `Model: ${track.model || "AI Music M2 (SeeAPI)"}`,
+    `Source: ${SITE_URL}/songs/${track.id}`,
+  ].join("\n");
   const spec: [string, string][] = [
     ["Model", track.model || "AI Music M1 / M2 (SeeAPI)"],
     ["Genre", track.genre],
@@ -89,12 +106,8 @@ export default async function SongPage({ params }: Params) {
             <div className="song-copy">
               <span className="eyebrow">Sample track · test session</span>
               <h1>{track.title}</h1>
-              <div className="song-tags">
-                <span className="tag">{track.genre}</span>
-                <span className="tag">{track.bpm} BPM</span>
-                <span className="tag">{track.duration}</span>
-                <span className="tag">prompt by @{track.creator}</span>
-              </div>
+              <SongTags tags={shareTags} summary={shareSummary} />
+              <p className="song-credit">prompt by @{track.creator}</p>
 
               {track.audioUrl ? (
                 <audio className="song-audio" controls preload="metadata" src={track.audioUrl} />
@@ -150,6 +163,21 @@ export default async function SongPage({ params }: Params) {
               it scores — carries into the arrangement. Copy it into the studio to
               generate your own take.
             </p>
+            {track.promptBreakdown && track.promptBreakdown.length > 0 && (
+              <div className="song-breakdown">
+                <h3 className="song-subtitle">What each part does</h3>
+                <table className="song-spec">
+                  <tbody>
+                    {track.promptBreakdown.map((part) => (
+                      <tr key={part.element}>
+                        <th scope="row">{part.element}</th>
+                        <td>{part.effect}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
             <Link
               href={studioHref}
               className="btn btn-primary song-prompt-cta"
@@ -213,6 +241,66 @@ export default async function SongPage({ params }: Params) {
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="glance-title">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Share this recipe</span>
+            <h2 className="section-title" id="glance-title">
+              At a glance.
+            </h2>
+          </div>
+          <div className="song-glance">
+            <div className="song-glance-grid">
+              <div>
+                <span className="song-glance-label">Genre</span>
+                <strong>{track.genre}</strong>
+              </div>
+              <div>
+                <span className="song-glance-label">Style</span>
+                <strong>{track.style || track.genre}</strong>
+              </div>
+              <div>
+                <span className="song-glance-label">Tempo</span>
+                <strong>{track.bpm} BPM</strong>
+              </div>
+              <div>
+                <span className="song-glance-label">Length</span>
+                <strong>{track.duration}</strong>
+              </div>
+              <div>
+                <span className="song-glance-label">Vocals</span>
+                <strong>{track.settings?.vocals || "See prompt"}</strong>
+              </div>
+              <div>
+                <span className="song-glance-label">Model</span>
+                <strong>{track.model || "AI Music M2 (SeeAPI)"}</strong>
+              </div>
+            </div>
+            <div className="song-glance-tags">
+              <span className="song-glance-label">Mood</span>
+              <div className="song-tags">
+                {(track.mood || []).map((m) => (
+                  <span className="tag" key={m}>{m}</span>
+                ))}
+              </div>
+            </div>
+            <div className="song-glance-tags">
+              <span className="song-glance-label">Instruments &amp; textures</span>
+              <div className="song-tags">
+                {(track.instruments || []).map((inst) => (
+                  <span className="tag" key={inst}>{inst}</span>
+                ))}
+              </div>
+            </div>
+            <div className="song-glance-prompt">
+              <span className="song-glance-label">Prompt</span>
+              <p>{track.prompt}</p>
+            </div>
+            <SongTags tags={shareTags} summary={shareSummary} />
           </div>
         </div>
       </section>
