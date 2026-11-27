@@ -45,8 +45,14 @@ export default async function PaymentPage({ searchParams }: Params) {
           </div>
           <span className="eyebrow">{plan.name} plan</span>
           <h1>Subscribe to {plan.name}</h1>
+          {plan.promoLabel && (
+            <p className="pricing-promo-banner__tag" style={{ display: "inline-block", marginBottom: 12 }}>
+              {plan.promoLabel}
+            </p>
+          )}
           <p>
-            ${price} per month{billing === "yearly" ? ", billed yearly" : ""}. Sign in with Google,
+            ${price} per month{billing === "yearly" ? ", billed yearly" : ""}
+            {plan.compareAt ? ` (limited-time price, was $${plan.compareAt})` : ""}. Sign in with Google,
             then complete payment through our secure checkout.
           </p>
         </div>
@@ -58,6 +64,7 @@ export default async function PaymentPage({ searchParams }: Params) {
             <span className="payment-kicker">Your plan includes</span>
             <div className="plan-price">
               <b>${price}</b>
+              {plan.compareAt && <s>${plan.compareAt}</s>}
               <span>/ month</span>
             </div>
             <dl className="payment-specs">

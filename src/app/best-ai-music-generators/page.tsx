@@ -32,7 +32,7 @@ const data: CompareData = {
     "Suno suits users who want a large free tier and a full studio workspace; Udio suits hands-on editing and community discovery; Flow AI Music suits a low-cost, plain-language workflow with generous download allowances. Run the same prompt through each free option and judge the audio yourself.",
   columns: ["Flow AI Music", "Suno", "Udio"],
   rows: [
-    { label: "Entry paid tier", values: ["Creator $9/mo", "Pro $10/mo ($8 yearly)", "Standard $10/mo ($8 yearly)"] },
+    { label: "Entry paid tier", values: ["Creator $6/mo (limited time, was $9)", "Pro $10/mo ($8 yearly)", "Standard $10/mo ($8 yearly)"] },
     { label: "Top tier listed here", values: ["Studio $28/mo", "Premier $30/mo ($24 yearly)", "Pro $30/mo ($24 yearly)"] },
     { label: "Monthly credits at entry tier", values: ["2,400 (~100 songs)", "2,500", "2,400"] },
     { label: "Downloads at entry tier", values: ["60/mo", "20/mo", "Not stated on pricing page"] },
@@ -42,7 +42,7 @@ const data: CompareData = {
     { label: "Music video", values: ["Planned, not available", "Visual credits on Platinum tier", "Not listed on pricing page"] },
   ],
   note:
-    "Credit systems differ between providers and are not a like-for-like measure of output. Prices and allowances were read from each provider's public pages on 26 November 2026 and may change; check the source pages before subscribing.",
+    "Credit systems differ between providers and are not a like-for-like measure of output. Competitor prices and allowances were read from public pages on 26 November 2026 and Flow's promotional price was updated on 28 November 2026; figures may change, so check the source pages before subscribing.",
   sections: [
     {
       heading: "Start with your job, not the feature list",
@@ -68,7 +68,7 @@ const data: CompareData = {
       paragraphs: [
         "Suno is the broadest platform: a large free tier, advanced models, and a Suno Studio workspace with MIDI and effects on its higher plans. Its entry Pro tier lists 2,500 credits and 20 monthly downloads at $10 per month.",
         "Udio emphasises direct control over audio — extend, inpaint, remix, voice control, style reference — plus a large public community. Its Standard tier lists 2,400 credits at $10 per month; the pricing excerpt checked for this page did not state a download allowance or commercial terms.",
-        "Flow AI Music is the smallest of the three and is built around a describe-and-revise loop. Creator is $9 per month with about 100 songs and 60 monthly downloads; the free option is one song per signed-in account, and music video generation is planned rather than available.",
+        "Flow AI Music is the smallest of the three and is built around a describe-and-revise loop. Creator is $6 per month for a limited time (regularly $9) with about 100 songs and 60 monthly downloads; the free option is one song per signed-in account, and music video generation is planned rather than available.",
       ],
     },
     {
@@ -95,7 +95,7 @@ const data: CompareData = {
   faqs: [
     {
       q: "Which AI music generator is cheapest?",
-      a: "At the entry tier Flow Creator is $9 per month, while Suno Pro and Udio Standard are $10 per month, or $8 per month on annual billing. On annual billing the competitors can be cheaper per month, so compare effective prices.",
+      a: "At the entry tier Flow Creator is $6 per month for a limited time (regularly $9), while Suno Pro and Udio Standard are $10 per month, or $8 per month on annual billing. Flow is cheaper even against their annual rates while the promotion runs.",
     },
     {
       q: "Which generator has the best free tier?",

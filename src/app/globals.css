@@ -1849,6 +1849,65 @@ main {
   white-space: nowrap;
 }
 
+.plan-card.is-promo {
+  border-color: #f2622e;
+  background: linear-gradient(180deg, #fff8f3 0%, #ffffff 46%);
+  box-shadow: 0 22px 52px rgba(242, 98, 46, 0.24);
+}
+
+.plan-ribbon--promo {
+  top: -17px;
+  padding: 8px 18px;
+  background: linear-gradient(100deg, #ff7a18, #f2622e 55%, #e23d3d);
+  background-size: 200% 100%;
+  box-shadow: 0 6px 18px rgba(226, 61, 61, 0.38);
+  font-size: 12.5px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  animation: promo-shine 3.2s linear infinite;
+}
+
+@keyframes promo-shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pricing-promo-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 0 0 30px;
+  padding: 16px 22px;
+  border: 2px solid #f2622e;
+  border-radius: 16px;
+  background: linear-gradient(100deg, #fff2e8, #fffdf9 70%);
+  box-shadow: 0 12px 30px rgba(242, 98, 46, 0.12);
+}
+
+.pricing-promo-banner__tag {
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #ff7a18, #e23d3d);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-promo-banner strong {
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.pricing-promo-banner span:last-child {
+  font-size: 13.5px;
+  color: var(--ink-2, #4a4450);
+}
+
 .plan-name {
   margin: 0 0 8px;
   font-size: 19px;
@@ -1878,6 +1937,20 @@ main {
 .plan-price span {
   font-size: 13.5px;
   color: var(--ink-3);
+}
+
+.plan-price s {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink-3, #8c8598);
+  letter-spacing: -0.02em;
+}
+
+.plan-promo-note {
+  margin: 0 0 10px;
+  color: #d8481f;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .plan-credits {

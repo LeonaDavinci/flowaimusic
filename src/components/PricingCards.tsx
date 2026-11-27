@@ -14,15 +14,23 @@ export function PricingCards() {
           return (
             <article
               key={plan.id}
-              className={`plan-card${plan.featured ? " is-featured" : ""}`}
+              className={`plan-card${plan.featured ? " is-featured" : ""}${plan.promoLabel ? " is-promo" : ""}`}
             >
-              {plan.featured && <span className="plan-ribbon">Most popular</span>}
+              {plan.promoLabel ? (
+                <span className="plan-ribbon plan-ribbon--promo">{plan.promoLabel}</span>
+              ) : (
+                plan.featured && <span className="plan-ribbon">Most popular</span>
+              )}
               <h2 className="plan-name">{plan.name}</h2>
               <p className="plan-blurb">{plan.blurb}</p>
               <div className="plan-price">
                 <b>${price}</b>
+                {plan.compareAt && <s>${plan.compareAt}</s>}
                 <span>/ month</span>
               </div>
+              {plan.promoLabel && (
+                <p className="plan-promo-note">Limited-time price · no code needed</p>
+              )}
               <div className="plan-credits">{plan.credits}</div>
               <div className="plan-downloads">{plan.downloads}</div>
               {plan.monthly > 0 && (

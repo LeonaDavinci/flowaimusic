@@ -46,6 +46,11 @@ export default function PricingPage() {
 
       <section className="section" style={{ paddingBottom: 0 }}>
         <div className="container">
+          <div className="pricing-promo-banner" role="status">
+            <span className="pricing-promo-banner__tag">Limited time · 30% off</span>
+            <strong>Creator is now $6/month — was $9.</strong>
+            <span>Same 2,400 credits and 60 downloads. The discount is applied automatically at checkout, no code needed.</span>
+          </div>
           <PricingCards />
           <p style={{ textAlign: "center", margin: "-56px 0 0", fontSize: 13.5, color: "var(--ink-3)" }}>
             All prices in USD, billed monthly. Cancel any time.

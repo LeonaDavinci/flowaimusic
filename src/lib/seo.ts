@@ -65,7 +65,7 @@ export function softwareApplicationSchema() {
       {
         "@type": "Offer",
         name: "Creator",
-        price: "9",
+        price: "6",
         priceCurrency: "USD",
       },
     ],

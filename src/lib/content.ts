@@ -673,6 +673,9 @@ export type Plan = {
   id: string;
   name: string;
   monthly: number;
+  /** Pre-discount monthly price, shown struck through while a promo runs. */
+  compareAt?: number;
+  promoLabel?: string;
   credits: string;
   creditsValue: number;
   songs: string;
@@ -698,7 +701,9 @@ export const PLANS: Plan[] = [
   {
     id: "creator",
     name: "Creator",
-    monthly: 9,
+    monthly: 6,
+    compareAt: 9,
+    promoLabel: "LIMITED TIME · 30% OFF",
     credits: "2,400 credits / mo (~100 songs)",
     creditsValue: 2400,
     songs: "~100 full songs / month",

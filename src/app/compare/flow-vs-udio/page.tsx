@@ -27,7 +27,7 @@ const data: CompareData = {
     "Udio offers a free daily quota, a large public community and editing features such as extend, inpaint and remix on paid tiers. Flow AI Music is cheaper at the entry level, states an explicit song download allowance, and works through a describe-and-revise loop. Neither is objectively better — match the workflow to how you make music.",
   columns: ["Flow Creator", "Udio Standard", "Udio Pro"],
   rows: [
-    { label: "Monthly price (USD)", values: ["$9", "$10 ($8/mo billed yearly)", "$30 ($24/mo billed yearly)"] },
+    { label: "Monthly price (USD)", values: ["$6 (limited time, was $9)", "$10 ($8/mo billed yearly)", "$30 ($24/mo billed yearly)"] },
     { label: "Monthly credits", values: ["2,400", "2,400", "6,000"] },
     { label: "Approx. songs / month", values: ["~100", "Not stated as a song count", "Not stated as a song count"] },
     { label: "Song downloads / month", values: ["60", "Not stated on pricing page", "Not stated on pricing page"] },
@@ -39,12 +39,12 @@ const data: CompareData = {
     { label: "Music video", values: ["Planned, not available", "Not listed on pricing page", "Not listed on pricing page"] },
   ],
   note:
-    "Udio's free tier limits full-length generations to 2:10 per song; its credit units are not comparable to Flow AI Music's, where one full song costs 24–35 credits depending on the model. Figures were read on 26 November 2026 and can change without notice.",
+    "Udio's free tier limits full-length generations to 2:10 per song; its credit units are not comparable to Flow AI Music's, where one full song costs 24–35 credits depending on the model. Competitor figures were read on 26 November 2026 and Flow's promotional price was updated on 28 November 2026; figures can change without notice.",
   sections: [
     {
       heading: "Price, credits and limits",
       paragraphs: [
-        "Flow Creator is $9 per month with 2,400 credits and about 100 full songs at the lowest-cost model; Udio Standard is $10 per month, or $8 per month on annual billing, with 2,400 credits per month. Udio Pro is $30 per month, or $24 annually, with 6,000 credits.",
+        "Flow Creator is $6 per month for a limited time (regularly $9) with 2,400 credits and about 100 full songs at the lowest-cost model; Udio Standard is $10 per month, or $8 per month on annual billing, with 2,400 credits per month. Udio Pro is $30 per month, or $24 annually, with 6,000 credits.",
         "Udio's pricing page states a free allowance of 10 credits per day and 100 per month, with up to three full-length 2:10 songs per day. Flow requires a Google sign-in and offers one free full song per account. Credit numbers are not directly comparable between the two systems, so focus on output and limits that matter to you.",
       ],
     },
@@ -73,7 +73,7 @@ const data: CompareData = {
   faqs: [
     {
       q: "Is Flow AI Music cheaper than Udio?",
-      a: "Flow Creator is $9 per month versus $10 for Udio Standard, or $8 per month for Udio on annual billing. Annual billing can make Udio cheaper per month, so compare the effective monthly cost.",
+      a: "Flow Creator is $6 per month for a limited time (regularly $9), versus $10 for Udio Standard, or $8 per month for Udio on annual billing. Flow is cheaper even against Udio's annual rate while the promotion runs.",
     },
     {
       q: "Does Udio offer more free music than Flow?",
