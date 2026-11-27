@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "backseat-chorus",
+    "style": "Pop",
+    "prompt": "Group-vocal hook, jangly guitars, summer drive, singalong ending",
+    "instrumental": false,
+    "taskId": "task_fbe8091a8f4644a0b50a1c671fa6f153",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_fbe8091a8f4644a0b50a1c671fa6f153/track_5eaed03a0e0fb4b1a1c68fba/audio.mp3",
+    "duration": 244.8,
+    "title": "Nowhere Else Tonight"
+  },
+  {
+    "slug": "signal-fires",
+    "style": "Electronic",
+    "prompt": "Glitchy breakbeat, chopped vocal textures, bright supersaw drop",
+    "instrumental": false,
+    "taskId": "task_c5d12297e5074fe4ae70f3100072dbf9",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_c5d12297e5074fe4ae70f3100072dbf9/track_6cf035592c2fb0f6c87bd3ab/audio.mp3",
+    "duration": 190.92,
+    "title": "Stutter Saw"
+  },
+  {
+    "slug": "slow-motion-apology",
+    "style": "R&B",
+    "prompt": "Intimate alt-R&B, close-mic female vocal, sub bass, sparse clicks",
+    "instrumental": false,
+    "taskId": "task_3ff0b79252804d988148b6a9050d5878",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_3ff0b79252804d988148b6a9050d5878/track_285b0b153fb04ba5ba443459/audio.mp3",
+    "duration": 179.16,
+    "title": "I Won't Apologize"
+  },
+  {
+    "slug": "cardboard-kingdom",
+    "style": "Hip-Hop",
+    "prompt": "Playful boom-bap, toy piano sample, confident laid-back verses",
+    "instrumental": false,
+    "taskId": "task_f0e40246ab074623b0414c0839655be5",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_f0e40246ab074623b0414c0839655be5/track_55fd31e4736f3188ecb40340/audio.mp3",
+    "duration": 148.36,
+    "title": "Small Steps Count"
+  },
+  {
+    "slug": "atlas-unfolding",
+    "style": "Cinematic",
+    "prompt": "Orchestral build with taiko hits and a resolving piano motif",
+    "instrumental": true,
+    "taskId": "task_91c9b04268fe40a280322ef0eec4cb4a",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_91c9b04268fe40a280322ef0eec4cb4a/track_1a3aed10bd7e5f92d4cd3182/audio.mp3",
+    "duration": 183.6,
+    "title": "The Resonant Return"
+  },
+  {
+    "slug": "two-left-feet",
+    "style": "Hip-Hop",
+    "prompt": "Bouncy dancehall-flavoured hip-hop, hand percussion, cheeky hook",
+    "instrumental": false,
+    "taskId": "task_4eb42ab93f1a4fefa97932bdc36726e1",
+    "model": "ai-music-m2",
+    "audioUrl": "https://assets.seeapi.com/music/task_4eb42ab93f1a4fefa97932bdc36726e1/track_424d64746deb1e4ec1bfc77a/audio.mp3",
+    "duration": 182.4,
+    "title": "Saved You a Place"
+  }
+]
